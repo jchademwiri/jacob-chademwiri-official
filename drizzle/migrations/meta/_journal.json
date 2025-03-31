@@ -8,6 +8,13 @@
       "when": 1743108746161,
       "tag": "0000_young_sue_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1743414131546,
+      "tag": "0001_lethal_silver_samurai",
+      "breakpoints": true
     }
   ]
 }
