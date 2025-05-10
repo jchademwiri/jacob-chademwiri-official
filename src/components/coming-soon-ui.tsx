@@ -8,7 +8,7 @@ export default function ModernDarkUI() {
 
   return (
     <div
-      className={`h-screen flex flex-col items-center justify-center px-6 py-16 sm:py-24 font-sans transition-colors duration-500 ${
+      className={`min-h-screen flex flex-col items-center justify-center px-6 py-16 sm:py-24 font-sans transition-colors duration-500 ${
         darkMode
           ? 'bg-gradient-to-b from-green-950 to-black text-green-50'
           : 'bg-gradient-to-b from-green-50 to-green-100 text-green-900'
