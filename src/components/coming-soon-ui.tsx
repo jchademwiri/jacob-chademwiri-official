@@ -36,7 +36,7 @@ export default function ModernDarkUI() {
               darkMode ? 'text-green-300' : 'text-green-700'
             } max-w-md mx-auto`}
           >
-            Something great is on the way. We're working hard to launch our
+            Something great is on the way. We&apos;re working hard to launch our
             site!
           </p>
         </div>
