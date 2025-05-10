@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Sun, Moon, Mail, Github, Twitter, Linkedin } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ModernDarkUI() {
   const [darkMode, setDarkMode] = useState(true);
@@ -219,7 +220,7 @@ export default function ModernDarkUI() {
 
         {/* Social Links */}
         <div className="flex justify-center gap-6 pt-8">
-          <a
+          <Link
             href="https://github.com/jchademwiri"
             className={`p-2 rounded-full ${
               darkMode ? 'hover:bg-green-900/60' : 'hover:bg-green-100'
@@ -228,9 +229,9 @@ export default function ModernDarkUI() {
             rel="noreferrer"
           >
             <Github size={20} />
-          </a>
-          <a
-            href="https://twitter.com/yourhandle"
+          </Link>
+          <Link
+            href="https://twitter.com/jchademwiri"
             className={`p-2 rounded-full ${
               darkMode ? 'hover:bg-green-900/60' : 'hover:bg-green-100'
             } transition-colors`}
@@ -238,8 +239,8 @@ export default function ModernDarkUI() {
             rel="noreferrer"
           >
             <Twitter size={20} />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://linkedin.com/in/jchademwiri"
             className={`p-2 rounded-full ${
               darkMode ? 'hover:bg-green-900/60' : 'hover:bg-green-100'
@@ -248,7 +249,7 @@ export default function ModernDarkUI() {
             rel="noreferrer"
           >
             <Linkedin size={20} />
-          </a>
+          </Link>
         </div>
 
         <footer
