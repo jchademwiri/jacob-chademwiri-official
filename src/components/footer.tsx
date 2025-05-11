@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 export default function Footer() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode] = useState(true);
   return (
     <footer
       className={`mt-16 text-sm ${
