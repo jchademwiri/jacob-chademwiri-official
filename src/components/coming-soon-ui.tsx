@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Sun, Moon, Mail, Github, Linkedin, Facebook } from 'lucide-react';
-import Link from 'next/link';
+import { Sun, Moon, Mail } from 'lucide-react';
 import { SocialLinks } from './social-links';
 
 export default function ModernDarkUI() {
