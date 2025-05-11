@@ -73,6 +73,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
         {children}
+
         <Analytics />
       </body>
     </html>

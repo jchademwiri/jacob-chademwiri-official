@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { Sun, Moon, Mail, Github, Twitter, Linkedin } from 'lucide-react';
+import { Sun, Moon, Mail, Github, Linkedin, Facebook } from 'lucide-react';
 import Link from 'next/link';
+import { SocialLinks } from './social-links';
 
 export default function ModernDarkUI() {
   const [darkMode, setDarkMode] = useState(true);
@@ -219,55 +220,7 @@ export default function ModernDarkUI() {
         </div>
 
         {/* Social Links */}
-        <div className="flex justify-center gap-6 pt-8">
-          <Link
-            href="https://github.com/jchademwiri"
-            className={`p-2 rounded-full ${
-              darkMode ? 'hover:bg-green-900/60' : 'hover:bg-green-100'
-            } transition-colors`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Github size={20} />
-          </Link>
-          <Link
-            href="https://twitter.com/jchademwiri"
-            className={`p-2 rounded-full ${
-              darkMode ? 'hover:bg-green-900/60' : 'hover:bg-green-100'
-            } transition-colors`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Twitter size={20} />
-          </Link>
-          <Link
-            href="https://linkedin.com/in/jchademwiri"
-            className={`p-2 rounded-full ${
-              darkMode ? 'hover:bg-green-900/60' : 'hover:bg-green-100'
-            } transition-colors`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Linkedin size={20} />
-          </Link>
-        </div>
-
-        <footer
-          className={`mt-16 text-sm ${
-            darkMode ? 'text-green-500' : 'text-green-600'
-          }`}
-        >
-          <div className="space-y-2">
-            <p>
-              © {new Date().getFullYear()} Jacob Chademwiri. All rights
-              reserved.
-            </p>
-            <div className="flex justify-center gap-6">
-              <span>hello@jacobc.co.za</span>
-              <span>074 049 1433</span>
-            </div>
-          </div>
-        </footer>
+        <SocialLinks />
       </main>
     </div>
   );
