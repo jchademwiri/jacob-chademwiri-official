@@ -1,10 +1,9 @@
-import Hero from '@/components/ui/Hero';
-import { ModeToggle } from '@/components/ui/mode-toggle';
+import ModernDarkUI from '@/components/coming-soon-ui';
 
 export default function Home() {
   return (
-    <div className="container mx-auto">
-      <Hero />
+    <div>
+      <ModernDarkUI />
     </div>
   );
 }
