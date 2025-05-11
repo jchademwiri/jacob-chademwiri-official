@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export const SocialLinks = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode] = useState(true);
   return (
     <div className="flex justify-center gap-6 pt-8">
       <Link
