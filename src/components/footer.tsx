@@ -1,98 +1,117 @@
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="w-full bg-background border-t border-white/10 backdrop-blur-sm text-sm">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-muted-foreground">
-        {/* Column 1: Brand */}
-        <div>
-          <Link href="/" className="flex items-center space-x-2 mb-4">
-            <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
-              GD
+    <footer className="w-full border-t bg-background/50 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {/* About Section */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-bold">GD</span>
+              </div>
+              <span className="font-bold text-lg">GreenDesign</span>
             </div>
-            <span className="font-semibold text-white text-lg">
-              GreenDesign
-            </span>
-          </Link>
-          <p>
-            We create beautiful, functional, and accessible web experiences with
-            modern technologies and a focus on sustainability.
-          </p>
-        </div>
+            <p className="text-muted-foreground">
+              We create beautiful, functional, and accessible web experiences
+              with modern technologies and a focus on sustainability.
+            </p>
+          </div>
 
-        {/* Column 2: Quick Links */}
-        <div>
-          <h4 className="text-white font-semibold mb-3">Quick Links</h4>
-          <ul className="space-y-2">
-            {['Home', 'About', 'Projects', 'Blog', 'Contact'].map((label) => (
-              <li key={label}>
-                <Link
-                  href={`/${label.toLowerCase()}`}
-                  className="hover:text-primary transition-colors"
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Column 3: Connect */}
-        <div>
-          <h4 className="text-white font-semibold mb-3">Connect</h4>
-          <ul className="space-y-2">
-            <li className="flex items-center space-x-2 group">
-              <Github className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <nav className="flex flex-col space-y-2">
               <Link
-                href="https://github.com/jchademwiri"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-primary transition-colors"
+                href="/"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200"
               >
-                GitHub
+                Home
               </Link>
-            </li>
+              <Link
+                href="/about"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                About
+              </Link>
+              <Link
+                href="/projects"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                Projects
+              </Link>
+              <Link
+                href="/blog"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/contact"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                Contact
+              </Link>
+            </nav>
+          </div>
 
-            <li className="flex items-center space-x-2">
-              <Twitter className="h-4 w-4" />
+          {/* Social Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Connect</h3>
+            <div className="flex flex-col space-y-2">
               <a
-                href="#"
+                href="https://github.com/greendesign"
                 target="_blank"
-                rel="noreferrer"
-                className="hover:text-primary"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
               >
-                Twitter
+                <Github className="h-5 w-5" />
+                <span>GitHub</span>
               </a>
-            </li>
-            <li className="flex items-center space-x-2">
-              <Linkedin className="h-4 w-4" />
-              <Link
-                href="https://linkedin.com/in/jchademwiri"
+              <a
+                href="https://twitter.com/greendesign"
                 target="_blank"
-                rel="noreferrer"
-                className="hover:text-primary"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
               >
-                LinkedIn
-              </Link>
-            </li>
-            <li className="flex items-center space-x-2">
-              <Mail className="h-4 w-4" />
+                <Twitter className="h-5 w-5" />
+                <span>Twitter</span>
+              </a>
+              <a
+                href="https://linkedin.com/company/greendesign"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                <Linkedin className="h-5 w-5" />
+                <span>LinkedIn</span>
+              </a>
               <a
                 href="mailto:hello@greendesign.com"
-                className="hover:text-primary"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
               >
-                hello@greendesign.com
+                <Mail className="h-5 w-5" />
+                <span>hello@greendesign.com</span>
               </a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10 py-4 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-xs text-muted-foreground">
-        <span>© 2025 GreenDesign. All rights reserved.</span>
-        <span>Designed & Built with sustainability in mind</span>
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t">
+          <div className="flex flex-col sm:flex-row justify-between items-center">
+            <p className="text-sm text-muted-foreground">
+              © {currentYear} GreenDesign. All rights reserved.
+            </p>
+            <p className="text-sm text-muted-foreground mt-4 sm:mt-0">
+              Designed & Built with sustainability in mind
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );
