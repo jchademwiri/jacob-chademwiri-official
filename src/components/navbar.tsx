@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { MobileNav } from './mobile-nav';
 import { ThemeToggle } from './theme-toggle';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
+import { navLinks } from '@/constraints';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +23,8 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const pathname = usePathname();
 
   return (
     <>
@@ -38,46 +42,33 @@ export function Navbar() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
                 <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold">GD</span>
+                  <span className="text-primary-foreground font-bold">JC</span>
                 </div>
                 <span className="font-bold text-lg hidden sm:inline-block">
-                  GreenDesign
+                  Jacob C
                 </span>
               </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              <Link
-                href="/"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                About
-              </Link>
-              <Link
-                href="/projects"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                Projects
-              </Link>
-              <Link
-                href="/blog"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                Contact
-              </Link>
+              {navLinks.map(({ label, href }) => {
+                const isActive = pathname === href;
+
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`text-sm font-medium transition-colors ${
+                      isActive
+                        ? 'text-primary'
+                        : 'text-foreground hover:text-primary'
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right side actions */}

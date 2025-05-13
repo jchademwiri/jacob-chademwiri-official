@@ -65,7 +65,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold">GD</span>
               </div>
-              <span className="font-bold">GreenDesign</span>
+              <span className="font-bold">Jacob C</span>
             </Link>
             <button
               onClick={onClose}

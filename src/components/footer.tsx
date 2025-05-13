@@ -1,8 +1,14 @@
+'use client';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { SocialLinks } from './social-links';
+import { usePathname } from 'next/navigation';
+import { navLinks } from '@/constraints';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const pathname = usePathname();
 
   return (
     <footer className="w-full border-t bg-background/50 backdrop-blur-md">
@@ -12,9 +18,9 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">GD</span>
+                <span className="text-primary-foreground font-bold">JC</span>
               </div>
-              <span className="font-bold text-lg">GreenDesign</span>
+              <span className="font-bold text-lg">Jacob C</span>
             </div>
             <p className="text-muted-foreground">
               We create beautiful, functional, and accessible web experiences
@@ -26,86 +32,35 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
-              <Link
-                href="/"
-                className="text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                About
-              </Link>
-              <Link
-                href="/projects"
-                className="text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                Projects
-              </Link>
-              <Link
-                href="/blog"
-                className="text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className="text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                Contact
-              </Link>
+              {navLinks.map(({ label, href }) => {
+                const isActive = pathname === href;
+
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`text-sm text-muted-foreground font-medium transition-colors ${
+                      isActive
+                        ? 'text-primary'
+                        : 'text-foreground hover:text-primary'
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
           {/* Social Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Connect</h3>
-            <div className="flex flex-col space-y-2">
-              <a
-                href="https://github.com/greendesign"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                <Github className="h-5 w-5" />
-                <span>GitHub</span>
-              </a>
-              <a
-                href="https://twitter.com/greendesign"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                <Twitter className="h-5 w-5" />
-                <span>Twitter</span>
-              </a>
-              <a
-                href="https://linkedin.com/company/greendesign"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                <Linkedin className="h-5 w-5" />
-                <span>LinkedIn</span>
-              </a>
-              <a
-                href="mailto:hello@greendesign.com"
-                className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                <Mail className="h-5 w-5" />
-                <span>hello@greendesign.com</span>
-              </a>
-            </div>
-          </div>
+          <SocialLinks />
         </div>
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} GreenDesign. All rights reserved.
+              © {currentYear} Jacob C. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground mt-4 sm:mt-0">
               Designed & Built with sustainability in mind
