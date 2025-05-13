@@ -9,6 +9,7 @@ import { ThemeToggle } from './theme-toggle';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/constraints';
+// import ThemeToggle from './theme-toggle';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

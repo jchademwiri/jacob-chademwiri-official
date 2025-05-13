@@ -20,7 +20,7 @@ export function Footer() {
               <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold">JC</span>
               </div>
-              <span className="font-bold text-lg">Jacob C</span>
+              <span className="font-bold text-lg">Jacob CHademwiri</span>
             </div>
             <p className="text-muted-foreground">
               We create beautiful, functional, and accessible web experiences
@@ -60,7 +60,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Jacob C. All rights reserved.
+              © {currentYear} Jacob Chademwiri. All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground mt-4 sm:mt-0">
               Designed & Built with sustainability in mind
