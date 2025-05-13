@@ -6,40 +6,52 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-export function MobileNav({
-  isOpen,
-  onClose,
-}: {
+interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
-}) {
+}
+
+export function MobileNav({ isOpen, onClose }: MobileNavProps) {
+  // Prevent scrolling when mobile nav is open
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
 
+  // Handle ESC key press
   useEffect(() => {
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
-    document.addEventListener('keydown', esc);
-    return () => document.removeEventListener('keydown', esc);
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
   }, [onClose]);
 
   return (
     <>
+      {/* Backdrop */}
       <div
         className={cn(
-          'fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-opacity duration-300',
+          'fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-300',
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         )}
         onClick={onClose}
         aria-hidden="true"
       />
 
+      {/* Drawer */}
       <div
         className={cn(
-          'fixed inset-y-0 left-0 z-50 w-3/4 max-w-xs bg-background border-r transition-transform duration-300',
+          'fixed inset-y-0 left-0 z-50 w-3/4 max-w-xs bg-background border-r shadow-lg transform transition-transform duration-300 ease-in-out',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
@@ -57,24 +69,61 @@ export function MobileNav({
             </Link>
             <button
               onClick={onClose}
-              className="hover:bg-accent p-1 rounded-md"
+              className="p-1 rounded-md hover:bg-accent"
               aria-label="Close Menu"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
 
-          <nav className="flex-1 p-4 space-y-4">
-            {['Home', 'About', 'Projects', 'Blog', 'Contact'].map((item) => (
-              <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
-                className="block text-lg font-medium hover:text-primary"
-                onClick={onClose}
-              >
-                {item}
-              </Link>
-            ))}
+          <nav className="flex-1 overflow-auto p-4">
+            <ul className="space-y-4">
+              <li>
+                <Link
+                  href="/"
+                  className="block py-2 text-lg font-medium hover:text-primary transition-colors"
+                  onClick={onClose}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="block py-2 text-lg font-medium hover:text-primary transition-colors"
+                  onClick={onClose}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/projects"
+                  className="block py-2 text-lg font-medium hover:text-primary transition-colors"
+                  onClick={onClose}
+                >
+                  Projects
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="block py-2 text-lg font-medium hover:text-primary transition-colors"
+                  onClick={onClose}
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="block py-2 text-lg font-medium hover:text-primary transition-colors"
+                  onClick={onClose}
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
           </nav>
 
           <div className="p-4 border-t">
