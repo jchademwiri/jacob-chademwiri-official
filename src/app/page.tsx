@@ -1,9 +1,16 @@
-import ModernDarkUI from '@/components/coming-soon-ui';
+import { FeaturesSection } from '@/components/features-section';
+import { HeroSection } from '@/components/hero-section';
 
 export default function Home() {
   return (
     <div>
-      <ModernDarkUI />
+      <HeroSection />
+      <FeaturesSection />
+      {/* <PricingSection /> */}
+      {/* <TestimonialsSection /> */}
+      {/* <FAQSection /> */}
+      {/* <ContactSection /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
