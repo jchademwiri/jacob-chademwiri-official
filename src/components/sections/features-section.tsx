@@ -1,20 +1,43 @@
 import { FeatureCard } from '@/components/feature-card';
+import Link from 'next/link';
 
+interface FeatureCardProps {
+  title?: string;
+  link?: string | undefined;
+  description: string;
+}
+
+// {
+//   title: 'Tender Management',
+//   description:
+//     'Complete end-to-end service including sourcing opportunities, ensuring compliance, and professionally preparing submissions to maximize contract wins.',
+// },
+// {
+//   title: 'Project Coordination & Management',
+//   description:
+//     'End-to-end project oversight including resource allocation, timeline management, and accurate invoicing.',
+// },
+// {
+//   title: 'Web Development',
+//   description:
+//     'Custom, sustainable web solutions tailored to elevate your business presence online.',
+// },
 const features = [
   {
     title: 'Tender Management',
     description:
-      'Manage your tenders efficiently with our comprehensive tools.',
+      'I manage the entire tendering process - from identifying opportunities to preparing compliant, compelling submissions that win contracts.',
   },
   {
     title: 'Project Coordination & Management',
     description:
-      'Streamline your project coordination and management with our intuitive interface.',
+      // 'I lead projects from planning through delivery, aligning timelines, teams, and resources to ensure smooth execution and measurable outcomes.',
+      'I lead end-to-end project delivery - overseeing timelines, resource coordination, and accurate invoicing to ensure seamless execution.',
   },
   {
-    title: 'Website Design & Development',
+    title: 'Web Design & Development',
     description:
-      'Create stunning websites with our design and development tools.',
+      'I design and develop fast, accessible websites that align with your brand, serve your users, and support long-term growth.',
   },
 ];
 
@@ -27,6 +50,10 @@ export function FeaturesSection() {
           {features.map((feature, i) => (
             <FeatureCard
               key={i}
+              // link={`/features/${feature.title
+              //   .toLowerCase()
+              //   .replace(/\s+/g, '-')}`}
+              link="#"
               title={feature.title}
               description={feature.description}
             />
