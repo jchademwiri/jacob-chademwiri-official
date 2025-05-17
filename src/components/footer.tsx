@@ -17,9 +17,11 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">JC</span>
+                <span className="text-white font-bold">JC</span>
               </div>
-              <span className="font-bold text-lg">Jacob CHademwiri</span>
+              <span className="font-bold text-lg">
+                Jacob <span className="text-primary">Chademwiri</span>
+              </span>
             </div>
             <p className="text-muted-foreground">
               We create beautiful, functional, and accessible web experiences

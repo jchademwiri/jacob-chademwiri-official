@@ -43,10 +43,10 @@ export function Navbar() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
                 <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold">JC</span>
+                  <span className="text-white font-bold">JC</span>
                 </div>
                 <span className="font-bold text-lg hidden sm:inline-block">
-                  Jacob C
+                  Jacob <span className="text-primary">C.</span>
                 </span>
               </Link>
             </div>
@@ -75,7 +75,7 @@ export function Navbar() {
             {/* Right side actions */}
             <div className="flex items-center space-x-4">
               <ThemeToggle />
-              <Button className="hidden sm:flex" size="sm">
+              <Button className="hidden sm:flex text-white" size="sm">
                 Get Started
               </Button>
               <button
