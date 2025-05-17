@@ -35,15 +35,15 @@ export function ScrollToTop() {
       variant="outline"
       size="icon"
       className={cn(
-        'fixed bottom-8 right-8 z-30 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-md rounded-full transition-all duration-300 transform',
-        isVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-10 pointer-events-none'
+        'fixed bottom-8 right-8 z-50 rounded-full p-2 shadow-md transition-opacity duration-300 cursor-pointer',
+        'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700',
+        'hover:bg-slate-100 dark:hover:bg-slate-700',
+        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       )}
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >
-      <ArrowUp className="h-5 w-5" />
+      <ArrowUp className="h-5 w-5 text-slate-700 dark:text-slate-200" />
     </Button>
   );
 }
