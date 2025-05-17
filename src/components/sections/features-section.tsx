@@ -1,20 +1,35 @@
+import { FeatureCard } from '@/components/feature-card';
+
+const features = [
+  {
+    title: 'Tender Management',
+    description:
+      'Manage your tenders efficiently with our comprehensive tools.',
+  },
+  {
+    title: 'Project Coordination & Management',
+    description:
+      'Streamline your project coordination and management with our intuitive interface.',
+  },
+  {
+    title: 'Website Design & Development',
+    description:
+      'Create stunning websites with our design and development tools.',
+  },
+];
+
 export function FeaturesSection() {
   return (
     <section className="py-12 md:py-24 bg-muted/50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature cards */}
-          {[1, 2, 3].map((i) => (
-            <div
+          {features.map((feature, i) => (
+            <FeatureCard
               key={i}
-              className="bg-background rounded-lg p-6 shadow-sm border"
-            >
-              <h3 className="text-xl font-semibold mb-2">Feature {i}</h3>
-              <p className="text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore.
-              </p>
-            </div>
+              title={feature.title}
+              description={feature.description}
+            />
           ))}
         </div>
       </div>

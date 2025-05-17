@@ -1,6 +1,8 @@
-
-import { FeaturesSection, HeroSection, ProjectsSection } from '@/components/sections';
-import { Button } from '@/components/ui/button';
+import {
+  FeaturesSection,
+  HeroSection,
+  ProjectsSection,
+} from '@/components/sections';
 
 export default function Home() {
   return (
