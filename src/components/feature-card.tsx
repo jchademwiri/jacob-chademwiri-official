@@ -8,7 +8,7 @@ interface FeatureCardProps {
 
 export function FeatureCard({ title, link, description }: FeatureCardProps) {
   return (
-    <div className="dark:bg-background bg-primary/5 rounded-lg p-6 shadow-sm border border-muted/50 hover:shadow-lg transition-shadow duration-300">
+    <div className="dark:bg-background bg-primary-foreground rounded-lg p-6 shadow-sm border border-muted/50 hover:shadow-lg transition-shadow duration-300">
       <h3 className="text-xl font-semibold mb-2">
         <Link href={link ? link : '#'} className="text-primary hover:underline">
           {title}
