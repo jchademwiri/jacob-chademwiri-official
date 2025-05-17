@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
 
 @layer utilities {
   .text-balance {
@@ -91,9 +92,6 @@
   --sidebar-ring: oklch(0.527 0.154 150.069);
 }
 
-
-
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -143,5 +141,14 @@
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
