@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { SocialLinks } from './social-links';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/constraints';

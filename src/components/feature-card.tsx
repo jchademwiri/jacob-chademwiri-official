@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Card } from './ui/card';
 
 interface FeatureCardProps {
   title: string;

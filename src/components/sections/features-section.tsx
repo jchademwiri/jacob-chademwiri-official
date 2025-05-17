@@ -1,11 +1,10 @@
 import { FeatureCard } from '@/components/feature-card';
-import Link from 'next/link';
 
-interface FeatureCardProps {
-  title?: string;
-  link?: string | undefined;
-  description: string;
-}
+// interface FeatureCardProps {
+//   title?: string;
+//   link?: string | undefined;
+//   description: string;
+// }
 
 // {
 //   title: 'Tender Management',
