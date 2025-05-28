@@ -1,5 +1,6 @@
 import { HeroSection } from './hero-section';
+import { CurrentEmployment } from './current-employment';
 import { FeaturesSection } from './features-section';
 import { ProjectsSection } from './projects-section';
 
-export { HeroSection, FeaturesSection, ProjectsSection };
+export { HeroSection, CurrentEmployment, FeaturesSection, ProjectsSection };

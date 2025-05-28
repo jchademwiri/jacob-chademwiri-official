@@ -1,4 +1,6 @@
+import ComingSoon from '@/components/coming-soon';
 import {
+  CurrentEmployment,
   FeaturesSection,
   HeroSection,
   ProjectsSection,
@@ -7,6 +9,8 @@ import {
 export default function Home() {
   return (
     <>
+      <ComingSoon />
+      <CurrentEmployment />
       <HeroSection />
       <FeaturesSection />
       <ProjectsSection />
