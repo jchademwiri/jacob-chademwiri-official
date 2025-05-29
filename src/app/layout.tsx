@@ -4,9 +4,9 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
-import { ScrollToTop } from '@/components/scroll-to-top';
+// import { Navbar } from '@/components/navbar';
+// import { Footer } from '@/components/footer';
+// import { ScrollToTop } from '@/components/scroll-to-top';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -83,7 +83,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          {/* <Navbar /> */}
           <main className="flex-1">{children}</main>
           {/* <Footer />
           <ScrollToTop /> */}
