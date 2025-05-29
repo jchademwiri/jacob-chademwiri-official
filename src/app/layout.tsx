@@ -83,8 +83,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <Navbar /> */}
-
+          <Navbar />
           <main className="flex-1">{children}</main>
           {/* <Footer />
           <ScrollToTop /> */}
