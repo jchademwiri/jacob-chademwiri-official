@@ -9,11 +9,11 @@ import {
 export default function Home() {
   return (
     <>
-      {/* <ComingSoon /> */}
+      <ComingSoon />
       <CurrentEmployment />
-      {/* <HeroSection />
+      <HeroSection />
       <FeaturesSection />
-      <ProjectsSection /> */}
+      <ProjectsSection />
     </>
   );
 }
