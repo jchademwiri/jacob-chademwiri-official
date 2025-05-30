@@ -75,8 +75,10 @@ export function Navbar() {
             {/* Right side actions */}
             <div className="flex items-center space-x-4">
               <ThemeToggle />
-              <Button className="hidden sm:flex text-white" size="sm">
-                Get Started
+              <Button size="lg" className="hidden sm:flex text-white">
+                <Link href="mailto:Jacob Chademwiri<hello@jacobc.co.za>?subject=Hiring%20Inquiry">
+                  Hire Me
+                </Link>
               </Button>
               <button
                 className="flex items-center justify-center md:hidden"

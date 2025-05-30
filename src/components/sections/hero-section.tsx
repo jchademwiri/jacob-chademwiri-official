@@ -1,12 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export function HeroSection({ height = 'min-h-[600px]' }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e: { clientX: number; clientY: number; }) => {
+    const handleMouseMove = (e: { clientX: number; clientY: number }) => {
       setMousePosition({
         x: e.clientX / window.innerWidth,
         y: e.clientY / window.innerHeight,
@@ -79,9 +80,9 @@ export function HeroSection({ height = 'min-h-[600px]' }) {
           </h1>
 
           <p className="text-xl max-w-[800px] text-gray-700 dark:text-gray-300">
-            Specialized in tender acquisition, project coordination, and
-            creating sustainable web solutions that elevate your business. From
-            winning contracts to delivering exceptional digital experiences.
+            Specialized in tender acquisition, project management, and creating
+            sustainable web solutions that elevate your business. From winning
+            contracts to delivering exceptional digital experiences.
           </p>
 
           <div className="flex flex-wrap gap-3 justify-center">
@@ -89,29 +90,31 @@ export function HeroSection({ height = 'min-h-[600px]' }) {
               Tender Management
             </span>
             <span className="px-3 py-1 text-sm bg-gray-200/60 dark:bg-gray-800/60 rounded-full">
-              Project Coordination
+              Project Management
+            </span>
+            <span className="px-3 py-1 text-sm bg-gray-200/60 dark:bg-gray-800/60 rounded-full">
+              Accounts Receivable Management
             </span>
             <span className="px-3 py-1 text-sm bg-gray-200/60 dark:bg-gray-800/60 rounded-full">
               Web Development
-            </span>
-            <span className="px-3 py-1 text-sm bg-gray-200/60 dark:bg-gray-800/60 rounded-full">
-              UI/UX Design
             </span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button
+              asChild
               size="lg"
-              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white border-0"
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white border-0"
             >
-              View Portfolio
+              <Link href="/portfolio">View Portfolio</Link>
             </Button>
             <Button
+              asChild
               variant="outline"
               size="lg"
               className="border-green-600 text-green-600 hover:bg-green-600/10 dark:border-green-500 dark:text-green-400 dark:hover:bg-green-500/10"
             >
-              Contact Me
+              <Link href="/contact">Get in Touch</Link>
             </Button>
           </div>
         </div>

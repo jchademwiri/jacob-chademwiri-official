@@ -34,7 +34,7 @@ export function CurrentEmployment() {
         </div>
 
         {/* Position Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {currentPositions.map((position) => (
             <Link
               href={`/${position.id}`}
@@ -95,19 +95,6 @@ export function CurrentEmployment() {
                   {position.description}
                 </p>
 
-                {/* Key Responsibilities */}
-                {/* <div className="space-y-3">
-                  <h4 className="text-sm font-semibold text-foreground">Key Responsibilities:</h4>
-                  <ul className="space-y-1">
-                    {position.keyResponsibilities.map((resp, index) => (
-                      <li key={index} className="text-xs text-muted-foreground flex items-start space-x-2">
-                        <span className="text-primary mt-1">•</span>
-                        <span>{resp}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div> */}
-
                 {/* Skills */}
                 <div className="space-y-3">
                   <h4 className="text-sm font-semibold text-foreground">
@@ -117,24 +104,17 @@ export function CurrentEmployment() {
                     {position.skills.map((skill, index) => (
                       <span
                         key={index}
-                        className={`px-2 py-1 text-xs bg-muted text-muted-foreground rounded-md ${position.iconBg} ${position.iconColor}`}
+                        className={`px-3 py-1 text-xs font-medium rounded-full ${
+                          position.type === 'Full-time'
+                            ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
+                            : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                        }`}
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
                 </div>
-
-                {/* CTA Button */}
-                {/* <div className="pt-4">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-between group-hover:bg-background/80 transition-colors"
-                  >
-                    <span>View Detailed Experience</span>
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div> */}
               </div>
             </Link>
           ))}
