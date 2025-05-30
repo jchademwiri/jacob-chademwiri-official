@@ -62,9 +62,9 @@ export default function SiteLayout({
 }>) {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="flex-1">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
       <SpeedInsights />
       <Analytics />
     </>
