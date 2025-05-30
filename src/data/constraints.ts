@@ -4,4 +4,6 @@ export const navLinks = [
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
+  // { label: 'Login', href: '/auth/login' },
+  // { label: 'Admin', href: '/admin' },
 ];
