@@ -2,6 +2,8 @@ import { redirect } from 'next/navigation';
 
 import { LogoutButton } from '@/components/logout-button';
 import { createClient } from '@/lib/server';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default async function AdminPage() {
   const supabase = await createClient();
@@ -16,9 +18,13 @@ export default async function AdminPage() {
       <p>
         Hello <span>{data.user.email}</span>
       </p>
+      <Button asChild className="text-white">
+        <Link href="/">Go to Home</Link>
+      </Button>
       <p>This is a Admin page</p>
-      <div>{data.user.new_phone} </div>
-      <LogoutButton />
+      <Button asChild className="">
+        <LogoutButton />
+      </Button>
     </div>
   );
 }

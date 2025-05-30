@@ -9,9 +9,9 @@ import {
 export default function Home() {
   return (
     <>
-      <ComingSoon />
-      <CurrentEmployment />
+      {/* <ComingSoon /> */}
       <HeroSection />
+      <CurrentEmployment />
       <FeaturesSection />
       <ProjectsSection />
     </>
