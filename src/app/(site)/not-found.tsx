@@ -80,7 +80,7 @@ export default function NotFound() {
 
         {/* Main heading */}
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-          Oops! You've ventured into
+          Oops! You&apos;ve ventured into
           <br className="hidden sm:block" />
           <span className="text-green-600 dark:text-green-400">
             uncharted territory
@@ -89,9 +89,9 @@ export default function NotFound() {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-          The page you're looking for seems to have wandered off. But don't
-          worry – let's get you back on the right path to explore my work in
-          project management and web development.
+          The page you&apos;re looking for seems to have wandered off. But
+          don&apos;t worry - let&apos;s get you back on the right path to
+          explore my work in project management and web development.
         </p>
 
         {/* Suggestion cards */}

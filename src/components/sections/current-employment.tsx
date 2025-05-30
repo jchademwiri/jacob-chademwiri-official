@@ -1,12 +1,5 @@
 import { currentPositions } from '@/data';
-import {
-  ArrowRight,
-  Building2,
-  Calendar,
-  MapPin,
-  Briefcase,
-  Globe,
-} from 'lucide-react';
+import { Building2, Calendar, MapPin, Globe } from 'lucide-react';
 
 import Link from 'next/link';
 
@@ -24,7 +17,7 @@ export function CurrentEmployment() {
             <span className="h-1 w-12 bg-green-600 dark:bg-green-400 rounded-full"></span>
           </div>
           <h2 className="text-2xl md:text-4xl font-bold">
-            Where I'm Making an Impact
+            Where I&apos;m Making an Impact
           </h2>
           <p className="text-lg text-muted-foreground max-w-[700px]">
             Currently contributing expertise across tender management, project
