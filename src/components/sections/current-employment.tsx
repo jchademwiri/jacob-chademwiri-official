@@ -1,4 +1,4 @@
-'use client';
+import { currentPositions } from '@/data';
 import {
   ArrowRight,
   Building2,
@@ -7,67 +7,10 @@ import {
   Briefcase,
   Globe,
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useRouter } from 'next/navigation';
 
-const positions = [
-  {
-    id: 'sithembe',
-    company: 'SITHEMBE TRANSPORTATION & PROJECTS',
-    title: 'Tendering & Accounts Receivable Manager | Projects Coordinator',
-    type: 'Full-time',
-    location: 'Centurion, Gauteng, South Africa',
-    duration: 'Sep 2024 - Present · 9 mos',
-    description:
-      'I oversee accounts receivable operations, tender processes, project coordination & administration, & digital solutions, ensuring financial accuracy, operational efficiency, and compliance.',
-    keyResponsibilities: [
-      'Manage full accounts receivable cycle using Sage',
-      'Lead tendering processes with high win rates',
-      'Coordinate strategic project meetings and risk management',
-      'Implement digital solutions and process automation',
-    ],
-    skills: [
-      'Tender Management',
-      'Project Management',
-      'Sage Accounting',
-      'Accounts Receivable',
-    ],
-    gradient: 'from-blue-600/20 to-cyan-600/20',
-    iconBg: 'bg-blue-100 dark:bg-blue-900/30',
-    iconColor: 'text-blue-600 dark:text-blue-400',
-  },
-  {
-    id: 'playhouse',
-    company: 'PLAYHOUSE MEDIA GROUP',
-    title: 'Website Developer',
-    type: 'Freelance',
-    location: 'Gauteng, South Africa',
-    duration: 'Jan 2020 - Present · 5 yrs 5 mos',
-    description:
-      'I create custom web solutions using modern technologies, focusing on SEO optimization, user experience, and sustainable digital presence for businesses.',
-    keyResponsibilities: [
-      'Develop responsive websites using WordPress & React',
-      'Convert designs to functional web applications',
-      'Implement SEO strategies and analytics',
-      'Maintain consistency in design and user experience',
-    ],
-    skills: ['React.js', 'Next.js', 'WordPress', 'SEO', 'Tailwind CSS'],
-    gradient: 'from-green-600/20 to-emerald-600/20',
-    iconBg: 'bg-green-100 dark:bg-green-900/30',
-    iconColor: 'text-green-600 dark:text-green-400',
-  },
-];
+import Link from 'next/link';
 
 export function CurrentEmployment() {
-  const router = useRouter();
-  const handleViewDetails = (positionId: string) => {
-    // Navigate to detailed page - you can implement routing here
-    // For example, using Next.js router:
-
-    router.push(`/${positionId}`);
-    console.log(`Navigate to ${positionId} details`);
-  };
-
   return (
     <section className="py-12 md:py-24 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,11 +35,11 @@ export function CurrentEmployment() {
 
         {/* Position Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {positions.map((position) => (
-            <div
+          {currentPositions.map((position) => (
+            <Link
+              href={`/${position.id}`}
               key={position.id}
-              className="group relative bg-card border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
-              onClick={() => handleViewDetails(position.id)}
+              className="group relative bg-card border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 "
             >
               {/* Gradient Background */}
               <div
@@ -193,7 +136,7 @@ export function CurrentEmployment() {
                   </Button>
                 </div> */}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

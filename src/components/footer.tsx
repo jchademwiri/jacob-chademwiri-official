@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { SocialLinks } from './social-links';
 import { usePathname } from 'next/navigation';
-import { navLinks } from '@/constraints';
+import { navLinks } from '@/data/constraints';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
