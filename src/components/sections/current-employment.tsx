@@ -30,7 +30,7 @@ export function CurrentEmployment() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {currentPositions.map((position) => (
             <Link
-              href={`/${position.id}`}
+              href={`/employment/${position.id}`}
               key={position.id}
               className="group relative bg-card border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 "
             >
