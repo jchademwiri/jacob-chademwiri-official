@@ -17,7 +17,7 @@
 ### Key Stats to Highlight (with specific metrics):
 
 - **5+ years** developing high-performance web applications
-- **50+ successful projects** delivered on time and on budget
+- **20+ successful projects** delivered on time and on budget
 - **Modern tech stack** expertise (React, Next.js, WordPress, Node.js)
 - **3+ years** leading cross-functional teams and managing budgets
 - **Proven ROI** through improved efficiency and digital transformation
