@@ -135,7 +135,7 @@ function ProjectImage({
     <div className={`relative bg-muted overflow-hidden ${className}`}>
       {project.image ? (
         <Image
-          src={`/images/${project.image}`}
+          src={project.image}
           alt={project.title}
           fill
           className="object-cover"
