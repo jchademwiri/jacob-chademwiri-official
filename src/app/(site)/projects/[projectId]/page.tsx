@@ -12,18 +12,20 @@ import {
   Timer,
   Users,
   CheckCircle2,
-  Zap,
-  Target,
-  Lightbulb,
   Quote,
   Copy,
   Check,
+  Play,
 } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import {
+  ChallengesSolutions,
+  KeyLearnings,
+} from '@/components/projects/challenge-ssolutions';
 
 interface PageParams {
   projectId: string;
@@ -38,9 +40,9 @@ const SkeletonLoader = () => (
   <div className="animate-pulse">
     <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
     <div className="h-6 bg-muted rounded w-3/4 mb-8"></div>
-    <div className="aspect-video bg-muted rounded-lg mb-12"></div>
-    <div className="grid gap-12 lg:grid-cols-3">
+    <div className="grid gap-8 lg:grid-cols-3">
       <div className="lg:col-span-2 space-y-8">
+        <div className="aspect-[16/10] bg-muted rounded-lg"></div>
         {[1, 2, 3].map((i) => (
           <div key={i} className="space-y-4">
             <div className="h-6 bg-muted rounded w-1/6"></div>
@@ -75,41 +77,36 @@ const FeatureItem = ({
   </div>
 );
 
-// Enhanced challenge-solution pair
-const ChallengeSolutionPair = ({
-  challenge,
-  solution,
-}: // index,
-{
-  challenge: string;
-  solution: string;
-  // index: number;
-}) => (
-  <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-    <CardContent className="p-6">
-      <div className="space-y-4">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Target className="h-4 w-4 text-destructive" />
-            <h4 className="font-semibold text-sm text-destructive">
-              Challenge
-            </h4>
-          </div>
-          <p className="text-sm text-muted-foreground">{challenge}</p>
-        </div>
-
-        <Separator />
-
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Lightbulb className="h-4 w-4 text-primary" />
-            <h4 className="font-semibold text-sm text-primary">Solution</h4>
-          </div>
-          <p className="text-sm text-muted-foreground">{solution}</p>
-        </div>
+// Quick stats component
+const QuickStats = ({ project }: { project: any }) => (
+  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+    <div className="text-center p-4 rounded-lg bg-muted/30">
+      <Calendar className="h-5 w-5 mx-auto mb-2 text-primary" />
+      <div className="text-sm font-medium">Completed</div>
+      <div className="text-xs text-muted-foreground">
+        {new Date(project.completedDate).getFullYear()}
       </div>
-    </CardContent>
-  </Card>
+    </div>
+    <div className="text-center p-4 rounded-lg bg-muted/30">
+      <Timer className="h-5 w-5 mx-auto mb-2 text-primary" />
+      <div className="text-sm font-medium">Duration</div>
+      <div className="text-xs text-muted-foreground">{project.duration}</div>
+    </div>
+    <div className="text-center p-4 rounded-lg bg-muted/30">
+      <Code className="h-5 w-5 mx-auto mb-2 text-primary" />
+      <div className="text-sm font-medium">Technologies</div>
+      <div className="text-xs text-muted-foreground">
+        {project.technologies.length}+
+      </div>
+    </div>
+    <div className="text-center p-4 rounded-lg bg-muted/30">
+      <CheckCircle2 className="h-5 w-5 mx-auto mb-2 text-primary" />
+      <div className="text-sm font-medium">Features</div>
+      <div className="text-xs text-muted-foreground">
+        {project.features.length}+
+      </div>
+    </div>
+  </div>
 );
 
 export default function ProjectPage({ params }: Props) {
@@ -163,9 +160,9 @@ export default function ProjectPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Enhanced Back Button with Animation */}
-        <div className="mb-8 animate-in slide-in-from-left duration-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        {/* Enhanced Back Button */}
+        <div className="mb-6 animate-in slide-in-from-left duration-500">
           <Link href="/projects">
             <Button
               variant="ghost"
@@ -177,116 +174,193 @@ export default function ProjectPage({ params }: Props) {
           </Link>
         </div>
 
-        {/* Enhanced Project Header */}
-        <div className="mb-12 animate-in fade-in-50 slide-in-from-bottom-4 duration-700">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
-                {project.title}
-              </h1>
-              <p className="text-xl text-muted-foreground text-balance">
-                {project.description}
-              </p>
-            </div>
+        {/* Improved Hero Section - More Compact */}
+        <div className="grid gap-8 lg:gap-12 lg:grid-cols-3 mb-12 animate-in fade-in-50 slide-in-from-bottom-4 duration-700">
+          {/* Left Column - Project Info */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Project Header */}
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div className="space-y-3">
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-balance leading-tight">
+                    {project.title}
+                  </h1>
+                  <p className="text-lg lg:text-xl text-muted-foreground text-balance">
+                    {project.description}
+                  </p>
+                </div>
 
-            {/* Share Button */}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={copyProjectUrl}
-              className="shrink-0 transition-all duration-200"
-            >
-              {copiedUrl ? (
-                <>
-                  <Check className="h-4 w-4 mr-2" />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <Copy className="h-4 w-4 mr-2" />
-                  Share
-                </>
-              )}
-            </Button>
-          </div>
-
-          {/* Quick Stats */}
-          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              {new Date(project.completedDate).toLocaleDateString()}
-            </div>
-            <div className="flex items-center gap-2">
-              <Timer className="h-4 w-4" />
-              {project.duration}
-            </div>
-            {project.client && (
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
-                {project.client}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Enhanced Project Image with Overlay */}
-        <div className="relative group mb-12 animate-in fade-in-50 slide-in-from-bottom-6 duration-700 delay-200">
-          <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
-            <Image
-              src={project.image || '/images/project-placeholder.svg'}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              priority
-            />
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-            {/* Quick Action Buttons on Hover */}
-            <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-              {project.liveUrl && (
+                {/* Share Button */}
                 <Button
-                  size="sm"
-                  onClick={() => window.open(project.liveUrl, '_blank')}
-                  className="backdrop-blur-sm bg-background/80 hover:bg-background/90"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
-              )}
-              {project.githubUrl && (
-                <Button
-                  size="sm"
                   variant="outline"
-                  onClick={() => window.open(project.githubUrl, '_blank')}
-                  className="backdrop-blur-sm bg-background/80 hover:bg-background/90"
+                  size="sm"
+                  onClick={copyProjectUrl}
+                  className="shrink-0 transition-all duration-200"
                 >
-                  <Github className="h-4 w-4" />
+                  {copiedUrl ? (
+                    <>
+                      <Check className="h-4 w-4 mr-2" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-4 w-4 mr-2" />
+                      Share
+                    </>
+                  )}
                 </Button>
-              )}
+              </div>
+
+              {/* Technology Badges */}
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.slice(0, 6).map((tech, index) => (
+                  <Badge
+                    key={tech}
+                    variant="secondary"
+                    className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+                {project.technologies.length > 6 && (
+                  <Badge variant="outline">
+                    +{project.technologies.length - 6} more
+                  </Badge>
+                )}
+              </div>
+
+              {/* Quick Action Buttons */}
+              <div className="flex flex-wrap gap-3">
+                {project.liveUrl && (
+                  <Button
+                    onClick={() => window.open(project.liveUrl, '_blank')}
+                    className="group hover:shadow-lg transition-all duration-300"
+                  >
+                    <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform duration-200" />
+                    View Live Demo
+                  </Button>
+                )}
+                {project.githubUrl && (
+                  <Button
+                    variant="outline"
+                    onClick={() => window.open(project.githubUrl, '_blank')}
+                    className="group hover:shadow-lg transition-all duration-300"
+                  >
+                    <Github className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform duration-200" />
+                    View Code
+                  </Button>
+                )}
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <QuickStats project={project} />
+
+            {/* Project Overview - Above the fold */}
+            <div className="prose prose-gray dark:prose-invert max-w-none">
+              <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                <div className="w-1 h-5 bg-primary rounded-full"></div>
+                Project Overview
+              </h3>
+              <div className="text-muted-foreground leading-relaxed">
+                {project.longDescription.split('\n')[0]}
+                {project.longDescription.split('\n').length > 1 && '...'}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Project Image */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-8">
+              <div className="relative group">
+                <div className="relative aspect-[4/3] lg:aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+                  <Image
+                    src={project.image || '/images/project-placeholder.svg'}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    priority
+                  />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Quick Action Overlay */}
+                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    {project.liveUrl && (
+                      <Button
+                        size="sm"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                        className="backdrop-blur-sm bg-background/80 hover:bg-background/90"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </Button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Project Details Card */}
+                <Card className="mt-6">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="text-base">Project Info</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="flex items-center gap-2 text-muted-foreground">
+                        <Calendar className="h-4 w-4" />
+                        Completed
+                      </span>
+                      <span className="font-medium">
+                        {new Date(project.completedDate).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <Separator />
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="flex items-center gap-2 text-muted-foreground">
+                        <Timer className="h-4 w-4" />
+                        Duration
+                      </span>
+                      <span className="font-medium">{project.duration}</span>
+                    </div>
+                    {project.client && (
+                      <>
+                        <Separator />
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="flex items-center gap-2 text-muted-foreground">
+                            <Users className="h-4 w-4" />
+                            Client
+                          </span>
+                          <span className="font-medium">{project.client}</span>
+                        </div>
+                      </>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Enhanced Project Content */}
+        {/* Detailed Content */}
         <div className="grid gap-12 lg:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-12">
-            {/* Overview Section */}
+            {/* Full Description */}
             <section className="prose prose-gray dark:prose-invert max-w-none">
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <div className="w-1 h-8 bg-primary rounded-full"></div>
-                Overview
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <div className="w-1 h-6 bg-primary rounded-full"></div>
+                Detailed Overview
               </h2>
-              <div className="text-muted-foreground whitespace-pre-wrap leading-relaxed text-lg">
+              <div className="text-muted-foreground whitespace-pre-wrap leading-relaxed">
                 {project.longDescription}
               </div>
             </section>
 
             {/* Enhanced Features Section */}
             <section>
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <div className="w-1 h-8 bg-primary rounded-full"></div>
-                Features
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <div className="w-1 h-6 bg-primary rounded-full"></div>
+                Key Features
               </h2>
               <div className="grid gap-2">
                 {project.features.map((feature, index) => (
@@ -295,128 +369,24 @@ export default function ProjectPage({ params }: Props) {
               </div>
             </section>
 
-            {/* Enhanced Challenges & Solutions */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <div className="w-1 h-8 bg-primary rounded-full"></div>
-                Challenges & Solutions
-              </h2>
-              <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
-                {project.challenges.map((challenge, index) => (
-                  <ChallengeSolutionPair
-                    key={index}
-                    challenge={challenge}
-                    solution={
-                      project.solutions[index] ||
-                      'Solution details not available'
-                    }
-                  />
-                ))}
-              </div>
-            </section>
+            {/* Extracted Challenges & Solutions Component */}
+            <ChallengesSolutions
+              challenges={project.challenges}
+              solutions={project.solutions}
+            />
 
-            {/* Enhanced Key Learnings */}
-            {project.learnings && (
-              <section>
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <div className="w-1 h-8 bg-primary rounded-full"></div>
-                  Key Learnings
-                </h2>
-                <div className="grid gap-3">
-                  {project.learnings.map((learning, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors duration-200"
-                    >
-                      <Zap className="h-5 w-5 text-yellow-500 mt-0.5 shrink-0" />
-                      <span className="text-muted-foreground">{learning}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
+            {/* Extracted Key Learnings Component */}
+            <KeyLearnings learnings={project.learnings} />
           </div>
 
           {/* Enhanced Sidebar */}
           <div className="space-y-6">
-            {/* Enhanced Project Actions */}
-            <Card className="overflow-hidden">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {project.liveUrl && (
-                  <Button
-                    onClick={() => window.open(project.liveUrl, '_blank')}
-                    className="w-full group hover:shadow-lg transition-all duration-300"
-                  >
-                    <ExternalLink className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform duration-200" />
-                    Visit Live Site
-                  </Button>
-                )}
-                {project.githubUrl && (
-                  <Button
-                    variant="outline"
-                    onClick={() => window.open(project.githubUrl, '_blank')}
-                    className="w-full group hover:shadow-lg transition-all duration-300"
-                  >
-                    <Github className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform duration-200" />
-                    View Source Code
-                  </Button>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Enhanced Project Details */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Project Details</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <dl className="space-y-4">
-                  <div className="flex items-center justify-between text-sm">
-                    <dt className="flex items-center gap-2 font-medium">
-                      <Calendar className="h-4 w-4 text-muted-foreground" />
-                      Completed
-                    </dt>
-                    <dd className="text-muted-foreground">
-                      {new Date(project.completedDate).toLocaleDateString()}
-                    </dd>
-                  </div>
-                  <Separator />
-                  <div className="flex items-center justify-between text-sm">
-                    <dt className="flex items-center gap-2 font-medium">
-                      <Timer className="h-4 w-4 text-muted-foreground" />
-                      Duration
-                    </dt>
-                    <dd className="text-muted-foreground">
-                      {project.duration}
-                    </dd>
-                  </div>
-                  {project.client && (
-                    <>
-                      <Separator />
-                      <div className="flex items-center justify-between text-sm">
-                        <dt className="flex items-center gap-2 font-medium">
-                          <Users className="h-4 w-4 text-muted-foreground" />
-                          Client
-                        </dt>
-                        <dd className="text-muted-foreground">
-                          {project.client}
-                        </dd>
-                      </div>
-                    </>
-                  )}
-                </dl>
-              </CardContent>
-            </Card>
-
-            {/* Enhanced Technologies */}
+            {/* All Technologies */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Code className="h-5 w-5" />
-                  Technologies
+                  All Technologies
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -445,8 +415,8 @@ export default function ProjectPage({ params }: Props) {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <blockquote className="text-muted-foreground italic mb-4 text-lg">
-                    `&quot;{project.testimonial.quote}&quot;`
+                  <blockquote className="text-muted-foreground italic mb-4">
+                    &quot;{project.testimonial.quote}&quot;
                   </blockquote>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
