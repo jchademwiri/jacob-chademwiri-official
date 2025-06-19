@@ -25,7 +25,7 @@ import { Separator } from '@/components/ui/separator';
 import {
   ChallengesSolutions,
   KeyLearnings,
-} from '@/components/projects/challenge-ssolutions';
+} from '@/components/projects/challenge-solutions';
 
 interface PageParams {
   projectId: string;
