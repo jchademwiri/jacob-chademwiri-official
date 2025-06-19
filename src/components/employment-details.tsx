@@ -15,7 +15,7 @@ import {
   BarChart3,
   Shield,
   Star,
-  ExternalLink,
+  // ExternalLink,
   Wrench,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
