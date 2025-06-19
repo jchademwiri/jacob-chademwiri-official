@@ -8,6 +8,15 @@ import {
   CheckCircle,
   Target,
   TrendingUp,
+  Users,
+  Briefcase,
+  Award,
+  DollarSign,
+  BarChart3,
+  Shield,
+  Star,
+  ExternalLink,
+  Wrench,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -17,9 +26,7 @@ interface EmploymentDetailsPageProps {
   positionId: string;
 }
 
-export function EmploymentDetails({
-  positionId,
-}: EmploymentDetailsPageProps) {
+export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
   const position = currentPositions.find((pos) => pos.id === positionId);
 
   if (!position) {
@@ -103,6 +110,22 @@ export function EmploymentDetails({
                   {position.description}
                 </p>
               </div>
+
+              {/* Company Information */}
+              {position.companyInfo && (
+                <div className="bg-muted/50 rounded-lg p-4 space-y-2">
+                  <h3 className="font-semibold text-sm text-foreground">
+                    Company Overview
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {position.companyInfo.description}
+                  </p>
+                  <div className="flex gap-4 text-xs text-muted-foreground">
+                    <span>Industry: {position.companyInfo.industry}</span>
+                    <span>Size: {position.companyInfo.size}</span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Stats/Highlights Card */}
@@ -129,7 +152,7 @@ export function EmploymentDetails({
                           Focus Areas
                         </span>
                         <span className="text-sm font-medium">
-                          3 Core Disciplines
+                          {position.roles?.length || 3} Core Disciplines
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
@@ -149,9 +172,11 @@ export function EmploymentDetails({
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-muted-foreground">
-                          Technologies
+                          Service Areas
                         </span>
-                        <span className="text-sm font-medium">12+ Tools</span>
+                        <span className="text-sm font-medium">
+                          {position.roles?.length || 2} Specializations
+                        </span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm text-muted-foreground">
@@ -174,11 +199,346 @@ export function EmploymentDetails({
         </div>
       </section>
 
+      {/* Achievements Section */}
+      {position.achievements && position.achievements.length > 0 && (
+        <section className="py-12 md:py-16 bg-gradient-to-r from-primary/5 to-secondary/5">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
+                <Award className="h-6 w-6 mr-3 text-primary" />
+                Key Achievements
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Measurable results and impact delivered in this role.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {position.achievements.map((achievement, index) => (
+                <div
+                  key={index}
+                  className="bg-card border rounded-xl p-6 text-center space-y-4 hover:shadow-lg transition-all duration-300"
+                >
+                  <div
+                    className={`w-16 h-16 ${position.iconBg} rounded-full flex items-center justify-center mx-auto`}
+                  >
+                    <span
+                      className={`text-2xl font-bold ${position.iconColor}`}
+                    >
+                      {achievement.metric}
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-foreground">
+                      {achievement.description}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {achievement.impact}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Notable Projects Section */}
+      {position.notableProjects && position.notableProjects.length > 0 && (
+        <section className="py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
+                <BarChart3 className="h-6 w-6 mr-3 text-primary" />
+                Notable Projects
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Significant projects and initiatives that showcase expertise and
+                impact.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {position.notableProjects.map((project, index) => (
+                <div
+                  key={index}
+                  className="bg-card border rounded-xl p-6 space-y-4 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between">
+                    <div
+                      className={`p-3 rounded-lg ${position.iconBg} flex-shrink-0`}
+                    >
+                      <DollarSign className={`h-5 w-5 ${position.iconColor}`} />
+                    </div>
+                    <span
+                      className={`px-3 py-1 text-xs font-medium rounded-full ${
+                        position.type === 'Full-time'
+                          ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
+                          : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                      }`}
+                    >
+                      {project.value}
+                    </span>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {project.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex items-start space-x-2">
+                      <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm font-medium text-foreground">
+                        {project.outcome}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Detailed Roles Section */}
+      {position.roles && position.roles.length > 0 && (
+        <section className="py-12 md:py-16 bg-muted/30">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
+                <Briefcase className="h-6 w-6 mr-3 text-primary" />
+                Role Breakdown
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Exploring the diverse responsibilities and specialized functions
+                within this position.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {position.roles.map((role, index) => (
+                <div
+                  key={index}
+                  className="bg-card border rounded-xl p-6 space-y-4 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div
+                      className={`p-3 rounded-lg ${position.iconBg} flex-shrink-0`}
+                    >
+                      <Users className={`h-5 w-5 ${position.iconColor}`} />
+                    </div>
+                    <div className="space-y-3 flex-1">
+                      <h3 className="text-lg font-semibold text-foreground">
+                        {role.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {role.description}
+                      </p>
+
+                      {/* Role Responsibilities */}
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-medium text-foreground">
+                          Key Responsibilities:
+                        </h4>
+                        <div className="space-y-2">
+                          {role.responsibilities.map(
+                            (responsibility, respIndex) => (
+                              <div
+                                key={respIndex}
+                                className="flex items-start space-x-2"
+                              >
+                                <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                                <p className="text-xs text-muted-foreground leading-relaxed">
+                                  {responsibility}
+                                </p>
+                              </div>
+                            )
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Tools & Technologies Section */}
+      {position.tools && position.tools.length > 0 && (
+        <section className="py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
+                <Wrench className="h-6 w-6 mr-3 text-primary" />
+                Tools & Technologies
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Technologies and tools used to deliver exceptional results.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {position.tools.map((toolCategory, index) => (
+                <div
+                  key={index}
+                  className="bg-card border rounded-xl p-6 space-y-4"
+                >
+                  <h3 className={`font-semibold ${position.iconColor}`}>
+                    {toolCategory.category}
+                  </h3>
+                  <div className="space-y-2">
+                    {toolCategory.items.map((tool, toolIndex) => (
+                      <div
+                        key={toolIndex}
+                        className="flex items-center space-x-2"
+                      >
+                        <CheckCircle className="h-3 w-3 text-green-600 dark:text-green-400" />
+                        <span className="text-sm text-muted-foreground">
+                          {tool}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Certifications Section */}
+      {position.certifications && position.certifications.length > 0 && (
+        <section className="py-12 md:py-16 bg-muted/30">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
+                <Shield className="h-6 w-6 mr-3 text-primary" />
+                Certifications
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Professional certifications and qualifications.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {position.certifications.map((cert, index) => (
+                <div
+                  key={index}
+                  className="bg-card border rounded-xl p-6 flex items-center space-x-4"
+                >
+                  <div
+                    className={`p-3 rounded-lg ${position.iconBg} flex-shrink-0`}
+                  >
+                    <Star className={`h-5 w-5 ${position.iconColor}`} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground">
+                      {cert.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {cert.issuer} • {cert.date}
+                    </p>
+                    <span
+                      className={`inline-block mt-1 px-2 py-1 text-xs rounded-full ${
+                        cert.status === 'Active'
+                          ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                          : 'bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-300'
+                      }`}
+                    >
+                      {cert.status}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Stakeholders Section */}
+      {position.stakeholders && position.stakeholders.length > 0 && (
+        <section className="py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
+                <Users className="h-6 w-6 mr-3 text-primary" />
+                Key Stakeholders
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Working closely with diverse stakeholders to achieve common
+                goals.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {position.stakeholders.map((stakeholder, index) => (
+                <div
+                  key={index}
+                  className="bg-card border rounded-lg p-4 text-center space-y-2 hover:shadow-md transition-all duration-200"
+                >
+                  <div
+                    className={`w-8 h-8 ${position.iconBg} rounded-full flex items-center justify-center mx-auto`}
+                  >
+                    <Users className={`h-4 w-4 ${position.iconColor}`} />
+                  </div>
+                  <p className="text-sm font-medium text-foreground">
+                    {stakeholder}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Development & Growth Section */}
+      {position.development && position.development.length > 0 && (
+        <section className="py-12 md:py-16 bg-muted/30">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
+                <TrendingUp className="h-6 w-6 mr-3 text-primary" />
+                Professional Development
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Continuous growth and improvement initiatives undertaken in this
+                role.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {position.development.map((dev, index) => (
+                <div
+                  key={index}
+                  className="bg-card border rounded-xl p-6 space-y-4"
+                >
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {dev.area}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {dev.description}
+                  </p>
+                  <div className="flex items-start space-x-2">
+                    <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm font-medium text-foreground">
+                      {dev.impact}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Key Responsibilities */}
       <section className="py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Responsibilities */}
+            {/* Overall Responsibilities */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <Target className="h-6 w-6 text-primary" />
@@ -269,88 +629,6 @@ export function EmploymentDetails({
                 )}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Impact Section */}
-      <section className="py-12 md:py-16 bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Impact & Achievements
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {position.type === 'Full-time'
-                ? 'Contributing to operational excellence and business growth through strategic management and process optimization.'
-                : 'Delivering exceptional digital solutions that drive business success and user engagement.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {position.type === 'Full-time' ? (
-              <>
-                <div className="text-center space-y-3">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto">
-                    <TrendingUp className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold">Process Efficiency</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Streamlined accounts receivable and tender management
-                    processes
-                  </p>
-                </div>
-                <div className="text-center space-y-3">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto">
-                    <Target className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold">Strategic Planning</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Enhanced project coordination and stakeholder management
-                  </p>
-                </div>
-                <div className="text-center space-y-3">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto">
-                    <CheckCircle className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold">Quality Assurance</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Maintained high standards in financial accuracy and
-                    compliance
-                  </p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="text-center space-y-3">
-                  <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
-                    <Globe className="h-8 w-8 text-green-600 dark:text-green-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold">Web Solutions</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Custom websites that drive engagement and business growth
-                  </p>
-                </div>
-                <div className="text-center space-y-3">
-                  <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
-                    <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold">SEO Performance</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Optimized digital presence for improved search rankings
-                  </p>
-                </div>
-                <div className="text-center space-y-3">
-                  <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
-                    <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
-                  </div>
-                  <h3 className="text-lg font-semibold">User Experience</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Responsive designs focused on accessibility and usability
-                  </p>
-                </div>
-              </>
-            )}
           </div>
         </div>
       </section>
