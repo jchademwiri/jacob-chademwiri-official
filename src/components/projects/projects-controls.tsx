@@ -56,7 +56,9 @@ export function ProjectsControls({
               type="text"
               placeholder="Search projects..."
               value={filters.search}
-              onChange={(e) => onFiltersChange({ ...filters, search: e.target.value })}
+              onChange={(e) =>
+                onFiltersChange({ ...filters, search: e.target.value })
+              }
               className="pl-10"
             />
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -66,7 +68,9 @@ export function ProjectsControls({
           <div className="flex flex-1 flex-col sm:flex-row gap-4">
             <Select
               value={filters.category}
-              onValueChange={(value) => onFiltersChange({ ...filters, category: value })}
+              onValueChange={(value) =>
+                onFiltersChange({ ...filters, category: value })
+              }
             >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="All Categories" />
@@ -82,7 +86,9 @@ export function ProjectsControls({
 
             <Select
               value={filters.technology}
-              onValueChange={(value) => onFiltersChange({ ...filters, technology: value })}
+              onValueChange={(value) =>
+                onFiltersChange({ ...filters, technology: value })
+              }
             >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="All Technologies" />
@@ -98,10 +104,10 @@ export function ProjectsControls({
 
             <Select
               value={filters.sortBy}
-              onValueChange={(value) => 
-                onFiltersChange({ 
-                  ...filters, 
-                  sortBy: value as 'recent' | 'popular' | 'featured' 
+              onValueChange={(value) =>
+                onFiltersChange({
+                  ...filters,
+                  sortBy: value as 'recent' | 'popular' | 'featured',
                 })
               }
             >
