@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Code, ExternalLink, Github, Calendar, Tag, Star } from 'lucide-react';
 import { ProjectBadges } from './project-badges';
-import { ProjectActions } from './project-actions';
 import { ProjectMetrics } from './project-metrics';
+import { ProjectActions } from './project-actions';
 
 interface ProjectCardProps {
   project: any;
