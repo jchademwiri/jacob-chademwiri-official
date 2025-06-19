@@ -10,7 +10,14 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
-import { Calendar, Code, ExternalLink, Github, Users, Timer } from 'lucide-react';
+import {
+  Calendar,
+  Code,
+  ExternalLink,
+  Github,
+  Users,
+  Timer,
+} from 'lucide-react';
 
 interface ProjectModalProps {
   project: Project;
@@ -23,7 +30,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">{project.title}</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">
+            {project.title}
+          </DialogTitle>
           <DialogDescription className="text-muted-foreground">
             {project.description}
           </DialogDescription>
@@ -45,7 +54,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Overview</h3>
-                <p className="text-muted-foreground">{project.longDescription}</p>
+                <p className="text-muted-foreground">
+                  {project.longDescription}
+                </p>
               </div>
 
               <div>
@@ -65,7 +76,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   <div className="flex items-center text-sm">
                     <Calendar className="h-4 w-4 mr-2" />
                     <dt className="font-medium mr-2">Completed:</dt>
-                    <dd>{new Date(project.completedDate).toLocaleDateString()}</dd>
+                    <dd>
+                      {new Date(project.completedDate).toLocaleDateString()}
+                    </dd>
                   </div>
                   <div className="flex items-center text-sm">
                     <Timer className="h-4 w-4 mr-2" />
@@ -156,7 +169,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   />
                 )}
                 <div>
-                  <div className="font-semibold">{project.testimonial.author}</div>
+                  <div className="font-semibold">
+                    {project.testimonial.author}
+                  </div>
                   <div className="text-sm text-muted-foreground">
                     {project.testimonial.role}, {project.testimonial.company}
                   </div>
