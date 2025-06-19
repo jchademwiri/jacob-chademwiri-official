@@ -26,7 +26,7 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
   if (viewMode === 'list') {
     return (
       <div
-        className="bg-card/50 backdrop-blur-sm border rounded-xl p-6 hover:shadow-lg transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 cursor-pointer"
+        className="bg-card/50 backdrop-blur-sm border rounded-xl p-6 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 cursor-pointer hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] dark:hover:shadow-[0_0_15px_rgba(34,197,94,0.2)] hover:border-green-500/50"
         style={{ animationDelay: `${delay}ms` }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -72,7 +72,7 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
   return (
     <div
       className={cn(
-        'group bg-card/50 backdrop-blur-sm border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 cursor-pointer',
+        'group bg-card/50 backdrop-blur-sm border rounded-xl overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 cursor-pointer hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] dark:hover:shadow-[0_0_15px_rgba(34,197,94,0.2)] hover:border-green-500/50',
         isHovered && 'transform scale-[1.02]'
       )}
       style={{ animationDelay: `${delay}ms` }}
