@@ -3,9 +3,10 @@
 import React from 'react';
 import { ProjectCard } from './project-card';
 import { LoadingSpinner } from './loading-spinner';
+import { Project } from '@/data/projects';
 
 interface ProjectsGridProps {
-  projects: any[];
+  projects: Project[];
   viewMode: 'grid' | 'list';
   isLoading: boolean;
 }

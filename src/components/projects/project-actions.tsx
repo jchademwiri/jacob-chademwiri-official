@@ -2,9 +2,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { ExternalLink, Github } from 'lucide-react';
+import { Project } from '@/data/projects';
 
 interface ProjectActionsProps {
-  project: any;
+  project: Project;
   variant?: 'default' | 'floating';
 }
 

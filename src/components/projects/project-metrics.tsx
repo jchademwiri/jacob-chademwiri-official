@@ -1,5 +1,7 @@
 // src/components/projects/project-metrics.tsx
-export function ProjectMetrics({ project }: { project: any }) {
+import { Project } from '@/data/projects';
+
+export function ProjectMetrics({ project }: { project: Project }) {
   if (!project.metrics) return null;
 
   return (

@@ -63,7 +63,6 @@ export default function ProjectsPage() {
           categories={categories}
           technologies={technologies}
           resultCount={filteredProjects.length}
-          isLoading={isLoading}
           isVisible={isVisible}
         />
 

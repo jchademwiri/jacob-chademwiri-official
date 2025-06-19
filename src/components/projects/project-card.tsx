@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Code, Calendar, Tag, Star } from 'lucide-react';
+import { Project } from '@/data/projects';
 import { ProjectBadges } from './project-badges';
 import { ProjectMetrics } from './project-metrics';
 import { ProjectActions } from './project-actions';
 import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
-  project: any;
+  project: Project;
   viewMode: 'grid' | 'list';
   delay: number;
 }
@@ -128,7 +129,7 @@ function ProjectImage({
   project,
   className,
 }: {
-  project: any;
+  project: Project;
   className?: string;
 }) {
   return (

@@ -79,11 +79,11 @@ const FeatureItem = ({
 const ChallengeSolutionPair = ({
   challenge,
   solution,
-  index,
-}: {
+}: // index,
+{
   challenge: string;
   solution: string;
-  index: number;
+  // index: number;
 }) => (
   <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
     <CardContent className="p-6">
@@ -127,6 +127,7 @@ export default function ProjectPage({ params }: Props) {
         setTimeout(() => setIsLoading(false), 500);
       } catch (error) {
         setIsLoading(false);
+        console.error('Error resolving params:', error);
         notFound();
       }
     };
@@ -309,7 +310,6 @@ export default function ProjectPage({ params }: Props) {
                       project.solutions[index] ||
                       'Solution details not available'
                     }
-                    index={index}
                   />
                 ))}
               </div>
@@ -446,7 +446,7 @@ export default function ProjectPage({ params }: Props) {
                 </CardHeader>
                 <CardContent>
                   <blockquote className="text-muted-foreground italic mb-4 text-lg">
-                    "{project.testimonial.quote}"
+                    `&quot;{project.testimonial.quote}&quot;`
                   </blockquote>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">

@@ -19,8 +19,8 @@ export function CallToAction({ isVisible }: CallToActionProps) {
           Ready to start your project?
         </h3>
         <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-          Let's discuss how I can help bring your ideas to life with modern web
-          technologies and exceptional user experiences.
+          Let&apos;s discuss how I can help bring your ideas to life with modern
+          web technologies and exceptional user experiences.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

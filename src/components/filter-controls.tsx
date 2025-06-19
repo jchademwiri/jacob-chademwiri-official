@@ -31,7 +31,7 @@ export default function FilterControls({
   resultCount,
 }: FilterControlsProps) {
   const [isExpanded, setIsExpanded] = React.useState(false);
-  const searchTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const searchTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const categories = React.useMemo(() => {
     const categoryMap = {
@@ -293,7 +293,7 @@ export default function FilterControls({
 
             {filters.search.trim() && (
               <Badge variant="outline" className="text-xs">
-                "{filters.search}"
+                &quot;{filters.search}&quot;
                 <Button
                   variant="ghost"
                   size="sm"

@@ -10,14 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
-import {
-  Calendar,
-  Code,
-  ExternalLink,
-  Github,
-  Users,
-  Timer,
-} from 'lucide-react';
+import { Calendar, ExternalLink, Github, Users, Timer } from 'lucide-react';
 
 interface ProjectModalProps {
   project: Project;
@@ -156,7 +149,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {project.testimonial && (
             <div className="bg-muted/50 rounded-lg p-6">
               <blockquote className="text-lg italic text-muted-foreground">
-                "{project.testimonial.quote}"
+                &quot;{project.testimonial.quote}&quot;
               </blockquote>
               <div className="mt-4 flex items-center">
                 {project.testimonial.avatar && (

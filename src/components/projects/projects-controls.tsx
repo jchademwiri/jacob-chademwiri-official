@@ -27,7 +27,6 @@ interface ProjectsControlsProps {
   categories: Array<{ value: string; label: string }>;
   technologies: Array<{ value: string; label: string }>;
   resultCount: number;
-  isLoading: boolean;
   isVisible: boolean;
 }
 
@@ -39,7 +38,6 @@ export function ProjectsControls({
   categories,
   technologies,
   resultCount,
-  isLoading,
   isVisible,
 }: ProjectsControlsProps) {
   return (
