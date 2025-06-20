@@ -17,7 +17,7 @@ import {
   Check,
   Play,
 } from 'lucide-react';
-import { projects } from '@/data/projects';
+import { Project, projects } from '@/data/projects';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -78,7 +78,7 @@ const FeatureItem = ({
 );
 
 // Quick stats component
-const QuickStats = ({ project }: { project: any }) => (
+const QuickStats = ({ project }: { project: Project }) => (
   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
     <div className="text-center p-4 rounded-lg bg-muted/30">
       <Calendar className="h-5 w-5 mx-auto mb-2 text-primary" />
@@ -145,7 +145,7 @@ export default function ProjectPage({ params }: Props) {
   if (isLoading || !resolvedParams) {
     return (
       <div className="min-h-screen bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <SkeletonLoader />
         </div>
       </div>
@@ -160,7 +160,7 @@ export default function ProjectPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Enhanced Back Button */}
         <div className="mb-6 animate-in slide-in-from-left duration-500">
           <Link href="/projects">
@@ -259,13 +259,34 @@ export default function ProjectPage({ params }: Props) {
 
             {/* Project Overview - Above the fold */}
             <div className="prose prose-gray dark:prose-invert max-w-none">
-              <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                <div className="w-1 h-5 bg-primary rounded-full"></div>
-                Project Overview
-              </h3>
-              <div className="text-muted-foreground leading-relaxed">
-                {project.longDescription.split('\n')[0]}
-                {project.longDescription.split('\n').length > 1 && '...'}
+              <div className="lg:col-span-2 space-y-12">
+                {/* Full Description */}
+                <section className="prose prose-gray dark:prose-invert max-w-none">
+                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <div className="w-1 h-6 bg-primary rounded-full"></div>
+                    Project Overview
+                  </h2>
+                  <div className="text-muted-foreground whitespace-pre-wrap leading-relaxed">
+                    {project.longDescription}
+                  </div>
+                </section>
+
+                {/* Enhanced Features Section */}
+                <section>
+                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <div className="w-1 h-6 bg-primary rounded-full"></div>
+                    Key Features
+                  </h2>
+                  <div className="grid gap-2">
+                    {project.features.map((feature, index) => (
+                      <FeatureItem
+                        key={index}
+                        feature={feature}
+                        index={index}
+                      />
+                    ))}
+                  </div>
+                </section>
               </div>
             </div>
           </div>
@@ -342,46 +363,25 @@ export default function ProjectPage({ params }: Props) {
         </div>
 
         {/* Detailed Content */}
-        <div className="grid gap-12 lg:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
+        <div className="grid gap-12 md:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
-            {/* Full Description */}
-            <section className="prose prose-gray dark:prose-invert max-w-none">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <div className="w-1 h-6 bg-primary rounded-full"></div>
-                Detailed Overview
-              </h2>
-              <div className="text-muted-foreground whitespace-pre-wrap leading-relaxed">
-                {project.longDescription}
-              </div>
-            </section>
-
-            {/* Enhanced Features Section */}
-            <section>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <div className="w-1 h-6 bg-primary rounded-full"></div>
-                Key Features
-              </h2>
-              <div className="grid gap-2">
-                {project.features.map((feature, index) => (
-                  <FeatureItem key={index} feature={feature} index={index} />
-                ))}
-              </div>
-            </section>
+          {/* Extracted Key Learnings Component */}
+          <div className="md:col-span-2">
+            <KeyLearnings learnings={project.learnings} />
           </div>
 
           {/* Enhanced Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-6 border">
             {/* All Technologies */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Code className="h-5 w-5" />
+                  <Code className="h-5" />
                   All Technologies
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap w-full gap-2">
                   {project.technologies.map((tech, index) => (
                     <Badge
                       key={tech}
@@ -436,7 +436,7 @@ export default function ProjectPage({ params }: Props) {
           />
 
           {/* Extracted Key Learnings Component */}
-          <KeyLearnings learnings={project.learnings} />
+          {/* <KeyLearnings learnings={project.learnings} /> */}
         </div>
       </div>
     </div>

@@ -60,7 +60,7 @@ export const ChallengesSolutions: React.FC<ChallengeSolutionsProps> = ({
         <div className="w-1 h-6 bg-primary rounded-full"></div>
         Challenges & Solutions
       </h2>
-      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         {challenges.map((challenge, index) => (
           <ChallengeSolutionPair
             key={index}

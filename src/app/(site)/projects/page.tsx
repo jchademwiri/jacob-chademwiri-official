@@ -52,10 +52,10 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-background relative overflow-hidden">
       <AnimatedBackground />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <ProjectsHeader isVisible={isVisible} stats={stats} />
 
-        {/* <ProjectsControls
+        <ProjectsControls
           filters={filters}
           onFiltersChange={handleFiltersChange}
           viewMode={viewMode}
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
           technologies={technologies}
           resultCount={filteredProjects.length}
           isVisible={isVisible}
-        /> */}
+        />
 
         <div
           className={`transition-all duration-1000 delay-500 ${
