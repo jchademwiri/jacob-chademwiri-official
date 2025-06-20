@@ -55,7 +55,7 @@ export const ChallengesSolutions: React.FC<ChallengeSolutionsProps> = ({
   if (!challenges || challenges.length === 0) return null;
 
   return (
-    <section>
+    <section className="my-12">
       <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
         <div className="w-1 h-6 bg-primary rounded-full"></div>
         Challenges & Solutions

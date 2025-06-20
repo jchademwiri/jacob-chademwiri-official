@@ -368,15 +368,6 @@ export default function ProjectPage({ params }: Props) {
                 ))}
               </div>
             </section>
-
-            {/* Extracted Challenges & Solutions Component */}
-            <ChallengesSolutions
-              challenges={project.challenges}
-              solutions={project.solutions}
-            />
-
-            {/* Extracted Key Learnings Component */}
-            <KeyLearnings learnings={project.learnings} />
           </div>
 
           {/* Enhanced Sidebar */}
@@ -436,6 +427,16 @@ export default function ProjectPage({ params }: Props) {
               </Card>
             )}
           </div>
+        </div>
+        <div className="">
+          {/* Extracted Challenges & Solutions Component */}
+          <ChallengesSolutions
+            challenges={project.challenges}
+            solutions={project.solutions}
+          />
+
+          {/* Extracted Key Learnings Component */}
+          <KeyLearnings learnings={project.learnings} />
         </div>
       </div>
     </div>
