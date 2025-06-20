@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { Navbar } from '@/components/navbar';
+// import { Navbar } from '@/components/navbar';
 // import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
@@ -62,7 +62,7 @@ export default function SiteLayout({
 }>) {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main className="flex-1">{children}</main>
       {/* <Footer /> */}
       <SpeedInsights />
