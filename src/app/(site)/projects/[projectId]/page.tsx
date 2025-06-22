@@ -8,24 +8,23 @@ import {
   Calendar,
   Code,
   ExternalLink,
-  Github,
+  
   Timer,
   Users,
-  CheckCircle2,
+  
   Quote,
   Copy,
   Check,
-  Play,
+  
+  Target,
+  Award,
+  Briefcase,
 } from 'lucide-react';
 import { Project, projects } from '@/data/projects';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import {
-  ChallengesSolutions,
-  KeyLearnings,
-} from '@/components/projects/challenge-solutions';
 
 interface PageParams {
   projectId: string;
@@ -60,20 +59,20 @@ const SkeletonLoader = () => (
   </div>
 );
 
-// Enhanced feature item with icon
-const FeatureItem = ({
-  feature,
+// Enhanced outcome item with icon
+const OutcomeItem = ({
+  outcome,
   index,
 }: {
-  feature: string;
+  outcome: string;
   index: number;
 }) => (
   <div
     className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors duration-200 group"
     style={{ animationDelay: `${index * 0.1}s` }}
   >
-    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 group-hover:scale-110 transition-transform duration-200" />
-    <span className="text-muted-foreground">{feature}</span>
+    <Award className="h-5 w-5 text-primary mt-0.5 group-hover:scale-110 transition-transform duration-200" />
+    <span className="text-muted-foreground">{outcome}</span>
   </div>
 );
 
@@ -96,14 +95,14 @@ const QuickStats = ({ project }: { project: Project }) => (
       <Code className="h-5 w-5 mx-auto mb-2 text-primary" />
       <div className="text-sm font-medium">Technologies</div>
       <div className="text-xs text-muted-foreground">
-        {project.technologies.length}+
+        {(project.technologies?.length || 0) + project.skills.length}+
       </div>
     </div>
     <div className="text-center p-4 rounded-lg bg-muted/30">
-      <CheckCircle2 className="h-5 w-5 mx-auto mb-2 text-primary" />
-      <div className="text-sm font-medium">Features</div>
+      <Target className="h-5 w-5 mx-auto mb-2 text-primary" />
+      <div className="text-sm font-medium">Outcomes</div>
       <div className="text-xs text-muted-foreground">
-        {project.features.length}+
+        {project.keyOutcomes.length}+
       </div>
     </div>
   </div>
@@ -174,7 +173,7 @@ export default function ProjectPage({ params }: Props) {
           </Link>
         </div>
 
-        {/* Improved Hero Section - More Compact */}
+        {/* Improved Hero Section */}
         <div className="grid gap-8 lg:gap-12 lg:grid-cols-3 mb-12 animate-in fade-in-50 slide-in-from-bottom-4 duration-700">
           {/* Left Column - Project Info */}
           <div className="lg:col-span-2 space-y-6">
@@ -182,6 +181,20 @@ export default function ProjectPage({ params }: Props) {
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                 <div className="space-y-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge variant="outline" className="text-xs">
+                      {project.category}
+                    </Badge>
+                    <Badge
+                      variant={
+                        project.status === 'completed' ? 'default' : 'secondary'
+                      }
+                    >
+                      {project.status === 'completed'
+                        ? 'Completed'
+                        : 'In Progress'}
+                    </Badge>
+                  </div>
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-balance leading-tight">
                     {project.title}
                   </h1>
@@ -211,9 +224,9 @@ export default function ProjectPage({ params }: Props) {
                 </Button>
               </div>
 
-              {/* Technology Badges */}
+              {/* Technology and Skills Badges */}
               <div className="flex flex-wrap gap-2">
-                {project.technologies.slice(0, 6).map((tech, index) => (
+                {project.technologies?.slice(0, 4).map((tech, index) => (
                   <Badge
                     key={tech}
                     variant="secondary"
@@ -223,32 +236,41 @@ export default function ProjectPage({ params }: Props) {
                     {tech}
                   </Badge>
                 ))}
-                {project.technologies.length > 6 && (
+                {project.skills.slice(0, 3).map((skill, index) => (
+                  <Badge
+                    key={skill}
+                    variant="outline"
+                    className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
+                    style={{
+                      animationDelay: `${
+                        (project.technologies?.length || 0 + index) * 0.05
+                      }s`,
+                    }}
+                  >
+                    {skill}
+                  </Badge>
+                ))}
+                {(project.technologies?.length || 0) + project.skills.length >
+                  7 && (
                   <Badge variant="outline">
-                    +{project.technologies.length - 6} more
+                    +
+                    {(project.technologies?.length || 0) +
+                      project.skills.length -
+                      7}{' '}
+                    more
                   </Badge>
                 )}
               </div>
 
               {/* Quick Action Buttons */}
               <div className="flex flex-wrap gap-3">
-                {project.liveUrl && (
+                {project.externalUrl && (
                   <Button
-                    onClick={() => window.open(project.liveUrl, '_blank')}
+                    onClick={() => window.open(project.externalUrl, '_blank')}
                     className="group hover:shadow-lg transition-all duration-300"
                   >
-                    <Play className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform duration-200" />
-                    View Live Demo
-                  </Button>
-                )}
-                {project.githubUrl && (
-                  <Button
-                    variant="outline"
-                    onClick={() => window.open(project.githubUrl, '_blank')}
-                    className="group hover:shadow-lg transition-all duration-300"
-                  >
-                    <Github className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform duration-200" />
-                    View Code
+                    <ExternalLink className="h-4 w-4 mr-2 group-hover:scale-110 transition-transform duration-200" />
+                    View Project
                   </Button>
                 )}
               </div>
@@ -257,37 +279,34 @@ export default function ProjectPage({ params }: Props) {
             {/* Quick Stats */}
             <QuickStats project={project} />
 
-            {/* Project Overview - Above the fold */}
-            <div className="prose prose-gray dark:prose-invert max-w-none">
-              <div className="lg:col-span-2 space-y-12">
-                {/* Full Description */}
-                <section className="prose prose-gray dark:prose-invert max-w-none">
-                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <div className="w-1 h-6 bg-primary rounded-full"></div>
-                    Project Overview
-                  </h2>
-                  <div className="text-muted-foreground whitespace-pre-wrap leading-relaxed">
-                    {project.longDescription}
-                  </div>
-                </section>
+            {/* Project Role & Outcomes */}
+            <div className="space-y-8">
+              {/* My Role */}
+              <section>
+                <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                  <div className="w-1 h-6 bg-primary rounded-full"></div>
+                  My Role
+                </h2>
+                <div className="flex items-center gap-3 p-4 rounded-lg bg-muted/30">
+                  <Briefcase className="h-5 w-5 text-primary" />
+                  <span className="font-medium text-muted-foreground">
+                    {project.myRole}
+                  </span>
+                </div>
+              </section>
 
-                {/* Enhanced Features Section */}
-                <section>
-                  <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <div className="w-1 h-6 bg-primary rounded-full"></div>
-                    Key Features
-                  </h2>
-                  <div className="grid gap-2">
-                    {project.features.map((feature, index) => (
-                      <FeatureItem
-                        key={index}
-                        feature={feature}
-                        index={index}
-                      />
-                    ))}
-                  </div>
-                </section>
-              </div>
+              {/* Key Outcomes */}
+              <section>
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <div className="w-1 h-6 bg-primary rounded-full"></div>
+                  Key Outcomes & Impact
+                </h2>
+                <div className="grid gap-2">
+                  {project.keyOutcomes.map((outcome, index) => (
+                    <OutcomeItem key={index} outcome={outcome} index={index} />
+                  ))}
+                </div>
+              </section>
             </div>
           </div>
 
@@ -308,10 +327,12 @@ export default function ProjectPage({ params }: Props) {
 
                   {/* Quick Action Overlay */}
                   <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    {project.liveUrl && (
+                    {project.externalUrl && (
                       <Button
                         size="sm"
-                        onClick={() => window.open(project.liveUrl, '_blank')}
+                        onClick={() =>
+                          window.open(project.externalUrl, '_blank')
+                        }
                         className="backdrop-blur-sm bg-background/80 hover:bg-background/90"
                       >
                         <ExternalLink className="h-4 w-4" />
@@ -323,7 +344,7 @@ export default function ProjectPage({ params }: Props) {
                 {/* Project Details Card */}
                 <Card className="mt-6">
                   <CardHeader className="pb-4">
-                    <CardTitle className="text-base">Project Info</CardTitle>
+                    <CardTitle className="text-base">Project Details</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-center justify-between text-sm">
@@ -355,6 +376,28 @@ export default function ProjectPage({ params }: Props) {
                         </div>
                       </>
                     )}
+                    {project.budget && (
+                      <>
+                        <Separator />
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-muted-foreground">Budget</span>
+                          <span className="font-medium">{project.budget}</span>
+                        </div>
+                      </>
+                    )}
+                    {project.teamSize && (
+                      <>
+                        <Separator />
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-muted-foreground">
+                            Team Size
+                          </span>
+                          <span className="font-medium">
+                            {project.teamSize} people
+                          </span>
+                        </div>
+                      </>
+                    )}
                   </CardContent>
                 </Card>
               </div>
@@ -362,41 +405,62 @@ export default function ProjectPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Detailed Content */}
-        <div className="grid gap-12 md:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
-          {/* Main Content */}
-          {/* Extracted Key Learnings Component */}
-          <div className="md:col-span-2">
-            <KeyLearnings learnings={project.learnings} />
-          </div>
-
-          {/* Enhanced Sidebar */}
-          <div className="space-y-6 border">
-            {/* All Technologies */}
+        {/* Bottom Section - Technologies & Testimonial */}
+        <div className="grid gap-8 md:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
+          {/* Technologies & Skills */}
+          <div className="md:col-span-2 space-y-6">
+            {/* All Skills */}
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Code className="h-5" />
-                  All Technologies
+                  <Target className="h-5 w-5" />
+                  Skills Applied
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap w-full gap-2">
-                  {project.technologies.map((tech, index) => (
+                <div className="flex flex-wrap gap-2">
+                  {project.skills.map((skill, index) => (
                     <Badge
-                      key={tech}
-                      variant="secondary"
+                      key={skill}
+                      variant="outline"
                       className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-default"
                       style={{ animationDelay: `${index * 0.05}s` }}
                     >
-                      {tech}
+                      {skill}
                     </Badge>
                   ))}
                 </div>
               </CardContent>
             </Card>
+            {/* All Technologies */}
+            {project.technologies && project.technologies.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Code className="h-5 w-5" />
+                    Technologies Used
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, index) => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-default"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
 
-            {/* Enhanced Testimonial */}
+          {/* Testimonial */}
+          <div className="space-y-6">
             {project.testimonial && (
               <Card className="border-l-4 border-l-primary">
                 <CardHeader>
@@ -418,7 +482,6 @@ export default function ProjectPage({ params }: Props) {
                         {project.testimonial.author}
                       </div>
                       <div className="text-xs text-muted-foreground">
-                        {project.testimonial.role},{' '}
                         {project.testimonial.company}
                       </div>
                     </div>
@@ -427,16 +490,6 @@ export default function ProjectPage({ params }: Props) {
               </Card>
             )}
           </div>
-        </div>
-        <div className="">
-          {/* Extracted Challenges & Solutions Component */}
-          <ChallengesSolutions
-            challenges={project.challenges}
-            solutions={project.solutions}
-          />
-
-          {/* Extracted Key Learnings Component */}
-          {/* <KeyLearnings learnings={project.learnings} /> */}
         </div>
       </div>
     </div>

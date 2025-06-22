@@ -1,5 +1,5 @@
-import { projects } from '@/data/projects';
 import { ProjectCard } from '@/components/projects/project-card';
+import { projects } from '@/data/projects';
 import Link from 'next/link';
 
 export function ProjectsSection() {

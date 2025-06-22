@@ -6,7 +6,6 @@ export { ProjectActions } from './project-actions';
 export { ProjectBadges } from './project-badges';
 export { ProjectCard } from './project-card';
 export { ProjectMetrics } from './project-metrics';
-export { ProjectModal } from './project-modal';
 export { ProjectsControls } from './projects-controls';
 export { ProjectsGrid } from './projects-grid';
 export { ProjectsHeader } from './projects-header';

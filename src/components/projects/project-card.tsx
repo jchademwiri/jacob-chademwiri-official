@@ -3,12 +3,22 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Code, Calendar, Tag, Star } from 'lucide-react';
-import { Project } from '@/data/projects';
+import {
+  Code,
+  Calendar,
+  Tag,
+  Star,
+  Briefcase,
+  Users,
+  DollarSign,
+  ExternalLink,
+} from 'lucide-react';
+
 import { ProjectBadges } from './project-badges';
 import { ProjectMetrics } from './project-metrics';
 import { ProjectActions } from './project-actions';
 import { cn } from '@/lib/utils';
+import { Project } from '@/data/projects';
 
 interface ProjectCardProps {
   project: Project;
@@ -41,28 +51,40 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
           <div className="md:w-2/3 space-y-4">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
+                <div className="flex items-center space-x-2">
+                  <ProjectTypeIcon projectType={project.projectType} />
+                  <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                </div>
                 <ProjectActions project={project} />
               </div>
               <p className="text-muted-foreground">{project.description}</p>
             </div>
 
-            <ProjectBadges technologies={project.technologies} maxDisplay={5} />
+            <ProjectBadges
+              technologies={project.technologies}
+              skills={project.skills}
+              variant="both"
+              maxDisplay={6}
+            />
 
-            <div className="flex items-center justify-between text-sm text-muted-foreground">
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  {new Date(project.completedDate).toLocaleDateString()}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm text-muted-foreground">
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    {new Date(project.completedDate).toLocaleDateString()}
+                  </div>
+                  <div className="flex items-center">
+                    <Tag className="h-4 w-4 mr-1" />
+                    {project.category}
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <Tag className="h-4 w-4 mr-1" />
-                  {project.category}
-                </div>
+                <ProjectMetrics project={project} />
               </div>
-              <ProjectMetrics project={project} />
+
+              <ProjectDetailsRow project={project} />
             </div>
           </div>
         </div>
@@ -96,6 +118,10 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
         <div className="absolute top-3 right-3">
           <ProjectActions project={project} variant="floating" />
         </div>
+
+        <div className="absolute bottom-3 left-3">
+          <ProjectTypeBadge projectType={project.projectType} />
+        </div>
       </div>
 
       <div className="p-6 space-y-4">
@@ -108,17 +134,25 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
           </p>
         </div>
 
-        <ProjectBadges technologies={project.technologies} maxDisplay={4} />
+        {/* <ProjectBadges
+          items={project.technologies || project.skills}
+          maxDisplay={3}
+          label={project.projectType === 'web-development' ? 'Tech' : 'Skills'}
+        /> */}
 
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <div className="flex items-center">
-            <Calendar className="h-3 w-3 mr-1" />
-            {new Date(project.completedDate).toLocaleDateString()}
+        <div className="space-y-2 text-xs text-muted-foreground">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <Calendar className="h-3 w-3 mr-1" />
+              {new Date(project.completedDate).toLocaleDateString()}
+            </div>
+            <div className="flex items-center">
+              <Tag className="h-3 w-3 mr-1" />
+              {project.category}
+            </div>
           </div>
-          <div className="flex items-center">
-            <Tag className="h-3 w-3 mr-1" />
-            {project.category}
-          </div>
+
+          <ProjectDetailsRow project={project} />
         </div>
       </div>
     </div>
@@ -132,6 +166,10 @@ function ProjectImage({
   project: Project;
   className?: string;
 }) {
+  const defaultIcon =
+    project.projectType === 'web-development' ? Code : Briefcase;
+  const IconComponent = defaultIcon;
+
   return (
     <div className={`relative bg-muted overflow-hidden ${className}`}>
       {project.image ? (
@@ -144,7 +182,69 @@ function ProjectImage({
         />
       ) : (
         <div className="w-full h-full flex items-center justify-center">
-          <Code className="h-16 w-16 text-muted-foreground" />
+          <IconComponent className="h-16 w-16 text-muted-foreground" />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ProjectTypeIcon({ projectType }: { projectType: string }) {
+  const Icon = projectType === 'web-development' ? Code : Briefcase;
+  return <Icon className="h-5 w-5 text-muted-foreground" />;
+}
+
+function ProjectTypeBadge({ projectType }: { projectType: string }) {
+  const isWebDev = projectType === 'web-development';
+  return (
+    <div
+      className={cn(
+        'px-2 py-1 rounded text-xs font-medium flex items-center',
+        isWebDev ? 'bg-blue-500/80 text-white' : 'bg-orange-500/80 text-white'
+      )}
+    >
+      {isWebDev ? (
+        <>
+          <Code className="h-3 w-3 mr-1" />
+          Web Development
+        </>
+      ) : (
+        <>
+          <Briefcase className="h-3 w-3 mr-1" />
+          Project Management
+        </>
+      )}
+    </div>
+  );
+}
+
+function ProjectDetailsRow({ project }: { project: Project }) {
+  return (
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-3">
+        {project.budget && (
+          <div className="flex items-center">
+            <DollarSign className="h-3 w-3 mr-1" />
+            {project.budget}
+          </div>
+        )}
+        {project.teamSize && (
+          <div className="flex items-center">
+            <Users className="h-3 w-3 mr-1" />
+            {project.teamSize}
+          </div>
+        )}
+        {project.client && (
+          <div className="flex items-center">
+            <Briefcase className="h-3 w-3 mr-1" />
+            {project.client}
+          </div>
+        )}
+      </div>
+      {project.externalUrl && (
+        <div className="flex items-center text-primary">
+          <ExternalLink className="h-3 w-3 mr-1" />
+          View Live
         </div>
       )}
     </div>
