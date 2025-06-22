@@ -18,7 +18,7 @@ import { ProjectBadges } from './project-badges';
 import { ProjectMetrics } from './project-metrics';
 import { ProjectActions } from './project-actions';
 import { cn } from '@/lib/utils';
-import { Project } from '@/data/test-data/projects';
+import { Project } from '@/data/projects';
 
 interface ProjectCardProps {
   project: Project;

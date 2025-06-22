@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ExternalLink, FileText, Briefcase, Globe } from 'lucide-react';
-import { Project } from '@/data/test-data/projects';
+import { Project } from '@/data/projects';
 
 interface ProjectActionsProps {
   project: Project;

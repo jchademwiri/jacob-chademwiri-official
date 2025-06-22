@@ -20,7 +20,7 @@ import {
   Award,
   Briefcase,
 } from 'lucide-react';
-import { Project, projects } from '@/data/test-data/projects';
+import { Project, projects } from '@/data/projects';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

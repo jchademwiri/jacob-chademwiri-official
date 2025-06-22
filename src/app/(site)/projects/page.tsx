@@ -1,7 +1,7 @@
 // src/app/(site)/projects/page.tsx
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
-import { projects } from '@/data/test-data/projects';
+import { projects } from '@/data/projects';
 import { useProjectFilters, FilterState } from '@/hooks/use-project-filters';
 import { AnimatedBackground } from '@/components/projects/animated-background';
 import { ProjectsHeader } from '@/components/projects/projects-header';

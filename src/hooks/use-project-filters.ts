@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { Project, ProjectType } from '@/data/test-data/projects';
+import { Project, ProjectType } from '@/data/projects';
 
 export interface FilterState {
   category: string;

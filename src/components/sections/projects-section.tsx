@@ -1,5 +1,5 @@
 import { ProjectCard } from '@/components/projects/project-card';
-import { projects } from '@/data/test-data/projects';
+import { projects } from '@/data/projects';
 
 export function ProjectsSection() {
   // Get latest 4 projects sorted by completion date

@@ -1,6 +1,6 @@
 // src/components/projects/project-metrics.tsx
 
-import { Project } from '@/data/test-data/projects';
+import { Project } from '@/data/projects';
 import {
   TrendingUp,
   Clock,

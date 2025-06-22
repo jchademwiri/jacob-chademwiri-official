@@ -1,7 +1,7 @@
 'use client';
 // src/components/projects/projects-header.tsx
 import { Code } from 'lucide-react';
-import { projects, ProjectType } from '@/data/test-data/projects';
+import { projects, ProjectType } from '@/data/projects';
 import StatesGrid from './states-grid';
 
 interface Project {
