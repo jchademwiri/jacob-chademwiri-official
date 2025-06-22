@@ -1,6 +1,16 @@
-import React from 'react';
+import { projects } from '@/data/projects';
+import { ProjectCard } from '@/components/projects/project-card';
 
 export function ProjectsSection() {
+  // Get latest 4 projects sorted by completion date
+  const latestProjects = [...projects]
+    .sort(
+      (a, b) =>
+        new Date(b.completedDate).getTime() -
+        new Date(a.completedDate).getTime()
+    )
+    .slice(0, 3);
+
   return (
     <section className="py-12 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,26 +18,29 @@ export function ProjectsSection() {
           <h2 className="text-2xl md:text-4xl font-bold">Our Projects</h2>
           <p className="text-lg text-muted-foreground max-w-[700px]">
             Check out some of our recent work that showcases our expertise and
-            creativity.
+            creativity across various industries and technologies.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Project cards */}
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div
-              key={i}
-              className="bg-background rounded-lg overflow-hidden shadow-sm border"
-            >
-              <div className="h-48 bg-muted"></div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold mb-2">Project {i}</h3>
-                <p className="text-muted-foreground text-sm">
-                  A brief description of this amazing project and the
-                  technologies used.
-                </p>
-              </div>
-            </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {latestProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              viewMode="grid"
+              delay={index * 100}
+            />
           ))}
+        </div>
+
+        {/* View All Projects Button */}
+        <div className="text-center mt-12">
+          <a
+            href="/projects"
+            className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            View All Projects ({projects.length})
+          </a>
         </div>
       </div>
     </section>
