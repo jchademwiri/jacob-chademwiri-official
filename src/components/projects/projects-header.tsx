@@ -1,7 +1,6 @@
 'use client';
 // src/components/projects/projects-header.tsx
-import React from 'react';
-import { Code, TrendingUp, Users, Calendar } from 'lucide-react';
+import { Code, TrendingUp, Target, Star } from 'lucide-react';
 
 interface ProjectsHeaderProps {
   isVisible: boolean;
@@ -15,8 +14,8 @@ interface ProjectsHeaderProps {
 const iconMap = {
   TrendingUp,
   Code,
-  Users,
-  Calendar,
+  Target,
+  Star,
 };
 
 export function ProjectsHeader({ isVisible, stats }: ProjectsHeaderProps) {
@@ -39,7 +38,8 @@ export function ProjectsHeader({ isVisible, stats }: ProjectsHeaderProps) {
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           A showcase of web applications, digital solutions, and creative
-          projects that demonstrate my expertise in modern web development.
+          projects that demonstrate my expertise in modern web development and
+          project management.
         </p>
       </div>
 

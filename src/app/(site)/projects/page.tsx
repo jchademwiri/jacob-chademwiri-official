@@ -1,7 +1,7 @@
 // src/app/(site)/projects/page.tsx
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
-import { projects } from '@/data/projects';
+import { projects } from '@/data/test-data/projects';
 import { useProjectFilters, FilterState } from '@/hooks/use-project-filters';
 import { AnimatedBackground } from '@/components/projects/animated-background';
 import { ProjectsHeader } from '@/components/projects/projects-header';
@@ -15,8 +15,18 @@ export default function ProjectsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [isLoading, setIsLoading] = useState(false);
 
-  const { filters, updateFilters, filteredProjects, categories, technologies } =
-    useProjectFilters(projects);
+  const {
+    filters,
+    updateFilters,
+    resetFilters,
+    filteredProjects,
+    categories,
+    skills,
+    projectTypes,
+    statusOptions,
+    sortOptions,
+    getActiveFiltersCount,
+  } = useProjectFilters(projects);
 
   useEffect(() => {
     setIsVisible(true);
@@ -30,23 +40,45 @@ export default function ProjectsPage() {
     setIsLoading(false);
   };
 
-  const stats = useMemo(
-    () => [
+  // Calculate comprehensive stats from project data
+  const stats = useMemo(() => {
+    const completedProjects = projects.filter(
+      (p) => p.status === 'completed'
+    ).length;
+    const featuredProjects = projects.filter((p) => p.featured).length;
+
+    // Extract unique skills from all projects
+    const allSkills = new Set<string>();
+    projects.forEach((project) => {
+      project.skills?.forEach((skill) => allSkills.add(skill));
+    });
+
+    // Calculate project types distribution
+    const webDevProjects = projects.filter(
+      (p) => p.projectType === 'web-development'
+    ).length;
+    const pmProjects = projects.filter(
+      (p) => p.projectType === 'project-management'
+    ).length;
+
+    return [
       {
         label: 'Projects Completed',
-        value: `${projects.length}+`,
+        value: `${completedProjects}`,
         icon: 'TrendingUp',
       },
       {
-        label: 'Technologies Used',
-        value: `${technologies.length - 1}+`,
-        icon: 'Code',
+        label: 'Core Skills',
+        value: `${allSkills.size}+`,
+        icon: 'Target',
       },
-      { label: 'Happy Clients', value: '25+', icon: 'Users' },
-      { label: 'Years Experience', value: '5+', icon: 'Calendar' },
-    ],
-    [technologies.length]
-  );
+      {
+        label: 'Featured Projects',
+        value: `${featuredProjects}`,
+        icon: 'Star',
+      },
+    ];
+  }, []);
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -58,11 +90,16 @@ export default function ProjectsPage() {
         <ProjectsControls
           filters={filters}
           onFiltersChange={handleFiltersChange}
+          onResetFilters={resetFilters}
           viewMode={viewMode}
           onViewModeChange={setViewMode}
           categories={categories}
-          technologies={technologies}
+          skills={skills}
+          projectTypes={projectTypes}
+          statusOptions={statusOptions}
+          sortOptions={sortOptions}
           resultCount={filteredProjects.length}
+          activeFiltersCount={getActiveFiltersCount()}
           isVisible={isVisible}
         />
 

@@ -3,7 +3,7 @@
 import React from 'react';
 import { ProjectCard } from './project-card';
 import { LoadingSpinner } from './loading-spinner';
-import { Project } from '@/data/projects';
+import { Project } from '@/data/test-data/projects';
 
 interface ProjectsGridProps {
   projects: Project[];
