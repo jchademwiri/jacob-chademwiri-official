@@ -1,6 +1,6 @@
 // src/app/(site)/projects/page.tsx
 'use client';
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { projects } from '@/data/projects';
 import { useProjectFilters, FilterState } from '@/hooks/use-project-filters';
 import { AnimatedBackground } from '@/components/projects/animated-background';
@@ -15,8 +15,18 @@ export default function ProjectsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [isLoading, setIsLoading] = useState(false);
 
-  const { filters, updateFilters, filteredProjects, categories, technologies } =
-    useProjectFilters(projects);
+  const {
+    filters,
+    updateFilters,
+    resetFilters,
+    filteredProjects,
+    categories,
+    skills,
+    projectTypes,
+    statusOptions,
+    sortOptions,
+    getActiveFiltersCount,
+  } = useProjectFilters(projects);
 
   useEffect(() => {
     setIsVisible(true);
@@ -30,39 +40,26 @@ export default function ProjectsPage() {
     setIsLoading(false);
   };
 
-  const stats = useMemo(
-    () => [
-      {
-        label: 'Projects Completed',
-        value: `${projects.length}+`,
-        icon: 'TrendingUp',
-      },
-      {
-        label: 'Technologies Used',
-        value: `${technologies.length - 1}+`,
-        icon: 'Code',
-      },
-      { label: 'Happy Clients', value: '25+', icon: 'Users' },
-      { label: 'Years Experience', value: '5+', icon: 'Calendar' },
-    ],
-    [technologies.length]
-  );
-
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       <AnimatedBackground />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <ProjectsHeader isVisible={isVisible} stats={stats} />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <ProjectsHeader isVisible={isVisible} />
 
         <ProjectsControls
           filters={filters}
           onFiltersChange={handleFiltersChange}
+          onResetFilters={resetFilters}
           viewMode={viewMode}
           onViewModeChange={setViewMode}
           categories={categories}
-          technologies={technologies}
+          skills={skills}
+          projectTypes={projectTypes}
+          statusOptions={statusOptions}
+          sortOptions={sortOptions}
           resultCount={filteredProjects.length}
+          activeFiltersCount={getActiveFiltersCount()}
           isVisible={isVisible}
         />
 
