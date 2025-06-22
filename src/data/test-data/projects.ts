@@ -155,7 +155,7 @@ export const projects: Project[] = [
       'Risk Management',
       'Regulatory Compliance',
     ],
-    client: 'Tshwane Metropolitan Municipality',
+    client: 'City of Tshwame',
     budget: 'R12.5M',
     teamSize: 15,
     image: '/images/project-placeholder.svg',
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       quote:
         'Exceptional project management skills. The project was delivered on time, within budget, and exceeded quality expectations.',
       author: 'David Mokwena',
-      company: 'Tshwane Metropolitan Municipality',
+      company: 'City of Tshwame',
     },
   },
 
