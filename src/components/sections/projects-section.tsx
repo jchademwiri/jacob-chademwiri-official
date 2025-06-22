@@ -1,5 +1,6 @@
 import { projects } from '@/data/projects';
 import { ProjectCard } from '@/components/projects/project-card';
+import Link from 'next/link';
 
 export function ProjectsSection() {
   // Get latest 4 projects sorted by completion date
@@ -35,12 +36,12 @@ export function ProjectsSection() {
 
         {/* View All Projects Button */}
         <div className="text-center mt-12">
-          <a
+          <Link
             href="/projects"
             className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
             View All Projects ({projects.length})
-          </a>
+          </Link>
         </div>
       </div>
     </section>
