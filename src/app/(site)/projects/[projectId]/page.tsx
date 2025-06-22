@@ -8,14 +8,14 @@ import {
   Calendar,
   Code,
   ExternalLink,
-  Github,
+  
   Timer,
   Users,
-  CheckCircle2,
+  
   Quote,
   Copy,
   Check,
-  Play,
+  
   Target,
   Award,
   Briefcase,

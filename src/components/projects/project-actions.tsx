@@ -1,7 +1,7 @@
 // src/components/projects/project-actions.tsx
 import React from 'react';
 import Link from 'next/link';
-import { ExternalLink, FileText, Briefcase, Globe } from 'lucide-react';
+import { FileText, Briefcase, Globe } from 'lucide-react';
 import { Project } from '@/data/projects';
 
 interface ProjectActionsProps {

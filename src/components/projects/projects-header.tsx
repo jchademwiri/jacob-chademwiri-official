@@ -72,29 +72,6 @@ function generateStatsFromProjects(projects: Project[]) {
   ];
 }
 
-// Default stats data (fallback when no projects provided)
-const defaultStats = [
-  {
-    label: 'Project Management',
-    value: '8+',
-    icon: 'Target',
-  },
-  {
-    label: 'Web Development',
-    value: '12+',
-    icon: 'Code',
-  },
-  {
-    label: 'Happy Clients',
-    value: '15+',
-    icon: 'Users',
-  },
-  {
-    label: 'Years of Experience',
-    value: '4+',
-    icon: 'Calendar',
-  },
-];
 
 export function ProjectsHeader({ isVisible }: ProjectsHeaderProps) {
   // Generate stats from imported projects data

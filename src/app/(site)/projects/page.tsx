@@ -1,6 +1,6 @@
 // src/app/(site)/projects/page.tsx
 'use client';
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { projects } from '@/data/projects';
 import { useProjectFilters, FilterState } from '@/hooks/use-project-filters';
 import { AnimatedBackground } from '@/components/projects/animated-background';
@@ -40,52 +40,12 @@ export default function ProjectsPage() {
     setIsLoading(false);
   };
 
-  // Calculate comprehensive stats from project data
-  const stats = useMemo(() => {
-    const completedProjects = projects.filter(
-      (p) => p.status === 'completed'
-    ).length;
-    const featuredProjects = projects.filter((p) => p.featured).length;
-
-    // Extract unique skills from all projects
-    const allSkills = new Set<string>();
-    projects.forEach((project) => {
-      project.skills?.forEach((skill) => allSkills.add(skill));
-    });
-
-    // Calculate project types distribution
-    const webDevProjects = projects.filter(
-      (p) => p.projectType === 'web-development'
-    ).length;
-    const pmProjects = projects.filter(
-      (p) => p.projectType === 'project-management'
-    ).length;
-
-    return [
-      {
-        label: 'Projects Completed',
-        value: `${completedProjects}`,
-        icon: 'TrendingUp',
-      },
-      {
-        label: 'Core Skills',
-        value: `${allSkills.size}+`,
-        icon: 'Target',
-      },
-      {
-        label: 'Featured Projects',
-        value: `${featuredProjects}`,
-        icon: 'Star',
-      },
-    ];
-  }, []);
-
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       <AnimatedBackground />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <ProjectsHeader isVisible={isVisible} stats={stats} />
+        <ProjectsHeader isVisible={isVisible} />
 
         <ProjectsControls
           filters={filters}
