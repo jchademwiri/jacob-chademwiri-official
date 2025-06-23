@@ -19,6 +19,7 @@ import { ProjectMetrics } from './project-metrics';
 import { ProjectActions } from './project-actions';
 import { cn } from '@/lib/utils';
 import { Project } from '@/data/projects';
+import { formatDate } from '@/lib/utils';
 
 interface ProjectCardProps {
   project: Project;
@@ -74,7 +75,8 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    {new Date(project.completedDate).toLocaleDateString()}
+                    {formatDate(project.completedDate, 'full')} (
+                    {formatDate(project.completedDate, 'monthYear')})
                   </div>
                   <div className="flex items-center">
                     <Tag className="h-4 w-4 mr-1" />
@@ -144,7 +146,8 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Calendar className="h-3 w-3 mr-1" />
-              {new Date(project.completedDate).toLocaleDateString()}
+              {formatDate(project.completedDate, 'full')} (
+              {formatDate(project.completedDate, 'monthYear')})
             </div>
             <div className="flex items-center">
               <Tag className="h-3 w-3 mr-1" />

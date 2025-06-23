@@ -26,6 +26,8 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { aboutData } from '@/data';
+import { projects as stpProjects } from '@/data/stp';
+import { projects as lmeProjects } from '@/data/lme';
 
 // Counter Animation Hook
 const useCountUp = (end: number, duration: number = 2000) => {
@@ -639,6 +641,71 @@ export default function ModernAboutPage() {
                   </div>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Projects Managed Section */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+          Projects Managed
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Sithembe Transportation & Projects</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-2">
+                <span className="font-semibold">
+                  {stpProjects.length} active and completed projects
+                </span>{' '}
+                managed across multiple categories:
+              </p>
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground mb-2">
+                {[
+                  ...new Set(
+                    stpProjects
+                      .map((p: { category?: string }) => p.category)
+                      .filter(Boolean)
+                  ),
+                ].map((category) => (
+                  <li key={String(category)}>{category}</li>
+                ))}
+              </ul>
+              <p className="text-muted-foreground text-sm">
+                Includes municipal contracts for PPE supply, civil engineering,
+                plant hire, mechanical, horticulture, building, and more.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Livhu and Musa Enterprise</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-2">
+                <span className="font-semibold">
+                  {lmeProjects.length} active and completed projects
+                </span>{' '}
+                managed in the following areas:
+              </p>
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground mb-2">
+                {[
+                  ...new Set(
+                    lmeProjects
+                      .map((p: { projectType?: string }) => p.projectType)
+                      .filter(Boolean)
+                  ),
+                ].map((type) => (
+                  <li key={String(type)}>{type}</li>
+                ))}
+              </ul>
+              <p className="text-muted-foreground text-sm">
+                Focused on plant hire, water tanker supply, supply & delivery,
+                and emergency services for City of Tshwane and other clients.
+              </p>
             </CardContent>
           </Card>
         </div>
