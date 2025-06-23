@@ -13,6 +13,7 @@ import {
   DollarSign,
   ExternalLink,
 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 import { ProjectBadges } from './project-badges';
 import { ProjectMetrics } from './project-metrics';
@@ -50,33 +51,31 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
           </div>
 
           <div className="md:w-2/3 space-y-4">
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center space-x-2">
-                  <ProjectTypeIcon projectType={project.projectType} />
-                  <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-                <ProjectActions project={project} />
+            <div className="flex items-center justify-between">
+              <Badge variant="outline" className="text-xs font-normal">
+                {project.category}
+              </Badge>
+              <div className="flex items-center text-xs text-muted-foreground">
+                <Calendar className="h-3 w-3 mr-1" />
+                {project.appointmentDate || formatDate(project.completedDate)}
               </div>
-              <p className="text-muted-foreground">{project.description}</p>
             </div>
 
-            <ProjectBadges
-              technologies={project.technologies}
-              skills={project.skills}
-              variant="both"
-              maxDisplay={6}
-            />
+            <div>
+              <h3 className="font-semibold leading-none tracking-tight">
+                {project.title}
+              </h3>
+              <p className="text-sm text-muted-foreground line-clamp-2 mt-2">
+                {project.description}
+              </p>
+            </div>
 
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm text-muted-foreground">
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    {formatDate(project.completedDate, 'full')} (
-                    {formatDate(project.completedDate, 'monthYear')})
+                    {formatDate(project.completedDate, 'monthYear')}
                   </div>
                   <div className="flex items-center">
                     <Tag className="h-4 w-4 mr-1" />
@@ -127,27 +126,30 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
       </div>
 
       <div className="p-6 space-y-4">
+        <div className="flex items-center justify-between">
+          <Badge variant="outline" className="text-xs font-normal">
+            {project.category}
+          </Badge>
+          <div className="flex items-center text-xs text-muted-foreground">
+            <Calendar className="h-3 w-3 mr-1" />
+            {project.appointmentDate || formatDate(project.completedDate)}
+          </div>
+        </div>
+
         <div>
-          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+          <h3 className="font-semibold leading-none tracking-tight">
             {project.title}
           </h3>
-          <p className="text-sm text-muted-foreground line-clamp-2">
+          <p className="text-sm text-muted-foreground line-clamp-2 mt-2">
             {project.description}
           </p>
         </div>
-
-        {/* <ProjectBadges
-          items={project.technologies || project.skills}
-          maxDisplay={3}
-          label={project.projectType === 'web-development' ? 'Tech' : 'Skills'}
-        /> */}
 
         <div className="space-y-2 text-xs text-muted-foreground">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Calendar className="h-3 w-3 mr-1" />
-              {formatDate(project.completedDate, 'full')} (
-              {formatDate(project.completedDate, 'monthYear')})
+              {formatDate(project.completedDate, 'monthYear')}
             </div>
             <div className="flex items-center">
               <Tag className="h-3 w-3 mr-1" />
@@ -177,7 +179,11 @@ function ProjectImage({
     <div className={`relative bg-muted overflow-hidden ${className}`}>
       {project.image ? (
         <Image
-          src={project.image}
+          src={
+            project.image === '/images/project-placeholder.svg'
+              ? '/images/project-placeholder.svg'
+              : project.image
+          }
           alt={project.title}
           fill
           className="object-cover"

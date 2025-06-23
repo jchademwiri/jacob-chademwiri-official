@@ -26,8 +26,26 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { aboutData } from '@/data';
-import { projects as stpProjects } from '@/data/stp';
-import { projects as lmeProjects } from '@/data/lme';
+import { projects as stpProjectsRaw } from '@/data/stp';
+import { projects as lmeProjectsRaw } from '@/data/lme';
+
+// Map STP and LME projects to ensure appointmentDate is always present
+interface ProjectWithAppointmentDate {
+  category?: string;
+  client?: string;
+  duration?: string;
+  description?: string;
+  appointmentDate: string;
+  [key: string]: any;
+}
+const stpProjects = stpProjectsRaw.map((p: any) => ({
+  ...p,
+  appointmentDate: p.date || p.appointmentDate || '',
+}));
+const lmeProjects = lmeProjectsRaw.map((p: any) => ({
+  ...p,
+  appointmentDate: p.appointmentDate || '',
+}));
 
 // Counter Animation Hook
 const useCountUp = (end: number, duration: number = 2000) => {

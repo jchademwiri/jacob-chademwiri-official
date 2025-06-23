@@ -8,14 +8,11 @@ import {
   Calendar,
   Code,
   ExternalLink,
-  
   Timer,
   Users,
-  
   Quote,
   Copy,
   Check,
-  
   Target,
   Award,
   Briefcase,
@@ -165,7 +162,7 @@ export default function ProjectPage({ params }: Props) {
           <Link href="/projects">
             <Button
               variant="ghost"
-              className="group hover:bg-muted transition-all duration-300"
+              className="group cursor-pointer hover:bg-muted transition-all duration-300"
             >
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
               Back to Projects
