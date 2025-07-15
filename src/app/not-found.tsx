@@ -90,13 +90,13 @@ export default function NotFound() {
         {/* Description */}
         <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
           The page you&apos;re looking for seems to have wandered off. But
-          don&apos;t worry – let&apos;s get you back on the right path to
+          don&apos;t worry - let&apos;s get you back on the right path to
           explore my work in project management and web development.
         </p>
 
         {/* Suggestion cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 max-w-3xl mx-auto">
-          <Link href="/#portfolio" className="group">
+          <Link href="/projects" className="group">
             <div className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-200/50 dark:border-gray-700/50 hover:border-green-500/50 transition-all duration-300 cursor-pointer group-hover:scale-105">
               <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-3 mx-auto">
                 <svg

@@ -1,815 +1,426 @@
-'use client';
-
-import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { SocialLinks } from '@/components/social-links';
 import Link from 'next/link';
-import {
-  Calendar,
-  MapPin,
-  Briefcase,
-  Mail,
-  Download,
-  ExternalLink,
-  Star,
-  Code,
-  Users,
-  Target,
-  Zap,
-  ChevronDown,
-  Send,
-  CheckCircle,
-} from 'lucide-react';
-import { aboutData } from '@/data';
-import { projects as stpProjectsRaw } from '@/data/stp';
-import { projects as lmeProjectsRaw } from '@/data/lme';
 
-// Map STP and LME projects to ensure appointmentDate is always present
-interface ProjectWithAppointmentDate {
-  category?: string;
-  client?: string;
-  duration?: string;
-  description?: string;
-  appointmentDate: string;
-  [key: string]: any;
-}
-const stpProjects = stpProjectsRaw.map((p: any) => ({
-  ...p,
-  appointmentDate: p.date || p.appointmentDate || '',
-}));
-const lmeProjects = lmeProjectsRaw.map((p: any) => ({
-  ...p,
-  appointmentDate: p.appointmentDate || '',
-}));
-
-// Counter Animation Hook
-const useCountUp = (end: number, duration: number = 2000) => {
-  const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let start = 0;
-    const increment = end / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, [end, duration, isVisible]);
-
-  return { count, setIsVisible };
+const aboutData = {
+  hero: {
+    profileImage: '/jacobc.jpg',
+    name: 'Jacob Chademwiri',
+    title:
+      'Tendering & Accounts Receivable Manager | Projects Coordinator | Freelance Website Developer | Aspiring Project Manager',
+    tagline:
+      'Driving business growth through optimal efficiency and digital solutions.',
+    badges: [
+      'Web Development',
+      'SEO Specialist',
+      'Tender Management',
+      'Project Coordination',
+      'IT Support',
+      'Business Growth',
+    ],
+  },
+  story: {
+    content: [
+      'I am a result-oriented professional with expertise in Tender Administration/Management, IT Support, Web Development and a growing skillset in Project Management.',
+      'With a record of accomplishment of successful tendering, website developments and excellent IT support service delivery, I am committed to driving business growth through optimal efficiency.',
+      'My dedication to continuous learning and development has led me to focus on acquiring Project Management skills to complement my existing expertise.',
+      "I am committed to providing tailored solutions that meet each client's unique needs and am constantly seeking new and innovative ways to optimize efficiency and improve business performance.",
+    ],
+    quote: 'Success is built on curiosity, resilience, and collaboration.',
+  },
+  achievements: [
+    { label: 'Years Experience', value: '10+' },
+    { label: 'Projects Delivered', value: '30+' },
+    { label: 'Happy Clients', value: '20+' },
+    { label: 'Certifications', value: '10+' },
+  ],
+  skills: [
+    {
+      category: 'Technical',
+      items: [
+        'Web Development',
+        'SEO',
+        'WordPress',
+        'IT Support',
+        'Microsoft 365',
+        'JavaScript',
+        'TypeScript',
+        'React.js',
+        'Next.js',
+        'Tailwind CSS',
+        'MongoDB',
+        'Cloud Platforms',
+      ],
+    },
+    {
+      category: 'Business',
+      items: [
+        'Tender Management',
+        'Project Management',
+        'Accounts Receivable',
+        'Team Leadership',
+        'Client Relations',
+        'Process Optimization',
+        'Strategic Planning',
+        'Bid Management',
+        'Payroll Administration',
+        'Invoicing',
+      ],
+    },
+    {
+      category: 'Certifications',
+      items: [
+        'Explore a Career in Project Management',
+        'Agile Foundations',
+        'Project Management Foundations',
+        'Build Your Project Management Skills',
+        'Career Essentials in Project Management',
+        'Diploma in Information Technology',
+        'Front-End Developer Certificate',
+        'Microsoft 365 Essential Training',
+        'Introduction to Microsoft 365 for IT Pros',
+      ],
+    },
+  ],
+  featuredProjects: [
+    {
+      title:
+        'Sithembe Transportation and Projects Website Redesign and Development',
+      period: 'Oct 2022 - Mar 2023',
+      challenge:
+        'Revamp the existing website to attract more clients and partners, ensuring easy navigation and accessibility.',
+      results:
+        'Professional online presence, improved user experience, and modern design practices implemented.',
+      skills: ['Next.js', 'Tailwind CSS', 'Figma', 'SEO'],
+    },
+    {
+      title: 'Edurite Tutors',
+      period: 'Jul 2023 - Present',
+      challenge:
+        'Develop a site from the ground up using WordPress and Elementor, and connect business to Google My Business.',
+      results:
+        'Unique, professional virtual assistance platform for academic assignments and research projects.',
+      skills: ['WordPress', 'SEO', 'Social Media', 'Google My Business'],
+    },
+  ],
+  testimonials: [
+    {
+      quote:
+        'Jacob is a skilled, dedicated professional with exceptional problem-solving abilities, strong teamwork, and a proven track record of delivering results.',
+      author: 'Bright Bhamu',
+      role: 'Website Designer | Software Development Project Manager',
+    },
+    {
+      quote:
+        "Hie Zuma, it's well that you are linked. Keep it up, nice time on LinkedIn.",
+      author: 'Samson Zwaamwe',
+      role: 'MOHCC Clinic Health Information Officer',
+    },
+  ],
+  personalInterests: [
+    'Mentoring young developers',
+    'Cycling and outdoor adventures',
+    'Exploring new technologies',
+  ],
+  contact: {
+    description:
+      "Ready to collaborate or have a project in mind? Let's connect!",
+    email: 'jacob@example.com',
+    cvLink: '/jacob-chademwiri-cv.pdf',
+  },
+  experiences: [
+    {
+      company: 'SITHEMBE TRANSPORTATION AND PROJECTS',
+      role: 'Tendering & Accounts Receivable Manager | Projects Coordinator | IT Support Technician',
+      period: 'Sep 2024 - Present',
+      location: 'Centurion, Gauteng, South Africa',
+      description: [
+        'Oversee accounts receivable operations, tender processes, project coordination & administration, & digital solutions.',
+        'Manage the full accounts receivable cycle, including invoicing, collections, and cash flow tracking using Sage.',
+        'Lead tendering processes from opportunity identification to submission, ensuring compliance and high win rates.',
+        'Facilitate strategic project meetings, monitor key performance metrics, and proactively manage risks.',
+        'Manage website development and IT solutions, enhancing operational efficiency and digital presence.',
+      ],
+    },
+    {
+      company: 'Playhouse Media Group',
+      role: 'Website Developer',
+      period: 'Jan 2020 - Present',
+      location: 'Johannesburg, Gauteng, South Africa',
+      description: [
+        'Create web pages using WordPress and a combination of markup languages.',
+        'Identify usability and develop functional, easy-to-operate and eye-catching web applications.',
+        'Writing web pages compatible with SEO.',
+        'Convert Adobe XD layouts to web pages using HTML, CSS and JavaScript.',
+        'Perform websites maintenance and enhancements.',
+      ],
+    },
+    {
+      company: 'Baum Systems Pvt Ltd',
+      role: 'Web Developer',
+      period: 'Aug 2019 - Jan 2022',
+      location: 'Cape Town Area, South Africa',
+      description: [
+        'Designing and prototyping websites using Adobe XD or Figma.',
+        'Create data-driven websites using React JS or Next JS, APIs and Sanity io headless CMS.',
+        'Deploy websites to GCP, Vercel, Netlify and Cloudflare.',
+        'Analyzing user/customer behaviors using Google Analytics.',
+      ],
+    },
+  ],
 };
 
-// Intersection Observer Hook
-const useInView = (threshold = 0.1) => {
-  const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-
-    return () => observer.disconnect();
-  }, [threshold]);
-
-  return { ref, isInView };
-};
-
-// Animated Number Component
-const AnimatedNumber = ({
-  value,
-  suffix = '',
-}: {
-  value: string;
-  suffix?: string;
-}) => {
-  const numericValue = parseInt(value.replace(/\D/g, ''));
-  const { count, setIsVisible } = useCountUp(numericValue);
-  const { ref, isInView } = useInView();
-
-  useEffect(() => {
-    if (isInView) setIsVisible(true);
-  }, [isInView, setIsVisible]);
-
+export default function AboutPage() {
   return (
-    <div
-      ref={ref}
-      className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-green-400 bg-clip-text text-transparent"
-    >
-      {value.includes('+')
-        ? `${count}+`
-        : value.includes('%')
-        ? `${count}%`
-        : value.includes('R')
-        ? `R${count}M+`
-        : value.includes('100')
-        ? `${count}%`
-        : count}
-      {suffix}
-    </div>
-  );
-};
-
-// Skill Progress Bar Component
-const SkillBar = ({ skill, level }: { skill: string; level: number }) => {
-  const [progress, setProgress] = useState(0);
-  const { ref, isInView } = useInView();
-
-  useEffect(() => {
-    if (isInView) {
-      const timer = setTimeout(() => setProgress(level), 200);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView, level]);
-
-  return (
-    <div ref={ref} className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span className="font-medium">{skill}</span>
-        <span className="text-muted-foreground">{level}%</span>
-      </div>
-      <div className="h-2 bg-muted rounded-full overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-primary to-green-400 transition-all duration-1000 ease-out rounded-full"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-    </div>
-  );
-};
-
-// Interactive Timeline Component
-const Timeline = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  return (
-    <div className="relative">
-      <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-green-400 to-primary"></div>
-
-      {aboutData.experiences.map((experience, index) => (
-        <div
-          key={index}
-          className={`relative mb-12 md:ml-16 transition-all duration-500 ${
-            activeIndex === index ? 'scale-105' : 'hover:scale-102'
-          }`}
-          onMouseEnter={() => setActiveIndex(index)}
-        >
-          <div className="hidden md:block absolute -left-20 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>
-
-          <Card
-            className={`transition-all duration-300 ${
-              activeIndex === index
-                ? 'border-primary shadow-lg shadow-primary/20'
-                : ''
-            }`}
-          >
-            <CardHeader>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                  <CardTitle className="text-xl">
-                    {experience.company}
-                  </CardTitle>
-                  <p className="text-primary font-semibold mt-1">
-                    {experience.role}
-                  </p>
-                </div>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {experience.period}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" />
-                    {experience.location}
-                  </div>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {experience.description.map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
-                  >
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-// Contact Form Component
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after success message
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
-  };
-
-  if (isSubmitted) {
-    return (
-      <div className="text-center py-8">
-        <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
-        <p className="text-muted-foreground">
-          I'll get back to you within 24 hours.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Name</label>
-          <Input
-            required
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="Your name"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Email</label>
-          <Input
-            required
-            type="email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            placeholder="your@email.com"
-          />
-        </div>
-      </div>
-      <div className="space-y-2">
-        <label className="text-sm font-medium">Message</label>
-        <Textarea
-          required
-          value={formData.message}
-          onChange={(e) =>
-            setFormData({ ...formData, message: e.target.value })
-          }
-          placeholder="Tell me about your project..."
-          rows={4}
-        />
-      </div>
-      <Button
-        type="submit"
-        className="w-full bg-primary hover:bg-primary/90"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? (
-          <>
-            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-            Sending...
-          </>
-        ) : (
-          <>
-            <Send className="w-4 h-4 mr-2" />
-            Send Message
-          </>
-        )}
-      </Button>
-    </form>
-  );
-};
-
-export default function ModernAboutPage() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <main className="relative min-h-screen">
-      {/* Animated Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: `radial-gradient(circle at ${50 + scrollY * 0.01}% ${
-              50 + scrollY * 0.005
-            }%, hsl(var(--primary)) 0%, transparent 50%)`,
-          }}
-        />
-      </div>
-
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <Avatar className="size-32 md:size-40 mx-auto mb-8 shadow-2xl border-4 border-background">
-              <AvatarImage
-                src={aboutData.hero.profileImage}
-                alt={`${aboutData.hero.name} profile photo`}
-              />
-              <AvatarFallback className="text-2xl">JC</AvatarFallback>
-            </Avatar>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-              <span className="bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                {aboutData.hero.name}
-              </span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-muted-foreground mb-4">
-              {aboutData.hero.title}
-            </p>
-
-            <p className="text-lg md:text-xl text-primary font-semibold mb-8">
-              {aboutData.hero.tagline}
-            </p>
-
-            <div className="flex flex-wrap gap-3 justify-center mb-12">
-              {aboutData.hero.badges.map((badge, index) => (
-                <Badge
-                  key={badge}
-                  variant="secondary"
-                  className="px-4 py-2 text-sm animate-in fade-in slide-in-from-bottom-4"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {badge}
-                </Badge>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <Link href="/projects">
-                  <Briefcase className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                  View My Work
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-primary text-primary hover:bg-primary/10 shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                <Link href="#contact">
-                  <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                  Let's Talk
-                </Link>
-              </Button>
-            </div>
+      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-black dark:via-gray-900 dark:to-black">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center px-4">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 mb-6">
+            <Image
+              src={aboutData.hero.profileImage}
+              alt={aboutData.hero.name}
+              fill
+              className="rounded-full object-cover border-4 border-green-600 shadow-lg"
+              priority
+            />
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-muted-foreground" />
-        </div>
-      </section>
-
-      {/* Story Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <Card className="border-0 bg-gradient-to-br from-card to-muted/20 backdrop-blur-sm shadow-2xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl md:text-4xl font-bold mb-4">
-                My Story
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {aboutData.story.content.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-lg leading-relaxed text-muted-foreground"
-                >
-                  {paragraph}
-                </p>
-              ))}
-              <blockquote className="text-xl italic text-center border-l-4 border-primary pl-6 py-4 bg-muted/30 rounded-r-lg">
-                "{aboutData.story.quote}"
-              </blockquote>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Achievements Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            By the Numbers
+          <h1 className="text-3xl md:text-5xl font-bold mb-2">
+            {aboutData.hero.name}
+          </h1>
+          <h2 className="text-lg md:text-2xl text-green-600 dark:text-green-400 font-semibold mb-2">
+            {aboutData.hero.title}
           </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {aboutData.achievements.map((achievement, index) => (
-              <div
-                key={achievement.label}
-                className="text-center group hover:scale-105 transition-transform duration-300"
+          <p className="text-xl text-muted-foreground mb-4">
+            {aboutData.hero.tagline}
+          </p>
+          <div className="flex flex-wrap gap-2 justify-center mb-6">
+            {aboutData.hero.badges.map((badge) => (
+              <Badge
+                key={badge}
+                className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 px-3 py-1 text-sm font-medium rounded-full"
               >
-                <div className="relative">
-                  <AnimatedNumber value={achievement.value} />
-                  <div className="absolute -inset-4 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-colors duration-300" />
-                </div>
-                <div className="text-muted-foreground mt-4 font-medium">
-                  {achievement.label}
-                </div>
-              </div>
+                {badge}
+              </Badge>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            Skills & Expertise
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Technical Skills with Progress Bars */}
-            <Card className="border-0 bg-gradient-to-br from-card to-muted/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <Code className="w-6 h-6 text-primary" />
-                  Technical Skills
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <SkillBar skill="React.js / Next.js" level={95} />
-                <SkillBar skill="TypeScript" level={90} />
-                <SkillBar skill="WordPress / WooCommerce" level={88} />
-                <SkillBar skill="Tailwind CSS" level={92} />
-                <SkillBar skill="Node.js / MongoDB" level={85} />
-                <SkillBar skill="Cloud Platforms" level={80} />
-              </CardContent>
-            </Card>
-
-            {/* Business Skills */}
-            <Card className="border-0 bg-gradient-to-br from-card to-muted/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <Users className="w-6 h-6 text-primary" />
-                  Business Skills
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <SkillBar skill="Project Management" level={94} />
-                <SkillBar skill="Team Leadership" level={91} />
-                <SkillBar skill="Client Relations" level={96} />
-                <SkillBar skill="Process Optimization" level={88} />
-                <SkillBar skill="Tender Management" level={92} />
-                <SkillBar skill="Strategic Planning" level={85} />
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Certifications */}
-          <div className="mt-16">
-            <h3 className="text-2xl font-bold text-center mb-8">
-              Certifications
-            </h3>
-            <div className="flex flex-wrap gap-4 justify-center">
-              {aboutData.skills[2].items.map((cert, index) => (
-                <Badge
-                  key={cert}
-                  variant="outline"
-                  className="px-4 py-2 text-sm border-primary/30 hover:border-primary transition-colors"
-                >
-                  <Star className="w-4 h-4 mr-2 text-primary" />
-                  {cert}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Timeline */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            Professional Journey
-          </h2>
-          <Timeline />
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            Featured Projects
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {aboutData.featuredProjects.map((project, index) => (
-              <Card
-                key={project.title}
-                className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-card to-muted/20"
-              >
-                <CardHeader>
-                  <CardTitle className="flex items-start justify-between">
-                    <span>{project.title}</span>
-                    <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </CardTitle>
-                  <p className="text-sm text-muted-foreground">
-                    {project.period}
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">
-                        CHALLENGE
-                      </h4>
-                      <p className="text-sm">{project.challenge}</p>
-                    </div>
-
-                    <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">
-                        RESULTS
-                      </h4>
-                      <p className="text-sm text-primary font-medium">
-                        {project.results}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 pt-4">
-                      {project.skills.map((skill) => (
-                        <Badge
-                          key={skill}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg" className="group">
-              <Link href="/projects">
-                <Target className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                View All Projects
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-muted/20">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            What Others Say
-          </h2>
-
-          {aboutData.testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="border-0 bg-gradient-to-br from-card to-muted/20 shadow-2xl"
+      {/* Story & Quote */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
+          {aboutData.story.content.map((para, i) => (
+            <p
+              key={i}
+              className="text-lg text-muted-foreground leading-relaxed"
             >
-              <CardContent className="p-8">
-                <blockquote className="text-xl italic text-center mb-6">
-                  "{testimonial.quote}"
-                </blockquote>
-                <div className="text-center">
-                  <div className="font-semibold">{testimonial.author}</div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.role}
-                  </div>
-                </div>
+              {para}
+            </p>
+          ))}
+          <blockquote className="italic text-green-600 dark:text-green-400 text-xl font-semibold border-l-4 border-green-600 pl-4 mt-6">
+            “{aboutData.story.quote}”
+          </blockquote>
+        </div>
+      </section>
+
+      {/* Achievements */}
+      <section className="py-12 md:py-20 bg-muted/50">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
+          {aboutData.achievements.map((ach) => (
+            <Card key={ach.label} className="flex flex-col items-center py-8">
+              <CardTitle className="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
+                {ach.value}
+              </CardTitle>
+              <CardContent className="text-base text-muted-foreground text-center">
+                {ach.label}
               </CardContent>
             </Card>
           ))}
         </div>
       </section>
 
-      {/* Personal Interests */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            Beyond Work
+      {/* Skills */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
+            Skills & Certifications
           </h2>
-
-          <Card className="border-0 bg-gradient-to-br from-card to-muted/20">
-            <CardContent className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {aboutData.personalInterests.map((interest, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
-                  >
-                    <Zap className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-sm">{interest}</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {aboutData.skills.map((skillCat) => (
+              <Card key={skillCat.category} className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold mb-2">
+                    {skillCat.category}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {skillCat.items.map((item) => (
+                      <Badge
+                        key={item}
+                        className="bg-gray-200/60 dark:bg-gray-800/60 text-sm font-medium px-3 py-1 rounded-full"
+                      >
+                        {item}
+                      </Badge>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Projects Managed Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
-          Projects Managed
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>Sithembe Transportation & Projects</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-2">
-                <span className="font-semibold">
-                  {stpProjects.length} active and completed projects
-                </span>{' '}
-                managed across multiple categories:
-              </p>
-              <ul className="list-disc pl-5 space-y-1 text-muted-foreground mb-2">
-                {[
-                  ...new Set(
-                    stpProjects
-                      .map((p: { category?: string }) => p.category)
-                      .filter(Boolean)
-                  ),
-                ].map((category) => (
-                  <li key={String(category)}>{category}</li>
-                ))}
-              </ul>
-              <p className="text-muted-foreground text-sm">
-                Includes municipal contracts for PPE supply, civil engineering,
-                plant hire, mechanical, horticulture, building, and more.
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Livhu and Musa Enterprise</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-2">
-                <span className="font-semibold">
-                  {lmeProjects.length} active and completed projects
-                </span>{' '}
-                managed in the following areas:
-              </p>
-              <ul className="list-disc pl-5 space-y-1 text-muted-foreground mb-2">
-                {[
-                  ...new Set(
-                    lmeProjects
-                      .map((p: { projectType?: string }) => p.projectType)
-                      .filter(Boolean)
-                  ),
-                ].map((type) => (
-                  <li key={String(type)}>{type}</li>
-                ))}
-              </ul>
-              <p className="text-muted-foreground text-sm">
-                Focused on plant hire, water tanker supply, supply & delivery,
-                and emergency services for City of Tshwane and other clients.
-              </p>
-            </CardContent>
-          </Card>
+      {/* Experience Timeline */}
+      <section className="py-12 md:py-20 bg-muted/50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
+            Professional Experience
+          </h2>
+          <div className="space-y-8 border-l-2 border-green-600 pl-6">
+            {aboutData.experiences.map((exp, i) => (
+              <div key={exp.company} className="relative pb-8">
+                <span className="absolute -left-6 top-2 w-4 h-4 bg-green-600 rounded-full border-4 border-white dark:border-gray-900"></span>
+                <div className="mb-1 text-lg font-semibold text-green-700 dark:text-green-400">
+                  {exp.company}
+                </div>
+                <div className="text-base font-medium text-foreground">
+                  {exp.role}
+                </div>
+                <div className="text-sm text-muted-foreground mb-2">
+                  {exp.period} | {exp.location}
+                </div>
+                <ul className="list-disc ml-5 text-muted-foreground text-sm space-y-1">
+                  {exp.description.map((desc, j) => (
+                    <li key={j}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
+            Featured Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {aboutData.featuredProjects.map((proj) => (
+              <Card key={proj.title} className="h-full">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold mb-2">
+                    {proj.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-sm text-muted-foreground mb-2">
+                    {proj.period}
+                  </div>
+                  <div className="mb-2">
+                    <span className="font-semibold">Challenge:</span>{' '}
+                    {proj.challenge}
+                  </div>
+                  <div className="mb-2">
+                    <span className="font-semibold">Results:</span>{' '}
+                    {proj.results}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {proj.skills.map((skill) => (
+                      <Badge
+                        key={skill}
+                        className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 px-3 py-1 text-xs font-medium rounded-full"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-12 md:py-20 bg-muted/50">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
+            Testimonials
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {aboutData.testimonials.map((testi) => (
+              <Card key={testi.author} className="h-full">
+                <CardContent>
+                  <blockquote className="italic text-lg text-muted-foreground mb-4">
+                    “{testi.quote}”
+                  </blockquote>
+                  <div className="font-semibold text-green-700 dark:text-green-400">
+                    {testi.author}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {testi.role}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Personal Interests */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold mb-8">
+            Personal Interests
+          </h2>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {aboutData.personalInterests.map((interest) => (
+              <Badge
+                key={interest}
+                className="bg-gray-200/60 dark:bg-gray-800/60 text-sm font-medium px-4 py-2 rounded-full"
+              >
+                {interest}
+              </Badge>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-muted/20 to-primary/5"
-      >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-            Let's Work Together
-          </h2>
-          <p className="text-center text-muted-foreground mb-16 text-lg">
+      <section className="py-12 md:py-20 bg-muted/50">
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">Contact</h2>
+          <p className="text-lg text-muted-foreground mb-6">
             {aboutData.contact.description}
           </p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card className="border-0 bg-card/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ContactForm />
-              </CardContent>
-            </Card>
-
-            {/* Contact Info & Actions */}
-            <div className="space-y-8">
-              <Card className="border-0 bg-card/80 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle>Quick Actions</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <Button
-                    asChild
-                    className="w-full justify-start"
-                    variant="outline"
-                  >
-                    <Link href={`mailto:${aboutData.contact.email}`}>
-                      <Mail className="w-4 h-4 mr-2" />
-                      {aboutData.contact.email}
-                    </Link>
-                  </Button>
-
-                  <Button
-                    asChild
-                    className="w-full justify-start"
-                    variant="outline"
-                  >
-                    <Link
-                      href={aboutData.contact.cvLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Download className="w-4 h-4 mr-2" />
-                      Download CV
-                    </Link>
-                  </Button>
-
-                  <Button
-                    asChild
-                    className="w-full justify-start bg-primary hover:bg-primary/90"
-                  >
-                    <Link href="/projects">
-                      <Briefcase className="w-4 h-4 mr-2" />
-                      View Portfolio
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="border-0 bg-card/80 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle>Connect</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <SocialLinks />
-                </CardContent>
-              </Card>
-            </div>
+          <div className="flex flex-col items-center gap-4">
+            <a
+              href={`mailto:${aboutData.contact.email}`}
+              className="text-green-600 dark:text-green-400 text-lg font-semibold underline"
+            >
+              {aboutData.contact.email}
+            </a>
+            <Button
+              asChild
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white border-0 mt-2"
+            >
+              <Link
+                href={aboutData.contact.cvLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download CV
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

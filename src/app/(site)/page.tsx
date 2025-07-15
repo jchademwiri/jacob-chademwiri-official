@@ -1,4 +1,4 @@
-import ComingSoon from '@/components/coming-soon';
+// import ComingSoon from '@/components/coming-soon';
 import {
   CurrentEmployment,
   FeaturesSection,
@@ -9,7 +9,7 @@ import {
 export default function Home() {
   return (
     <>
-      <ComingSoon />
+      {/* <ComingSoon /> */}
       <HeroSection />
       <CurrentEmployment />
       <FeaturesSection />
