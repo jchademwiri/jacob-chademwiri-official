@@ -98,22 +98,22 @@ Tendering Manager | Projects Administrator and IT Support Technician
 Tendering Manager | Projects Administrator and IT Support Technician
 Nov 2023 - Sep 2024 · 11 mosNov 2023 to Sep 2024 · 11 mos
 HybridHybrid
-•	Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives.
-•	Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications.
-•	IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements.
-•	Website Management: Redesigned and maintained company websites.
-•	Document Management: Updated company documents, including profiles.
-•	Project Documentation: Organized and maintained project documentation, including contracts and reports.
-•	Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders.
-•	Meeting Coordination: Scheduled and coordinated project meetings and activities.
-•	Status Reporting: Compiled and distributed regular project status reports.
-•	Budget Tracking: Monitored project expenses and updated budget records.
-•	Data Management: Managed project-related data in various systems and databases.
-•	Project Planning Support: Assisted in developing project plans, timelines, and resource allocation.
-•	Progress Monitoring: Tracked project performance and supported corrective actions.
-•	Risk Management Support: Assisted in identifying and reporting project risks and issues.
-•	Quality Assurance: Supported quality assurance processes to ensure deliverables met standards.
-•	Invoicing: Managed invoicing using Sage.- Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives. - Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications. - IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements. - Website Management: Redesigned and maintained company websites. - Document Management: Updated company documents, including profiles. - Project Documentation: Organized and maintained project documentation, including contracts and reports. - Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders. - Meeting Coordination: Scheduled and coordinated project meetings and activities. - Status Reporting: Compiled and distributed regular project status reports. - Budget Tracking: Monitored project expenses and updated budget records. - Data Management: Managed project-related data in various systems and databases. - Project Planning Support: Assisted in developing project plans, timelines, and resource allocation. - Progress Monitoring: Tracked project performance and supported corrective actions. - Risk Management Support: Assisted in identifying and reporting project risks and issues. - Quality Assurance: Supported quality assurance processes to ensure deliverables met standards. - Invoicing: Managed invoicing using Sage.…see more
+• Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives.
+• Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications.
+• IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements.
+• Website Management: Redesigned and maintained company websites.
+• Document Management: Updated company documents, including profiles.
+• Project Documentation: Organized and maintained project documentation, including contracts and reports.
+• Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders.
+• Meeting Coordination: Scheduled and coordinated project meetings and activities.
+• Status Reporting: Compiled and distributed regular project status reports.
+• Budget Tracking: Monitored project expenses and updated budget records.
+• Data Management: Managed project-related data in various systems and databases.
+• Project Planning Support: Assisted in developing project plans, timelines, and resource allocation.
+• Progress Monitoring: Tracked project performance and supported corrective actions.
+• Risk Management Support: Assisted in identifying and reporting project risks and issues.
+• Quality Assurance: Supported quality assurance processes to ensure deliverables met standards.
+• Invoicing: Managed invoicing using Sage.- Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives. - Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications. - IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements. - Website Management: Redesigned and maintained company websites. - Document Management: Updated company documents, including profiles. - Project Documentation: Organized and maintained project documentation, including contracts and reports. - Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders. - Meeting Coordination: Scheduled and coordinated project meetings and activities. - Status Reporting: Compiled and distributed regular project status reports. - Budget Tracking: Monitored project expenses and updated budget records. - Data Management: Managed project-related data in various systems and databases. - Project Planning Support: Assisted in developing project plans, timelines, and resource allocation. - Progress Monitoring: Tracked project performance and supported corrective actions. - Risk Management Support: Assisted in identifying and reporting project risks and issues. - Quality Assurance: Supported quality assurance processes to ensure deliverables met standards. - Invoicing: Managed invoicing using Sage.…see more
 Project Management, Tender Management and +8 skills
 Senior Tendering Administrator and IT Support Technician
 Senior Tendering Administrator and IT Support Technician
@@ -548,4 +548,3 @@ Agile Project Management with Microsoft ProjectAgile Project Management with Mic
 Company logo
 Agile FoundationsAgile Foundations
 Budget Development
-
