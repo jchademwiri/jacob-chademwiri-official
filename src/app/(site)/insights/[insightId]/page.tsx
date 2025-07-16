@@ -106,6 +106,67 @@ export default function InsightPage({ params }: Props) {
               </p>
             </div>
           </div>
+
+          {/* Consultation CTA */}
+          <div className="mt-16 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-8 border border-green-200/50 dark:border-green-800/50">
+            <div className="text-center space-y-6">
+              <h3 className="text-2xl font-bold text-foreground">
+                Need Expert Guidance for Your Business?
+              </h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Get personalized insights and strategies for your tender
+                management, project coordination, or digital transformation
+                needs. Schedule a consultation to discuss your specific
+                challenges.
+              </p>
+
+              {/* Current Availability */}
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                  Currently available for business consultations
+                </span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  <Link href="/contact">Schedule Business Consultation</Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-green-600 text-green-600 hover:bg-green-600/10 dark:border-green-500 dark:text-green-400 dark:hover:bg-green-500/10"
+                >
+                  <Link href="/services">Explore Services</Link>
+                </Button>
+              </div>
+
+              {/* Service Areas */}
+              <div className="flex flex-wrap justify-center gap-4 mt-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <span>🎯</span>
+                  <span>Tender Management</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>📊</span>
+                  <span>Project Coordination</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>💻</span>
+                  <span>Web Development</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>⚡</span>
+                  <span>Process Optimization</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

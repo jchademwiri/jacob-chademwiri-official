@@ -422,28 +422,90 @@ export default function AboutPage() {
 
       {/* Contact Section */}
       <section className="py-12 md:py-20 bg-muted/50">
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">Contact</h2>
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">
+            Ready to Work Together?
+          </h2>
           <p className="text-lg text-muted-foreground mb-6">
-            {aboutData.contact.description}
+            Schedule a consultation to discuss your tender management, project
+            coordination, or web development needs. Let's explore how my
+            expertise can help achieve your business goals.
           </p>
-          <div className="flex flex-col items-center gap-4">
-            <a
-              href={`mailto:${aboutData.contact.email}`}
-              className="text-green-600 dark:text-green-400 text-lg font-semibold underline"
-            >
-              {aboutData.contact.email}
-            </a>
+
+          {/* Current Availability */}
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+              Currently accepting new consultation requests
+            </span>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Button
               asChild
-              className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white border-0 mt-2"
+              size="lg"
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white border-0"
+            >
+              <Link href="/contact">Schedule Business Consultation</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-green-600 text-green-600 hover:bg-green-600/10 dark:border-green-500 dark:text-green-400 dark:hover:bg-green-500/10"
+            >
+              <Link href="/services">View Services</Link>
+            </Button>
+          </div>
+
+          {/* Service Areas */}
+          <div className="flex flex-wrap justify-center gap-4 mb-6 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span>🎯</span>
+              <span>Tender Management</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>📊</span>
+              <span>Project Coordination</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>💻</span>
+              <span>Web Development</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>⚡</span>
+              <span>Business Optimization</span>
+            </div>
+          </div>
+
+          {/* Quick Stats */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4 border-t border-border/50 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <span>📞</span>
+              <span>24-48hr Response</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>💼</span>
+              <span>Free Initial Assessment</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>🎯</span>
+              <span>Tailored Solutions</span>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <Button
+              asChild
+              variant="ghost"
+              className="text-green-600 dark:text-green-400 hover:bg-green-600/10"
             >
               <Link
                 href={aboutData.contact.cvLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Download CV
+                Download Professional CV
               </Link>
             </Button>
           </div>

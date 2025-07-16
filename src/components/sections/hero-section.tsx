@@ -106,7 +106,7 @@ export function HeroSection({ height = 'min-h-[600px]' }) {
               size="lg"
               className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 text-white border-0"
             >
-              <Link href="/portfolio">View Portfolio</Link>
+              <Link href="/contact">Schedule Consultation</Link>
             </Button>
             <Button
               asChild
@@ -114,8 +114,24 @@ export function HeroSection({ height = 'min-h-[600px]' }) {
               size="lg"
               className="border-green-600 text-green-600 hover:bg-green-600/10 dark:border-green-500 dark:text-green-400 dark:hover:bg-green-500/10"
             >
-              <Link href="/contact">Get in Touch</Link>
+              <Link href="/case-studies">View Case Studies</Link>
             </Button>
+          </div>
+
+          {/* Current Availability Display */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span>Currently Available for New Projects</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>•</span>
+              <span>24-48hr Consultation Response</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>•</span>
+              <span>Free Initial Assessment</span>
+            </div>
           </div>
         </div>
       </div>
