@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Button } from '@/components/ui/button';
+import { ContactForm } from '@/components/contact-form';
 import {
   Card,
   CardContent,
@@ -9,20 +9,8 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import {
   Mail,
-  Phone,
-  MapPin,
   Clock,
   Target,
   CheckCircle,
@@ -125,8 +113,8 @@ export default function ContactPage() {
 
           <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300 mb-8">
             Ready to discuss your tender management, project coordination, or
-            web development needs? Let's explore how my expertise can help your
-            business achieve its goals.
+            web development needs? Let&apos;s explore how my expertise can help
+            your business achieve its goals.
           </p>
 
           <div className="flex flex-wrap gap-3 justify-center mb-8">
@@ -155,187 +143,12 @@ export default function ContactPage() {
                     Request a Consultation
                   </CardTitle>
                   <CardDescription>
-                    Fill out the form below and I'll get back to you within
+                    Fill out the form below and I&apos;ll get back to you within
                     24-48 hours to discuss your project requirements.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <form className="space-y-6">
-                    {/* Personal Information */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name *</Label>
-                        <Input
-                          id="firstName"
-                          name="firstName"
-                          placeholder="Your first name"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name *</Label>
-                        <Input
-                          id="lastName"
-                          name="lastName"
-                          placeholder="Your last name"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email Address *</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          placeholder="your.email@company.com"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+27 XX XXX XXXX"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company/Organization</Label>
-                      <Input
-                        id="company"
-                        name="company"
-                        placeholder="Your company name"
-                      />
-                    </div>
-
-                    {/* Service Selection */}
-                    <div className="space-y-2">
-                      <Label htmlFor="serviceType">
-                        Service Type *{' '}
-                        <span className="text-sm text-gray-500">
-                          (Select primary service needed)
-                        </span>
-                      </Label>
-                      <Select name="serviceType" required>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select the service you need" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {serviceTypes.map((service) => (
-                            <SelectItem
-                              key={service.value}
-                              value={service.value}
-                            >
-                              <div className="flex items-center space-x-2">
-                                <service.icon className="h-4 w-4" />
-                                <div>
-                                  <div className="font-medium">
-                                    {service.label}
-                                  </div>
-                                  <div className="text-xs text-gray-500">
-                                    {service.description}
-                                  </div>
-                                </div>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    {/* Project Details */}
-                    <div className="space-y-2">
-                      <Label htmlFor="projectTitle">Project Title</Label>
-                      <Input
-                        id="projectTitle"
-                        name="projectTitle"
-                        placeholder="Brief title for your project"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="budget">Estimated Budget Range</Label>
-                      <Select name="budget">
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select your budget range (optional)" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="under-10k">
-                            Under R10,000
-                          </SelectItem>
-                          <SelectItem value="10k-25k">
-                            R10,000 - R25,000
-                          </SelectItem>
-                          <SelectItem value="25k-50k">
-                            R25,000 - R50,000
-                          </SelectItem>
-                          <SelectItem value="50k-100k">
-                            R50,000 - R100,000
-                          </SelectItem>
-                          <SelectItem value="over-100k">
-                            Over R100,000
-                          </SelectItem>
-                          <SelectItem value="discuss">
-                            Prefer to discuss
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="timeline">Project Timeline</Label>
-                      <Select name="timeline">
-                        <SelectTrigger>
-                          <SelectValue placeholder="When do you need this completed?" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="urgent">
-                            ASAP (Within 2 weeks)
-                          </SelectItem>
-                          <SelectItem value="month">Within 1 month</SelectItem>
-                          <SelectItem value="quarter">
-                            Within 3 months
-                          </SelectItem>
-                          <SelectItem value="flexible">
-                            Flexible timeline
-                          </SelectItem>
-                          <SelectItem value="discuss">
-                            Need to discuss
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Project Description *</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        placeholder="Please describe your project requirements, goals, and any specific challenges you're facing..."
-                        rows={6}
-                        required
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full bg-green-600 hover:bg-green-700"
-                      size="lg"
-                    >
-                      Send Consultation Request
-                    </Button>
-
-                    <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                      * Required fields. I'll respond within 24-48 hours with
-                      next steps.
-                    </p>
-                  </form>
+                  <ContactForm />
                 </CardContent>
               </Card>
             </div>
@@ -503,11 +316,11 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold mb-2">
-                  What's included in the initial consultation?
+                  What&apos;s included in the initial consultation?
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
                   A comprehensive discussion of your project requirements,
-                  goals, timeline, and budget. I'll provide initial
+                  goals, timeline, and budget. I&apos;ll provide initial
                   recommendations and a clear project proposal.
                 </p>
               </div>
@@ -525,7 +338,7 @@ export default function ContactPage() {
 
               <div>
                 <h3 className="text-lg font-semibold mb-2">
-                  What's your typical project timeline?
+                  What&apos;s your typical project timeline?
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
                   Project timelines vary based on scope and complexity. Web
