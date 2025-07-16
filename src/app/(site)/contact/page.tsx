@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ContactForm } from '@/components/contact-form';
+
 import {
   Card,
   CardContent,
@@ -18,6 +18,7 @@ import {
   Linkedin,
   Building,
 } from 'lucide-react';
+import { ContactForm } from '@/components/contact-form';
 
 export const metadata: Metadata = {
   title: 'Contact - Schedule Your Business Consultation',

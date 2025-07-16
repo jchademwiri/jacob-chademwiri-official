@@ -15,7 +15,6 @@ import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useAuthSync } from '@/lib/hooks/use-auth-sync';
 
 export function SignUpForm({
   className,
@@ -27,9 +26,6 @@ export function SignUpForm({
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
-  // Use auth sync hook to ensure users are synced to database
-  useAuthSync();
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,41 +50,10 @@ export function SignUpForm({
 
       if (error) throw error;
 
-      // Manual fallback: Ensure user is synced to database
-      if (data.user) {
-        try {
-          const userData = {
-            id: data.user.id,
-            email: data.user.email || email,
-            role: email === 'hello@jacobc.co.za' ? 'admin' : 'user',
-            metadata: {
-              name:
-                data.user.user_metadata?.name ||
-                data.user.user_metadata?.full_name ||
-                '',
-              avatar_url: data.user.user_metadata?.avatar_url || null,
-            },
-          };
+      // Success! Database triggers will handle user sync automatically
+      console.log('✅ User signup successful:', email);
 
-          // Insert user into public.users table (fallback if triggers don't work)
-          const { error: syncError } = await supabase
-            .from('users')
-            .upsert(userData, { onConflict: 'id' });
-
-          if (syncError) {
-            console.warn(
-              'User sync warning (this is normal if triggers are working):',
-              syncError.message
-            );
-          } else {
-            console.log('✅ User synced to database:', email);
-          }
-        } catch (syncError) {
-          console.warn('User sync fallback failed:', syncError);
-          // Don't block signup for sync failures
-        }
-      }
-
+      // Navigate to success page immediately
       router.push('/auth/sign-up-success');
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : 'An error occurred');

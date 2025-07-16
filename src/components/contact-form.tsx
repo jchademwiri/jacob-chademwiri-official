@@ -250,7 +250,7 @@ export function ContactForm() {
           control={form.control}
           name="serviceType"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="w-full">
               <FormLabel>
                 Service Type *{' '}
                 <span className="text-sm text-gray-500 font-normal">
@@ -259,7 +259,7 @@ export function ContactForm() {
               </FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select the service you need" />
                   </SelectTrigger>
                 </FormControl>
@@ -305,14 +305,14 @@ export function ContactForm() {
             name="budget"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Estimated Budget Range</FormLabel>
+                <FormLabel>Estimated Budget Range (optional)</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select your budget range (optional)" />
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select your budget range" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -339,8 +339,8 @@ export function ContactForm() {
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="When do you need this completed?" />
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select Project Timeline" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>

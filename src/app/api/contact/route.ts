@@ -205,6 +205,7 @@ const getAutoReplyTemplate = (data: z.infer<typeof contactFormSchema>) => {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    console.log('Request body received:', body);
 
     // Validate the form data
     const validatedData = contactFormSchema.parse(body);
