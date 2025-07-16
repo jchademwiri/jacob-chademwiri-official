@@ -14,6 +14,10 @@
     "db:seed": "tsx src/lib/db/seed.ts",
     "db:rls": "tsx src/lib/db/apply-rls.ts",
     "db:verify": "tsx src/lib/db/verify-setup.ts",
+    "db:auth-trigger": "tsx src/lib/db/apply-auth-trigger.ts",
+    "db:sync-users": "tsx src/lib/db/apply-auth-trigger.ts sync-users",
+    "db:setup-auth-sync": "tsx src/lib/db/setup-auth-sync.ts",
+    "db:test-auth-sync": "tsx src/lib/db/setup-auth-sync.ts test",
     "storage:setup": "tsx src/lib/storage/setup.ts"
   },
   "dependencies": {

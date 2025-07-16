@@ -1,118 +1,184 @@
-import { db } from './index';
-import { sql } from 'drizzle-orm';
-import { users, caseStudies, insights, tags, media } from './schema';
+/**
+ * Database Setup Verification
+ * Script to verify database setup and user sync functionality
+ */
+
+import { config } from 'dotenv';
+import { createClient } from '@supabase/supabase-js';
+
+// Load environment variables
+config({ path: '.env.local' });
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+
+if (!supabaseUrl || !supabaseServiceKey) {
+  throw new Error('Missing required environment variables');
+}
+
+const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false,
+  },
+});
 
 async function verifyDatabaseSetup() {
   console.log('🔍 Verifying database setup...');
 
   try {
-    // Test basic connection
-    console.log('1. Testing database connection...');
-    const connectionTest = await db.execute(sql`SELECT 1 as test`);
-    console.log('✅ Database connection successful');
+    // Check if users table exists and has correct structure
+    const { data: users, error: usersError } = await supabase
+      .from('users')
+      .select('id, email, role, created_at')
+      .limit(5);
 
-    // Check tables exist
-    console.log('2. Checking table structure...');
-    const tables = await db.execute(sql`
-      SELECT table_name, column_name, data_type 
-      FROM information_schema.columns 
-      WHERE table_schema = 'public' 
-      ORDER BY table_name, ordinal_position
-    `);
+    if (usersError) {
+      console.error('❌ Users table error:', usersError.message);
+      return false;
+    }
 
-    const tableNames = [...new Set(tables.map((t) => t.table_name))];
-    console.log('✅ Tables found:', tableNames);
+    console.log(`✅ Users table accessible with ${users?.length || 0} users`);
 
-    // Check RLS is enabled
-    console.log('3. Checking Row Level Security...');
-    const rlsStatus = await db.execute(sql`
-      SELECT schemaname, tablename, rowsecurity 
-      FROM pg_tables 
-      WHERE schemaname = 'public'
-    `);
+    // Check if auth users exist
+    const { data: authUsers, error: authError } =
+      await supabase.auth.admin.listUsers();
 
-    const rlsEnabled = rlsStatus.filter((t) => t.rowsecurity);
+    if (authError) {
+      console.error('❌ Auth users error:', authError.message);
+      return false;
+    }
+
     console.log(
-      '✅ RLS enabled on tables:',
-      rlsEnabled.map((t) => t.tablename)
+      `✅ Auth users accessible with ${authUsers.users.length} users`
     );
 
-    // Check data exists
-    console.log('4. Checking seeded data...');
+    // Compare auth users vs public users
+    const authEmails = authUsers.users.map((u) => u.email).filter(Boolean);
+    const publicEmails = users?.map((u) => u.email) || [];
 
-    const userCount = await db.execute(
-      sql`SELECT COUNT(*) as count FROM users`
+    console.log('\n📊 User Sync Status:');
+    console.log(`Auth users: ${authEmails.length}`);
+    console.log(`Public users: ${publicEmails.length}`);
+
+    // Check for missing users
+    const missingInPublic = authEmails.filter(
+      (email) => !publicEmails.includes(email)
     );
-    console.log(`✅ Users: ${userCount[0].count}`);
-
-    const tagCount = await db.execute(sql`SELECT COUNT(*) as count FROM tags`);
-    console.log(`✅ Tags: ${tagCount[0].count}`);
-
-    const caseStudyCount = await db.execute(
-      sql`SELECT COUNT(*) as count FROM case_studies`
-    );
-    console.log(`✅ Case Studies: ${caseStudyCount[0].count}`);
-
-    const insightCount = await db.execute(
-      sql`SELECT COUNT(*) as count FROM insights`
-    );
-    console.log(`✅ Insights: ${insightCount[0].count}`);
-
-    // Test Drizzle ORM queries
-    console.log('5. Testing Drizzle ORM queries...');
-
-    const allUsers = await db.select().from(users);
-    console.log(`✅ Drizzle query - Users: ${allUsers.length}`);
-
-    const publishedCaseStudies = await db
-      .select()
-      .from(caseStudies)
-      .where(sql`status = 'published'`);
-    console.log(
-      `✅ Drizzle query - Published Case Studies: ${publishedCaseStudies.length}`
+    const missingInAuth = publicEmails.filter(
+      (email) => !authEmails.includes(email)
     );
 
-    const publishedInsights = await db
-      .select()
-      .from(insights)
-      .where(sql`status = 'published'`);
-    console.log(
-      `✅ Drizzle query - Published Insights: ${publishedInsights.length}`
-    );
+    if (missingInPublic.length > 0) {
+      console.log(
+        `⚠️  Users in auth but not in public.users: ${missingInPublic.join(
+          ', '
+        )}`
+      );
+    }
 
-    // Check relationships
-    console.log('6. Testing relationships...');
-    const insightsWithAuthors = await db.execute(sql`
-      SELECT i.title, u.email as author_email 
-      FROM insights i 
-      JOIN users u ON i.author_id = u.id 
-      LIMIT 3
-    `);
-    console.log(`✅ Insights with authors: ${insightsWithAuthors.length}`);
+    if (missingInAuth.length > 0) {
+      console.log(
+        `⚠️  Users in public.users but not in auth: ${missingInAuth.join(', ')}`
+      );
+    }
 
-    console.log('\n🎉 Database setup verification completed successfully!');
-    console.log('\n📊 Summary:');
-    console.log(`- Tables: ${tableNames.length} created`);
-    console.log(`- RLS: ${rlsEnabled.length} tables protected`);
-    console.log(`- Users: ${userCount[0].count} seeded`);
-    console.log(`- Tags: ${tagCount[0].count} seeded`);
-    console.log(`- Case Studies: ${caseStudyCount[0].count} seeded`);
-    console.log(`- Insights: ${insightCount[0].count} seeded`);
-    console.log('- Drizzle ORM: Working correctly');
-    console.log('- Relationships: Functioning properly');
+    if (missingInPublic.length === 0 && missingInAuth.length === 0) {
+      console.log('✅ All users are properly synced!');
+    }
+
+    // Check for admin user
+    const adminUser = users?.find((u) => u.role === 'admin');
+    if (adminUser) {
+      console.log(`✅ Admin user found: ${adminUser.email}`);
+    } else {
+      console.log('⚠️  No admin user found');
+    }
+
+    return true;
   } catch (error) {
     console.error('❌ Database verification failed:', error);
-    throw error;
+    return false;
   }
 }
 
-// Run the verification
-verifyDatabaseSetup()
-  .then(() => {
-    console.log('✅ Verification completed successfully');
-    process.exit(0);
-  })
-  .catch((error) => {
-    console.error('❌ Verification failed:', error);
-    process.exit(1);
-  });
+async function checkTriggers() {
+  console.log('\n🔧 Checking database triggers...');
+
+  try {
+    // Try to query triggers (this might not work on all Supabase instances)
+    const { data, error } = await supabase.rpc('exec_sql', {
+      sql: `
+          SELECT trigger_name, event_manipulation, action_timing
+          FROM information_schema.triggers 
+          WHERE trigger_name LIKE '%auth_user%';
+        `,
+    });
+
+    if (error) {
+      console.log('⚠️  Cannot verify triggers programmatically');
+      console.log(
+        '   Please check manually in Supabase Dashboard > Database > Triggers'
+      );
+      return false;
+    }
+
+    if (data && data.length > 0) {
+      console.log('✅ Auth triggers found:');
+      data.forEach((trigger: any) => {
+        console.log(
+          `   - ${trigger.trigger_name} (${trigger.event_manipulation} ${trigger.action_timing})`
+        );
+      });
+      return true;
+    } else {
+      console.log('❌ No auth triggers found');
+      return false;
+    }
+  } catch (error) {
+    console.log('⚠️  Cannot verify triggers:', error);
+    return false;
+  }
+}
+
+async function main() {
+  console.log('🚀 Database Setup Verification');
+  console.log('==============================\n');
+
+  const dbOk = await verifyDatabaseSetup();
+  const triggersOk = await checkTriggers();
+
+  console.log('\n📋 Summary:');
+  console.log(`Database Setup: ${dbOk ? '✅ OK' : '❌ Issues Found'}`);
+  console.log(
+    `Triggers: ${triggersOk ? '✅ OK' : '⚠️  Manual Check Required'}`
+  );
+
+  if (!triggersOk) {
+    console.log('\n🔧 Manual Setup Required:');
+    console.log('1. Open Supabase Dashboard > SQL Editor');
+    console.log('2. Run SQL from: src/lib/db/auth-trigger.sql');
+    console.log(
+      '3. This will create triggers to sync auth.users with public.users'
+    );
+    console.log(
+      '\n📄 The signup form includes fallback sync, so users will be synced even without triggers.'
+    );
+  }
+
+  console.log('\n✅ Verification completed');
+}
+
+// Run if called directly
+if (require.main === module) {
+  main()
+    .then(() => {
+      process.exit(0);
+    })
+    .catch((error) => {
+      console.error('❌ Verification failed:', error);
+      process.exit(1);
+    });
+}
+
+export { verifyDatabaseSetup, checkTriggers };

@@ -26,7 +26,7 @@ export const serviceTypeEnum = pgEnum('service_type', [
 
 // Users table
 export const users = pgTable('users', {
-  id: uuid('id').primaryKey().defaultRandom(),
+  id: uuid('id').primaryKey(), // This will be the Supabase Auth UUID
   email: varchar('email', { length: 255 }).notNull().unique(),
   role: userRoleEnum('role').notNull().default('user'),
   metadata: jsonb('metadata'),

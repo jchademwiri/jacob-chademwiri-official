@@ -1,3 +1,4 @@
+import { eq } from 'drizzle-orm';
 import { db } from './index';
 import {
   users,
@@ -13,23 +14,70 @@ async function seed() {
   console.log('🌱 Starting database seeding...');
 
   try {
-    // Create admin user
-    console.log('👤 Creating admin user...');
-    const [adminUser] = await db
-      .insert(users)
-      .values({
-        email: 'jacob@jacobchademwiri.com',
-        role: 'admin',
-        metadata: {
-          name: 'Jacob Chademwiri',
-          title:
-            'Tendering & Accounts Receivable Manager | Projects Coordinator',
-          company: 'SITHEMBE TRANSPORTATION & PROJECTS',
-        },
-      })
-      .returning();
+    // Create admin user (if not exists from Supabase Auth)
+    console.log('👤 Creating/updating admin user...');
 
-    console.log('✅ Admin user created:', adminUser.email);
+    // First, try to find existing user from Supabase Auth
+    let adminUser;
+    try {
+      // Check if admin user already exists
+      const existingAdmin = await db
+        .select()
+        .from(users)
+        .where(eq(users.email, 'hello@jacobc.co.za'))
+        .limit(1);
+
+      if (existingAdmin.length > 0) {
+        // Update existing admin user
+        [adminUser] = await db
+          .update(users)
+          .set({
+            role: 'admin',
+            metadata: {
+              name: 'Jacob Chademwiri',
+              title:
+                'Tendering & Accounts Receivable Manager | Projects Coordinator',
+              company: 'SITHEMBE TRANSPORTATION & PROJECTS',
+            },
+            updatedAt: new Date(),
+          })
+          .where(eq(users.email, 'hello@jacobc.co.za'))
+          .returning();
+
+        console.log('✅ Admin user updated:', adminUser.email);
+      } else {
+        // Create new admin user (this will only work if the user exists in Supabase Auth)
+        console.log('⚠️  Admin user not found in database.');
+        console.log(
+          '   Please ensure hello@jacobc.co.za is registered in Supabase Auth first.'
+        );
+        console.log(
+          '   Creating placeholder admin user for seeding purposes...'
+        );
+
+        // Create a placeholder admin user for seeding
+        [adminUser] = await db
+          .insert(users)
+          .values({
+            id: '00000000-0000-0000-0000-000000000000', // Placeholder UUID
+            email: 'hello@jacobc.co.za',
+            role: 'admin',
+            metadata: {
+              name: 'Jacob Chademwiri',
+              title:
+                'Tendering & Accounts Receivable Manager | Projects Coordinator',
+              company: 'SITHEMBE TRANSPORTATION & PROJECTS',
+            },
+          })
+          .returning();
+
+        console.log('✅ Placeholder admin user created:', adminUser.email);
+        console.log('   This will be replaced when the real user signs up.');
+      }
+    } catch (error) {
+      console.error('Error handling admin user:', error);
+      throw error;
+    }
 
     // Create tags
     console.log('🏷️ Creating tags...');
@@ -86,8 +134,26 @@ async function seed() {
       },
     ];
 
-    const createdTags = await db.insert(tags).values(tagData).returning();
-    console.log(`✅ Created ${createdTags.length} tags`);
+    // Use upsert for tags to handle existing data
+    const createdTags = [];
+    for (const tag of tagData) {
+      try {
+        const [upsertedTag] = await db
+          .insert(tags)
+          .values(tag)
+          .onConflictDoUpdate({
+            target: tags.name,
+            set: {
+              description: tag.description,
+            },
+          })
+          .returning();
+        createdTags.push(upsertedTag);
+      } catch (error) {
+        console.warn(`Warning with tag ${tag.name}:`, error);
+      }
+    }
+    console.log(`✅ Created/updated ${createdTags.length} tags`);
 
     // Create sample case studies
     console.log('📁 Creating case studies...');
@@ -240,11 +306,35 @@ async function seed() {
       },
     ];
 
-    const createdCaseStudies = await db
-      .insert(caseStudies)
-      .values(caseStudyData)
-      .returning();
-    console.log(`✅ Created ${createdCaseStudies.length} case studies`);
+    // Use upsert for case studies to handle existing data
+    const createdCaseStudies = [];
+    for (const caseStudy of caseStudyData) {
+      try {
+        const [upsertedCaseStudy] = await db
+          .insert(caseStudies)
+          .values(caseStudy)
+          .onConflictDoUpdate({
+            target: caseStudies.slug,
+            set: {
+              title: caseStudy.title,
+              description: caseStudy.description,
+              content: caseStudy.content,
+              excerpt: caseStudy.excerpt,
+              challenge: caseStudy.challenge,
+              solution: caseStudy.solution,
+              results: caseStudy.results,
+              roiMetrics: caseStudy.roiMetrics,
+              technologies: caseStudy.technologies,
+              updatedAt: new Date(),
+            },
+          })
+          .returning();
+        createdCaseStudies.push(upsertedCaseStudy);
+      } catch (error) {
+        console.warn(`Warning with case study ${caseStudy.title}:`, error);
+      }
+    }
+    console.log(`✅ Created/updated ${createdCaseStudies.length} case studies`);
 
     // Create sample insights
     console.log('💡 Creating insights...');
@@ -504,11 +594,31 @@ async function seed() {
       },
     ];
 
-    const createdInsights = await db
-      .insert(insights)
-      .values(insightData)
-      .returning();
-    console.log(`✅ Created ${createdInsights.length} insights`);
+    // Use upsert for insights to handle existing data
+    const createdInsights = [];
+    for (const insight of insightData) {
+      try {
+        const [upsertedInsight] = await db
+          .insert(insights)
+          .values(insight)
+          .onConflictDoUpdate({
+            target: insights.slug,
+            set: {
+              title: insight.title,
+              content: insight.content,
+              excerpt: insight.excerpt,
+              readingTime: insight.readingTime,
+              isFeatured: insight.isFeatured,
+              updatedAt: new Date(),
+            },
+          })
+          .returning();
+        createdInsights.push(upsertedInsight);
+      } catch (error) {
+        console.warn(`Warning with insight ${insight.title}:`, error);
+      }
+    }
+    console.log(`✅ Created/updated ${createdInsights.length} insights`);
 
     // Create tag associations for case studies
     console.log('🔗 Creating case study tag associations...');
