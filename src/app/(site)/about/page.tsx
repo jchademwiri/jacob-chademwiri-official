@@ -3,6 +3,11 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { InteractiveSkills } from '@/components/interactive-skills';
+import { AnimatedTimeline } from '@/components/animated-timeline';
+import { EducationCertifications } from '@/components/education-certifications';
+import { DownloadableResume } from '@/components/downloadable-resume';
+import { PersonalPhilosophy } from '@/components/personal-philosophy';
 
 const aboutData = {
   hero: {
@@ -242,65 +247,67 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Interactive Skills */}
       <section className="py-12 md:py-20">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
-            Skills & Certifications
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
+            Skills & Expertise
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {aboutData.skills.map((skillCat) => (
-              <Card key={skillCat.category} className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg font-semibold mb-2">
-                    {skillCat.category}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {skillCat.items.map((item) => (
-                      <Badge
-                        key={item}
-                        className="bg-gray-200/60 dark:bg-gray-800/60 text-sm font-medium px-3 py-1 rounded-full"
-                      >
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <InteractiveSkills />
         </div>
       </section>
 
-      {/* Experience Timeline */}
+      {/* Animated Experience Timeline */}
       <section className="py-12 md:py-20 bg-muted/50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
             Professional Experience
           </h2>
-          <div className="space-y-8 border-l-2 border-green-600 pl-6">
-            {aboutData.experiences.map((exp, i) => (
-              <div key={exp.company} className="relative pb-8">
-                <span className="absolute -left-6 top-2 w-4 h-4 bg-green-600 rounded-full border-4 border-white dark:border-gray-900"></span>
-                <div className="mb-1 text-lg font-semibold text-green-700 dark:text-green-400">
-                  {exp.company}
-                </div>
-                <div className="text-base font-medium text-foreground">
-                  {exp.role}
-                </div>
-                <div className="text-sm text-muted-foreground mb-2">
-                  {exp.period} | {exp.location}
-                </div>
-                <ul className="list-disc ml-5 text-muted-foreground text-sm space-y-1">
-                  {exp.description.map((desc, j) => (
-                    <li key={j}>{desc}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <AnimatedTimeline
+            items={aboutData.experiences.map((exp, index) => ({
+              id: `exp-${index}`,
+              company: exp.company,
+              role: exp.role,
+              period: exp.period,
+              location: exp.location,
+              description: exp.description,
+              skills:
+                exp.company === 'SITHEMBE TRANSPORTATION AND PROJECTS'
+                  ? [
+                      'Sage',
+                      'Tender Management',
+                      'Project Coordination',
+                      'IT Support',
+                    ]
+                  : exp.company === 'Playhouse Media Group'
+                  ? ['WordPress', 'HTML', 'CSS', 'JavaScript', 'SEO']
+                  : [
+                      'React.js',
+                      'Next.js',
+                      'Adobe XD',
+                      'Figma',
+                      'Google Analytics',
+                    ],
+              achievements:
+                exp.company === 'SITHEMBE TRANSPORTATION AND PROJECTS'
+                  ? [
+                      'Improved cash flow tracking efficiency',
+                      'Increased tender win rates',
+                      'Enhanced digital presence',
+                    ]
+                  : exp.company === 'Playhouse Media Group'
+                  ? [
+                      'Delivered 15+ responsive websites',
+                      'Improved SEO rankings for clients',
+                      'Maintained 99% uptime',
+                    ]
+                  : [
+                      'Built scalable web applications',
+                      'Optimized site performance',
+                      'Implemented modern deployment practices',
+                    ],
+            }))}
+          />
         </div>
       </section>
 
@@ -373,8 +380,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Personal Interests */}
+      {/* Education & Certifications */}
       <section className="py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <EducationCertifications />
+        </div>
+      </section>
+
+      {/* Personal Philosophy */}
+      <section className="py-12 md:py-20 bg-muted/50">
+        <div className="max-w-6xl mx-auto px-4">
+          <PersonalPhilosophy />
+        </div>
+      </section>
+
+      {/* Downloadable Resume */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <DownloadableResume />
+        </div>
+      </section>
+
+      {/* Personal Interests */}
+      <section className="py-12 md:py-20 bg-muted/50">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-4xl font-bold mb-8">
             Personal Interests
