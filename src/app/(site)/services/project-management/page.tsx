@@ -10,18 +10,17 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
 import {
   CheckCircle,
   Users,
   TrendingUp,
   Calendar,
   DollarSign,
-  FileText,
   Shield,
   Target,
   Clock,
   Award,
-  ArrowRight,
   BarChart3,
 } from 'lucide-react';
 
@@ -439,8 +438,18 @@ export default function ProjectManagementPage() {
         </div>
       </section>
 
-      {/* Project Types */}
+      {/* Client Success Stories */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <ServiceTestimonials
+            serviceType="project-management"
+            showMetrics={true}
+          />
+        </div>
+      </section>
+
+      {/* Project Types */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Project Types & Industries
@@ -505,32 +514,12 @@ export default function ProjectManagementPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            Let's discuss your project requirements and develop a comprehensive
-            management plan. Schedule a consultation to explore how I can ensure
-            your project's success.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-green-600 hover:bg-green-700"
-            >
-              <Link href="/contact">Schedule Consultation</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/services">View All Services</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Consultation CTA */}
+      <ConsultationCTA
+        serviceType="project-management"
+        showBenefits={true}
+        showContactInfo={true}
+      />
     </div>
   );
 }

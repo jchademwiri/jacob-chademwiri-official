@@ -10,21 +10,18 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
 import {
   Code,
   Zap,
-  Smartphone,
   Search,
   ShoppingCart,
   Globe,
   Palette,
   Shield,
-  TrendingUp,
   CheckCircle,
   Clock,
   Award,
-  ArrowRight,
-  Layers,
   Database,
   Rocket,
 } from 'lucide-react';
@@ -470,8 +467,18 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* Website Types */}
+      {/* Client Success Stories */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <ServiceTestimonials
+            serviceType="web-development"
+            showMetrics={true}
+          />
+        </div>
+      </section>
+
+      {/* Website Types */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Website Types & Solutions
@@ -536,32 +543,12 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Build Your Website?
-          </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            Let's discuss your web development needs and create a solution that
-            drives your business forward. Schedule a consultation to explore the
-            possibilities.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-purple-600 hover:bg-purple-700"
-            >
-              <Link href="/contact">Start Your Project</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/services">View All Services</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Consultation CTA */}
+      <ConsultationCTA
+        serviceType="web-development"
+        showBenefits={true}
+        showContactInfo={true}
+      />
     </div>
   );
 }

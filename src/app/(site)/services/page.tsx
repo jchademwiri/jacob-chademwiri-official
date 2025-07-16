@@ -1,15 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, CheckCircle, Target, Zap } from 'lucide-react';
+import {
+  ServicesGrid,
+  ServiceTestimonials,
+  ConsultationCTA,
+} from '@/components/services';
+import { Target, CheckCircle, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
   title:
@@ -29,71 +25,8 @@ export const metadata: Metadata = {
   ],
 };
 
-const services = [
-  {
-    title: 'Tender Management',
-    href: '/services/tender-management',
-    description:
-      'Expert tender preparation, bid management, and compliance support to help your business win more contracts.',
-    icon: Target,
-    features: [
-      'CIDB Registration & Grading',
-      'Bid Preparation & Submission',
-      'Compliance Management',
-      'Proposal Writing',
-      'Tender Documentation',
-      'Risk Assessment',
-    ],
-    stats: {
-      experience: '3+ Years',
-      successRate: '85%',
-      contracts: '50+ Tenders',
-    },
-    color: 'bg-blue-500',
-  },
-  {
-    title: 'Project Management',
-    href: '/services/project-management',
-    description:
-      'Comprehensive project coordination, stakeholder management, and delivery optimization for successful outcomes.',
-    icon: CheckCircle,
-    features: [
-      'Project Planning & Coordination',
-      'Stakeholder Management',
-      'Budget Tracking & Control',
-      'Risk Management',
-      'Quality Assurance',
-      'Progress Reporting',
-    ],
-    stats: {
-      experience: '5+ Years',
-      projects: '100+ Projects',
-      onTime: '95%',
-    },
-    color: 'bg-green-500',
-  },
-  {
-    title: 'Web Development',
-    href: '/services/web-development',
-    description:
-      'Modern, scalable web solutions built with cutting-edge technologies for optimal performance and user experience.',
-    icon: Zap,
-    features: [
-      'Next.js & React Development',
-      'WordPress Solutions',
-      'E-commerce Platforms',
-      'SEO Optimization',
-      'Performance Optimization',
-      'Maintenance & Support',
-    ],
-    stats: {
-      experience: '7+ Years',
-      websites: '200+ Sites',
-      performance: '98% Uptime',
-    },
-    color: 'bg-purple-500',
-  },
-];
+// Use the default services from ServicesGrid component
+// No need to redefine them here since they're already properly structured
 
 export default function ServicesPage() {
   return (
@@ -141,80 +74,7 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <Card
-                  key={index}
-                  className="relative overflow-hidden group hover:shadow-lg transition-all duration-300"
-                >
-                  <div
-                    className={`absolute top-0 left-0 w-full h-1 ${service.color}`}
-                  />
-
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center space-x-3 mb-3">
-                      <div
-                        className={`p-2 rounded-lg ${service.color} text-white`}
-                      >
-                        <IconComponent className="h-6 w-6" />
-                      </div>
-                      <CardTitle className="text-xl">{service.title}</CardTitle>
-                    </div>
-                    <CardDescription className="text-base">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-
-                  <CardContent className="space-y-6">
-                    {/* Key Features */}
-                    <div>
-                      <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide">
-                        Key Services
-                      </h4>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-sm">
-                            <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Stats */}
-                    <div className="grid grid-cols-3 gap-2 pt-4 border-t">
-                      {Object.entries(service.stats).map(([key, value]) => (
-                        <div key={key} className="text-center">
-                          <div className="font-bold text-lg text-green-600 dark:text-green-400">
-                            {value}
-                          </div>
-                          <div className="text-xs text-gray-600 dark:text-gray-400 capitalize">
-                            {key.replace(/([A-Z])/g, ' $1').trim()}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* CTA Button */}
-                    <Button
-                      asChild
-                      className="w-full group-hover:bg-green-600 transition-colors"
-                    >
-                      <Link
-                        href={service.href}
-                        className="flex items-center justify-center"
-                      >
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+          <ServicesGrid />
         </div>
       </section>
 
@@ -269,32 +129,20 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Client Testimonials */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-            Let's discuss how my services can help your business achieve its
-            goals. Schedule a consultation to explore the best solutions for
-            your needs.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-green-600 hover:bg-green-700"
-            >
-              <Link href="/contact">Schedule Consultation</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/case-studies">View Case Studies</Link>
-            </Button>
-          </div>
+        <div className="max-w-6xl mx-auto">
+          <ServiceTestimonials serviceType="all" showMetrics={true} />
         </div>
       </section>
+
+      {/* Consultation CTA */}
+      <ConsultationCTA
+        serviceType="general"
+        showBenefits={true}
+        showContactInfo={true}
+        className="bg-gray-50 dark:bg-gray-900/50"
+      />
     </div>
   );
 }
