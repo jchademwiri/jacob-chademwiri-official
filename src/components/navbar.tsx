@@ -8,7 +8,7 @@ import { MobileNav } from './mobile-nav';
 import { ThemeToggle } from './theme-toggle';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-import { navLinks, type NavLink } from '@/data/constraints';
+import { navLinks } from '@/data/constraints';
 // import ThemeToggle from './theme-toggle';
 
 export function Navbar() {

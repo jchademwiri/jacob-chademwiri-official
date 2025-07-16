@@ -23,7 +23,8 @@ This document outlines the specific tasks needed to complete the transformation 
   - Create `/services/web-development/page.tsx` - Web development service page
   - _Requirements: 1.1, 1.3, 2.1_
 
-- [ ] **Task A3: Rename and Restructure Existing Routes**
+- [x] **Task A3: Rename and Restructure Existing Routes**
+
   - Rename `/projects` directory to `/case-studies`
   - Rename `/blog` directory to `/insights` (create new directory structure)
   - Update all internal navigation links and references

@@ -33,7 +33,7 @@ export function ProjectCard({ project, viewMode, delay }: ProjectCardProps) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/projects/${project.id}`);
+    router.push(`/case-studies/${project.id}`);
   };
 
   if (viewMode === 'list') {

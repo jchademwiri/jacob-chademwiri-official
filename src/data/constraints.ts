@@ -8,6 +8,7 @@ import {
   PenTool,
   User,
   Mail,
+  type LucideIcon,
 } from 'lucide-react';
 
 export const navLinks = [
@@ -46,6 +47,6 @@ export const navLinks = [
 export interface NavLink {
   label: string;
   href: string;
-  icon?: any;
+  icon?: LucideIcon;
   dropdown?: NavLink[];
 }
