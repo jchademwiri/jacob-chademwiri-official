@@ -4,6 +4,12 @@ import { Project, ProjectType } from '@/data/projects';
 export interface FilterState {
   category: string;
   skill?: string[]; // Added to support skills filter
+  serviceType:
+    | 'all'
+    | 'tender_management'
+    | 'project_management'
+    | 'web_development'
+    | 'it_solutions';
   projectType: ProjectType | 'all';
   status: 'all' | 'completed' | 'in-progress';
   sortBy: 'recent' | 'featured' | 'alphabetical' | 'duration';
@@ -19,7 +25,7 @@ export function useProjectFilters(initialProjects: Project[]) {
   const [filters, setFilters] = useState<FilterState>({
     category: 'all',
     skill: undefined,
-
+    serviceType: 'all',
     projectType: 'all',
     status: 'all',
     sortBy: 'recent',
@@ -77,6 +83,18 @@ export function useProjectFilters(initialProjects: Project[]) {
     ];
   }, [initialProjects]);
 
+  // Service type options
+  const serviceTypes = useMemo(
+    () => [
+      { value: 'all', label: 'All Services' },
+      { value: 'tender_management', label: 'Tender Management' },
+      { value: 'project_management', label: 'Project Management' },
+      { value: 'web_development', label: 'Web Development' },
+      { value: 'it_solutions', label: 'IT Solutions' },
+    ],
+    []
+  );
+
   // Project type options
   const projectTypes = useMemo(
     () => [
@@ -114,6 +132,11 @@ export function useProjectFilters(initialProjects: Project[]) {
     // Filter by category
     if (filters.category !== 'all') {
       result = result.filter((p) => p.category === filters.category);
+    }
+
+    // Filter by service type
+    if (filters.serviceType !== 'all') {
+      result = result.filter((p) => p.serviceType === filters.serviceType);
     }
 
     // Filter by project type
@@ -208,7 +231,7 @@ export function useProjectFilters(initialProjects: Project[]) {
     setFilters({
       category: 'all',
       skill: undefined,
-
+      serviceType: 'all',
       projectType: 'all',
       status: 'all',
       sortBy: 'recent',
@@ -220,7 +243,7 @@ export function useProjectFilters(initialProjects: Project[]) {
   const getActiveFiltersCount = useCallback(() => {
     let count = 0;
     if (filters.category !== 'all') count++;
-
+    if (filters.serviceType !== 'all') count++;
     if (filters.projectType !== 'all') count++;
     if (filters.status !== 'all') count++;
     if (filters.search) count++;
@@ -235,6 +258,7 @@ export function useProjectFilters(initialProjects: Project[]) {
     categories,
     technologies,
     skills,
+    serviceTypes,
     projectTypes,
     statusOptions,
     sortOptions,

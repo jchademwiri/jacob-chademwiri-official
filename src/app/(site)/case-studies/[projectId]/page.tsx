@@ -16,12 +16,19 @@ import {
   Target,
   Award,
   Briefcase,
+  AlertTriangle,
+  Lightbulb,
+  TrendingUp,
+  CheckCircle,
+  DollarSign,
+  BarChart3,
 } from 'lucide-react';
 import { Project, projects } from '@/data/projects';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { RelatedCaseStudies } from '@/components/case-studies/related-case-studies';
 
 interface PageParams {
   projectId: string;
@@ -402,6 +409,97 @@ export default function ProjectPage({ params }: Props) {
           </div>
         </div>
 
+        {/* Challenge-Solution-Results-ROI Section */}
+        {(project.challenge ||
+          project.solution ||
+          project.results ||
+          project.roiMetrics) && (
+          <div className="mb-12 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-500">
+            <div className="grid gap-8 lg:grid-cols-2">
+              {/* Challenge & Solution */}
+              <div className="space-y-8">
+                {project.challenge && (
+                  <Card className="border-l-4 border-l-red-500">
+                    <CardHeader>
+                      <CardTitle className="text-xl flex items-center gap-3">
+                        <AlertTriangle className="h-6 w-6 text-red-500" />
+                        The Challenge
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {project.challenge}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {project.solution && (
+                  <Card className="border-l-4 border-l-blue-500">
+                    <CardHeader>
+                      <CardTitle className="text-xl flex items-center gap-3">
+                        <Lightbulb className="h-6 w-6 text-blue-500" />
+                        Our Solution
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {project.solution}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+
+              {/* Results & ROI */}
+              <div className="space-y-8">
+                {project.results && (
+                  <Card className="border-l-4 border-l-green-500">
+                    <CardHeader>
+                      <CardTitle className="text-xl flex items-center gap-3">
+                        <CheckCircle className="h-6 w-6 text-green-500" />
+                        Results Achieved
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {project.results}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {project.roiMetrics && project.roiMetrics.length > 0 && (
+                  <Card className="border-l-4 border-l-primary">
+                    <CardHeader>
+                      <CardTitle className="text-xl flex items-center gap-3">
+                        <TrendingUp className="h-6 w-6 text-primary" />
+                        Measurable ROI & Impact
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid gap-3">
+                        {project.roiMetrics.map((metric, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors duration-200"
+                            style={{ animationDelay: `${index * 0.1}s` }}
+                          >
+                            <BarChart3 className="h-5 w-5 text-primary flex-shrink-0" />
+                            <span className="text-muted-foreground">
+                              {metric}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Bottom Section - Technologies & Testimonial */}
         <div className="grid gap-8 md:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
           {/* Technologies & Skills */}
@@ -488,6 +586,13 @@ export default function ProjectPage({ params }: Props) {
             )}
           </div>
         </div>
+
+        {/* Related Case Studies */}
+        <RelatedCaseStudies
+          currentProject={project}
+          allProjects={projects}
+          maxResults={3}
+        />
       </div>
     </div>
   );

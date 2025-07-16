@@ -7,7 +7,7 @@ import { AnimatedBackground } from '@/components/projects/animated-background';
 import { ProjectsHeader } from '@/components/projects/projects-header';
 import { ProjectsControls } from '@/components/projects/projects-controls';
 import { EmptyState } from '@/components/projects/empty-state';
-import { ProjectsGrid } from '@/components/projects/projects-grid';
+import { CaseStudiesGrid } from '@/components/case-studies/case-studies-grid';
 import { CallToAction } from '@/components/projects/call-to-action';
 
 export default function ProjectsPage() {
@@ -22,6 +22,7 @@ export default function ProjectsPage() {
     filteredProjects,
     categories,
     skills,
+    serviceTypes,
     projectTypes,
     statusOptions,
     sortOptions,
@@ -55,6 +56,7 @@ export default function ProjectsPage() {
           onViewModeChange={setViewMode}
           categories={categories}
           skills={skills}
+          serviceTypes={serviceTypes}
           projectTypes={projectTypes}
           statusOptions={statusOptions}
           sortOptions={sortOptions}
@@ -71,7 +73,7 @@ export default function ProjectsPage() {
           {filteredProjects.length === 0 ? (
             <EmptyState />
           ) : (
-            <ProjectsGrid
+            <CaseStudiesGrid
               projects={filteredProjects}
               viewMode={viewMode}
               isLoading={isLoading}
