@@ -95,7 +95,7 @@ This document outlines the specific tasks needed to complete the transformation 
 
 ### **Content Management System**
 
-- [ ] **Task E1: Integrate Rich Text Editor**
+- [-] **Task E1: Integrate Rich Text Editor**
 
   - Install and configure TipTap editor with Notion-like styling
   - Implement image upload and embedding within editor
