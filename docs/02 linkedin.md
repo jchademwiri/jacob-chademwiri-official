@@ -31,7 +31,7 @@ Website Developer at Playhouse Media GroupWebsite Developer at Playhouse Media G
 Company logo
 Senior Tendering Administrator and IT Support Technician at SITHEMBE TRANSPORTATION AND PROJECTSSenior Tendering Administrator and IT Support Technician at SITHEMBE TRANSPORTATION AND PROJECTS
 Company logo
-Web Developer at Baum Systems Pvt LtdWeb Developer at Baum Systems Pvt Ltd
+Web Developer at Baum SystemsWeb Developer at Baum Systems
 Mutare Polytechnical CollegeMutare Polytechnical College
 Company logo
 TreehouseTreehouse
@@ -98,22 +98,22 @@ Tendering Manager | Projects Administrator and IT Support Technician
 Tendering Manager | Projects Administrator and IT Support Technician
 Nov 2023 - Sep 2024 · 11 mosNov 2023 to Sep 2024 · 11 mos
 HybridHybrid
-•	Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives.
-•	Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications.
-•	IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements.
-•	Website Management: Redesigned and maintained company websites.
-•	Document Management: Updated company documents, including profiles.
-•	Project Documentation: Organized and maintained project documentation, including contracts and reports.
-•	Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders.
-•	Meeting Coordination: Scheduled and coordinated project meetings and activities.
-•	Status Reporting: Compiled and distributed regular project status reports.
-•	Budget Tracking: Monitored project expenses and updated budget records.
-•	Data Management: Managed project-related data in various systems and databases.
-•	Project Planning Support: Assisted in developing project plans, timelines, and resource allocation.
-•	Progress Monitoring: Tracked project performance and supported corrective actions.
-•	Risk Management Support: Assisted in identifying and reporting project risks and issues.
-•	Quality Assurance: Supported quality assurance processes to ensure deliverables met standards.
-•	Invoicing: Managed invoicing using Sage.- Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives. - Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications. - IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements. - Website Management: Redesigned and maintained company websites. - Document Management: Updated company documents, including profiles. - Project Documentation: Organized and maintained project documentation, including contracts and reports. - Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders. - Meeting Coordination: Scheduled and coordinated project meetings and activities. - Status Reporting: Compiled and distributed regular project status reports. - Budget Tracking: Monitored project expenses and updated budget records. - Data Management: Managed project-related data in various systems and databases. - Project Planning Support: Assisted in developing project plans, timelines, and resource allocation. - Progress Monitoring: Tracked project performance and supported corrective actions. - Risk Management Support: Assisted in identifying and reporting project risks and issues. - Quality Assurance: Supported quality assurance processes to ensure deliverables met standards. - Invoicing: Managed invoicing using Sage.…see more
+• Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives.
+• Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications.
+• IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements.
+• Website Management: Redesigned and maintained company websites.
+• Document Management: Updated company documents, including profiles.
+• Project Documentation: Organized and maintained project documentation, including contracts and reports.
+• Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders.
+• Meeting Coordination: Scheduled and coordinated project meetings and activities.
+• Status Reporting: Compiled and distributed regular project status reports.
+• Budget Tracking: Monitored project expenses and updated budget records.
+• Data Management: Managed project-related data in various systems and databases.
+• Project Planning Support: Assisted in developing project plans, timelines, and resource allocation.
+• Progress Monitoring: Tracked project performance and supported corrective actions.
+• Risk Management Support: Assisted in identifying and reporting project risks and issues.
+• Quality Assurance: Supported quality assurance processes to ensure deliverables met standards.
+• Invoicing: Managed invoicing using Sage.- Tender Management: Led the end-to-end tender process, including bid preparation, proposal writing, and submission. Identified new tender opportunities, aligning them with business objectives. - Cross-Department Collaboration: Worked with sales, legal, and finance teams to meet tender requirements and specifications. - IT Solutions & Services: Provided IT solutions, including website development, system support, and process improvements. - Website Management: Redesigned and maintained company websites. - Document Management: Updated company documents, including profiles. - Project Documentation: Organized and maintained project documentation, including contracts and reports. - Communication Facilitation: Acted as the central point of contact for project teams and external stakeholders. - Meeting Coordination: Scheduled and coordinated project meetings and activities. - Status Reporting: Compiled and distributed regular project status reports. - Budget Tracking: Monitored project expenses and updated budget records. - Data Management: Managed project-related data in various systems and databases. - Project Planning Support: Assisted in developing project plans, timelines, and resource allocation. - Progress Monitoring: Tracked project performance and supported corrective actions. - Risk Management Support: Assisted in identifying and reporting project risks and issues. - Quality Assurance: Supported quality assurance processes to ensure deliverables met standards. - Invoicing: Managed invoicing using Sage.…see more
 Project Management, Tender Management and +8 skills
 Senior Tendering Administrator and IT Support Technician
 Senior Tendering Administrator and IT Support Technician
@@ -145,10 +145,10 @@ City of Johannesburg, Gauteng, South Africa · HybridCity of Johannesburg, Gaute
 👉 Designing and prototyping websites
 👉 Maintain consistency in design and layout👉 Create web pages using WordPress and a combination of markup languages 👉 Identify usability and develop functional and smooth, easy-to-operate and eye-catching web applications 👉 Writing web pages compatible with Search Engine Optimizations (S.E.O) 👉 Convert Adobe XD layouts to web pages using HTML, CSS and JavaScript 👉 Perform websites maintenance and enhancements 👉 Create browser and platform compatible CSS (cascading style sheets) codes 👉 Monitor technical aspects of the front-end delivery for several projects 👉 Designing and prototyping websites 👉 Maintain consistency in design and layout…see more
 JavaScript, Cascading Style Sheets (CSS) and +18 skills
-Baum Systems Pvt Ltd logo
+Baum Systems logo
 Web Developer
 Web Developer
-Baum Systems Pvt Ltd · FreelanceBaum Systems Pvt Ltd · Freelance
+Baum Systems · FreelanceBaum Systems · Freelance
 Aug 2019 - Jan 2022 · 2 yrs 6 mosAug 2019 to Jan 2022 · 2 yrs 6 mos
 Cape Town Area, South Africa · RemoteCape Town Area, South Africa · Remote
 👉 Designing and prototyping websites using Adobe XD or Figma
@@ -548,4 +548,3 @@ Agile Project Management with Microsoft ProjectAgile Project Management with Mic
 Company logo
 Agile FoundationsAgile Foundations
 Budget Development
-

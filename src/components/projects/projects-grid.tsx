@@ -22,7 +22,7 @@ export function ProjectsGrid({
 
   return (
     <div
-      className={`grid gap-8 ${
+      className={`grid gap-4 ${
         viewMode === 'grid'
           ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
           : 'grid-cols-1'

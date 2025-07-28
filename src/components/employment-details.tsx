@@ -58,7 +58,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
           </div>
 
           {/* Position Header */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
             <div className="lg:col-span-2 space-y-6">
               {/* Company Badge */}
               <div className="flex items-center space-x-4">
@@ -213,7 +213,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {position.achievements.map((achievement, index) => (
                 <div
                   key={index}
@@ -258,7 +258,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {position.notableProjects.map((project, index) => (
                 <div
                   key={index}
@@ -316,7 +316,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {position.roles.map((role, index) => (
                 <div
                   key={index}
@@ -380,7 +380,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {position.tools.map((toolCategory, index) => (
                 <div
                   key={index}
@@ -509,7 +509,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {position.development.map((dev, index) => (
                 <div
                   key={index}
@@ -642,8 +642,8 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {position.type === 'Full-time'
-                ? "Looking for expertise in tender management, project coordination, or financial operations? Let's discuss how I can help your organization achieve operational excellence."
-                : "Need a custom website or digital solution? Let's create something amazing together that drives results for your business."}
+                ? 'Looking for expertise in tender management, project coordination, or financial operations? Let&apos;s discuss how I can help your organization achieve operational excellence.'
+                : 'Need a custom website or digital solution? Let&apos;s create something amazing together that drives results for your business.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">

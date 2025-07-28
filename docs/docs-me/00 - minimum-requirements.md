@@ -1,6 +1,6 @@
 # Streamlined Documentation for Solo Developer Portfolio Project
 
-You're right - the full enterprise documentation suite is excessive for a solo developer. Let's create a more practical, streamlined documentation approach that still maintains professional standards while being manageable for one person.
+You're right - the full enterprise documentation suite is excessive for a solo developer. Let&apos;s create a more practical, streamlined documentation approach that still maintains professional standards while being manageable for one person.
 
 ## Essential Documentation for Solo Portfolio Development
 

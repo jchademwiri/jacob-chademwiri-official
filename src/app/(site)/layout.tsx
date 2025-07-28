@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-// import { Navbar } from '@/components/navbar';
-// import { Footer } from '@/components/footer';
+import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   creator: 'Jacob Chademwiri',
   metadataBase: new URL('https://jacobc.co.za'),
   openGraph: {
-    title: 'Website Developer in Centurion, South Africa',
+    title: 'Web Developer & Project Manager',
     description:
       'Jacob Chademwiri builds fast, modern websites with Next.js & CMS integrations—focused on clean code, great UX, and scalable performance.',
     url: 'https://jacobc.co.za',
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
         url: '/opengraph-image.jpg', // Place this image in the public/ folder
         width: 1200,
         height: 630,
-        alt: 'jacobc.co.za – Coming Soon',
+        alt: 'jacobc.co.za – Web Developer & Project Manager',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Coming Soon | jacobc.co.za',
+    title: 'Web Developer & Project Manager',
     description:
       'Jacob Chademwiri builds fast, modern websites with Next.js & CMS integrations—focused on clean code, great UX, and scalable performance.',
     creator: '@jchademwiri',
@@ -62,9 +62,9 @@ export default function SiteLayout({
 }>) {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <main className="flex-1">{children}</main>
-      {/* <Footer /> */}
+      <Footer />
       <SpeedInsights />
       <Analytics />
     </>

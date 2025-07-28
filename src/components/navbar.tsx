@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MobileNav } from './mobile-nav';
 import { ThemeToggle } from './theme-toggle';
@@ -53,8 +53,54 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              {navLinks.map(({ label, href }) => {
-                const isActive = pathname === href;
+              {navLinks.map((navItem) => {
+                const { label, href, dropdown } = navItem;
+                const isActive =
+                  pathname === href ||
+                  (dropdown && dropdown.some((item) => pathname === item.href));
+
+                if (dropdown) {
+                  return (
+                    <div key={href} className="relative group">
+                      <Button
+                        variant={'link'}
+                        className={`hover:no-underline cursor-pointer ${
+                          isActive
+                            ? 'text-primary'
+                            : 'text-foreground hover:text-primary'
+                        }`}
+                      >
+                        <span>{label}</span>
+                        <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                      </Button>
+
+                      {/* Dropdown Menu */}
+                      <div className="absolute top-full left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div className="bg-background border rounded-md shadow-lg py-2">
+                          {dropdown.map((item) => {
+                            const IconComponent = item.icon;
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`flex items-center space-x-3 px-4 py-2 text-sm transition-colors ${
+                                  pathname === item.href
+                                    ? 'text-primary bg-primary/10'
+                                    : 'text-foreground hover:text-primary hover:bg-accent'
+                                }`}
+                              >
+                                {IconComponent && (
+                                  <IconComponent className="h-4 w-4" />
+                                )}
+                                <span>{item.label}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
 
                 return (
                   <Link
@@ -76,11 +122,10 @@ export function Navbar() {
             <div className="flex items-center space-x-4">
               <ThemeToggle />
               <Button size="lg" className="hidden sm:flex text-white">
-                <Link href="mailto:Jacob Chademwiri<hello@jacobc.co.za>?subject=Hiring%20Inquiry">
-                  Hire Me
-                </Link>
+                <Link href="/contact">Get Consultation</Link>
               </Button>
               <button
+                type="button"
                 className="flex items-center justify-center md:hidden"
                 onClick={() => setIsOpen(true)}
                 aria-label="Toggle Menu"

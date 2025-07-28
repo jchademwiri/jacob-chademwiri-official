@@ -1,4 +1,4 @@
-import { navLinks } from './constraints';
-import { currentPositions } from './currentPositions';
-
-export { navLinks, currentPositions };
+export { navLinks } from './constraints';
+export { currentPositions } from './currentPositions';
+export { projects } from './projects';
+export { aboutData } from './about';
