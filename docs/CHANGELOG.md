@@ -188,8 +188,8 @@ For questions about this changelog or the project:
 
 - **Email**: jacob@jacobc.co.za
 - **Website**: [jacobc.co.za](https://jacobc.co.za)
-- **LinkedIn**: [Jacob Chademwiri](https://linkedin.com/in/jacob-chademwiri)
+- **LinkedIn**: [Jacob Chademwiri](https://linkedin.com/in/jchademwiri)
 
 ---
 
-**Note**: This changelog is maintained manually and updated with each release. For detailed commit history, see the [GitHub repository](https://github.com/jchademwiri/jacob-chademwiri-official).
+**Note**: This changelog is maintained manually and updated with each release. For detailed commit history, see the [GitHub repository](https://github.com/jchademwiri/jchademwiri-official).

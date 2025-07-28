@@ -396,7 +396,7 @@ xl: 1280px  /* Extra large devices */
   lg:grid-cols-3 
   gap-4 
   md:gap-6 
-  lg:gap-8
+  lg:gap-4
 "
 >
   {/* Content */}
@@ -450,7 +450,7 @@ const structuredData = {
   jobTitle: 'Full-Stack Web Developer',
   url: 'https://jacobc.co.za',
   sameAs: [
-    'https://linkedin.com/in/jacob-chademwiri',
+    'https://linkedin.com/in/jchademwiri',
     'https://github.com/jchademwiri',
   ],
 };

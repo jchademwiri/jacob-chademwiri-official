@@ -63,7 +63,7 @@ This guide covers deployment strategies for the Jacob Chademwiri portfolio websi
    - Visit [vercel.com](https://vercel.com)
    - Click "New Project"
    - Import your GitHub repository
-   - Select the repository: `jacob-chademwiri-official`
+   - Select the repository: `jchademwiri-official`
 
 3. **Configure Build Settings**
    ```
@@ -159,7 +159,7 @@ Create `vercel.json` for advanced configuration:
   "redirects": [
     {
       "source": "/resume",
-      "destination": "/resumes/jacob-chademwiri-resume.pdf",
+      "destination": "/resumes/jchademwiri-resume.pdf",
       "permanent": false
     }
   ],
@@ -238,7 +238,7 @@ Configure different branches for different environments:
 
    [[redirects]]
      from = "/resume"
-     to = "/resumes/jacob-chademwiri-resume.pdf"
+     to = "/resumes/jchademwiri-resume.pdf"
      status = 302
 
    [[headers]]

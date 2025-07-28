@@ -39,16 +39,6 @@ export const contactFormSchema = z.object({
     .string()
     .max(100, 'Project title must be less than 100 characters')
     .optional(),
-  budget: z
-    .enum([
-      'under-10k',
-      '10k-25k',
-      '25k-50k',
-      '50k-100k',
-      'over-100k',
-      'discuss',
-    ])
-    .optional(),
   timeline: z
     .enum(['urgent', 'month', 'quarter', 'flexible', 'discuss'])
     .optional(),
@@ -65,15 +55,6 @@ export const serviceTypeLabels = {
   'project-management': 'Project Management',
   'web-development': 'Web Development',
   consultation: 'General Consultation',
-} as const;
-
-export const budgetLabels = {
-  'under-10k': 'Under R10,000',
-  '10k-25k': 'R10,000 - R25,000',
-  '25k-50k': 'R25,000 - R50,000',
-  '50k-100k': 'R50,000 - R100,000',
-  'over-100k': 'Over R100,000',
-  discuss: 'Prefer to discuss',
 } as const;
 
 export const timelineLabels = {

@@ -25,8 +25,8 @@ A modern, responsive portfolio website showcasing the work and expertise of Jaco
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/jchademwiri/jacob-chademwiri-official.git
-   cd jacob-chademwiri-official
+   git clone https://github.com/jchademwiri/jchademwiri-official.git
+   cd jchademwiri-official
    ```
 
 2. **Install dependencies**
@@ -63,7 +63,7 @@ A modern, responsive portfolio website showcasing the work and expertise of Jaco
 ## 📁 Project Structure
 
 ```
-jacob-chademwiri-official/
+jchademwiri-official/
 ├── docs/                    # Comprehensive documentation
 ├── public/                  # Static assets and images
 ├── src/
@@ -145,7 +145,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Website**: [jacobc.co.za](https://jacobc.co.za)
 - **Email**: jacob@jacobc.co.za
-- **LinkedIn**: [Jacob Chademwiri](https://linkedin.com/in/jacob-chademwiri)
+- **LinkedIn**: [Jacob Chademwiri](https://linkedin.com/in/jchademwiri)
 - **Location**: Centurion, Gauteng, South Africa
 
 ---

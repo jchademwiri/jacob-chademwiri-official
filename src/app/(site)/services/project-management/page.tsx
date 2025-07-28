@@ -293,7 +293,7 @@ export default function ProjectManagementPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
@@ -383,7 +383,7 @@ export default function ProjectManagementPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {methodologies.map((methodology, index) => {
               const IconComponent = methodology.icon;
               return (
@@ -420,7 +420,7 @@ export default function ProjectManagementPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {achievements.map((achievement, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">

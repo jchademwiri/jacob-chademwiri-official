@@ -30,14 +30,14 @@ We welcome several types of contributions:
 
    ```bash
    # Fork on GitHub, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/jacob-chademwiri-official.git
-   cd jacob-chademwiri-official
+   git clone https://github.com/YOUR_USERNAME/jchademwiri-official.git
+   cd jchademwiri-official
    ```
 
 2. **Add upstream remote**
 
    ```bash
-   git remote add upstream https://github.com/jchademwiri/jacob-chademwiri-official.git
+   git remote add upstream https://github.com/jchademwiri/jchademwiri-official.git
    ```
 
 3. **Install dependencies**

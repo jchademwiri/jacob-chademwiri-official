@@ -62,9 +62,9 @@ export function Navbar() {
                 if (dropdown) {
                   return (
                     <div key={href} className="relative group">
-                      <button
-                        type="button"
-                        className={`flex items-center space-x-1 text-sm font-medium transition-colors ${
+                      <Button
+                        variant={'link'}
+                        className={`hover:no-underline cursor-pointer ${
                           isActive
                             ? 'text-primary'
                             : 'text-foreground hover:text-primary'
@@ -72,7 +72,7 @@ export function Navbar() {
                       >
                         <span>{label}</span>
                         <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
-                      </button>
+                      </Button>
 
                       {/* Dropdown Menu */}
                       <div className="absolute top-full left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">

@@ -32,36 +32,23 @@ const serviceTypes = [
   {
     value: 'tender-management',
     label: 'Tender Management',
-    description: 'CIDB registration, bid preparation, compliance support',
     icon: Target,
   },
   {
     value: 'project-management',
     label: 'Project Management',
-    description: 'Project coordination, stakeholder management, delivery',
     icon: CheckCircle,
   },
   {
     value: 'web-development',
     label: 'Web Development',
-    description: 'Modern websites, e-commerce, web applications',
     icon: Zap,
   },
   {
     value: 'consultation',
     label: 'General Consultation',
-    description: 'Discuss multiple services or general business needs',
     icon: Building,
   },
-] as const;
-
-const budgetOptions = [
-  { value: 'under-10k', label: 'Under R10,000' },
-  { value: '10k-25k', label: 'R10,000 - R25,000' },
-  { value: '25k-50k', label: 'R25,000 - R50,000' },
-  { value: '50k-100k', label: 'R50,000 - R100,000' },
-  { value: 'over-100k', label: 'Over R100,000' },
-  { value: 'discuss', label: 'Prefer to discuss' },
 ] as const;
 
 const timelineOptions = [
@@ -86,7 +73,6 @@ export function ContactForm() {
       company: '',
       serviceType: undefined,
       projectTitle: '',
-      budget: undefined,
       timeline: undefined,
       message: '',
     },
@@ -244,81 +230,32 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-
-        {/* Service Selection */}
-        <FormField
-          control={form.control}
-          name="serviceType"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>
-                Service Type *{' '}
-                <span className="text-sm text-gray-500 font-normal">
-                  (Select primary service needed)
-                </span>
-              </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select the service you need" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {serviceTypes.map((service) => (
-                    <SelectItem key={service.value} value={service.value}>
-                      <div className="flex items-center space-x-2">
-                        <service.icon className="h-4 w-4" />
-                        <div>
-                          <div className="font-medium">{service.label}</div>
-                          <div className="text-xs text-gray-500">
-                            {service.description}
-                          </div>
-                        </div>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Project Details */}
-        <FormField
-          control={form.control}
-          name="projectTitle"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Project Title</FormLabel>
-              <FormControl>
-                <Input placeholder="Brief title for your project" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Service Selection */}
           <FormField
             control={form.control}
-            name="budget"
+            name="serviceType"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Estimated Budget Range (optional)</FormLabel>
+              <FormItem className="w-full">
+                <FormLabel>Service Type * </FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select your budget range" />
+                      <SelectValue placeholder="Select the service you need" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {budgetOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
+                    {serviceTypes.map((service) => (
+                      <SelectItem key={service.value} value={service.value}>
+                        <div className="flex items-center space-x-2">
+                          <service.icon className="h-4 w-4" />
+                          <div>
+                            <div className="font-medium">{service.label}</div>
+                          </div>
+                        </div>
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -327,7 +264,7 @@ export function ContactForm() {
               </FormItem>
             )}
           />
-
+          {/* Project Details */}
           <FormField
             control={form.control}
             name="timeline"
@@ -359,6 +296,22 @@ export function ContactForm() {
 
         <FormField
           control={form.control}
+          name="projectTitle"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Project Title</FormLabel>
+              <FormControl>
+                <Input placeholder="Brief title for your project" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+        <FormField
+          control={form.control}
           name="message"
           render={({ field }) => (
             <FormItem>
@@ -377,7 +330,7 @@ export function ContactForm() {
 
         <Button
           type="submit"
-          className="w-full bg-green-600 hover:bg-green-700"
+          className="w-full cursor-pointer text-white "
           size="lg"
           disabled={isSubmitting}
         >

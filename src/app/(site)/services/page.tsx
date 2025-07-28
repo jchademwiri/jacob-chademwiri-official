@@ -72,15 +72,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <ServicesGrid />
-        </div>
+      <section className="py-16 px-4 sm:px-6 lg:px-8 mx-auto max-w-6xl">
+        <ServicesGrid />
       </section>
 
       {/* Why Choose My Services */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center  px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Why Choose My Services?
           </h2>
@@ -90,7 +88,7 @@ export default function ServicesPage() {
             business acumen and technical expertise to every project.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Target className="h-8 w-8 text-green-600 dark:text-green-400" />
@@ -131,7 +129,7 @@ export default function ServicesPage() {
 
       {/* Client Testimonials */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto text-center  px-4 sm:px-6 lg:px-8">
           <ServiceTestimonials serviceType="all" showMetrics={true} />
         </div>
       </section>

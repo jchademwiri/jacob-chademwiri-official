@@ -43,7 +43,7 @@ const SkeletonLoader = () => (
   <div className="animate-pulse">
     <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
     <div className="h-6 bg-muted rounded w-3/4 mb-8"></div>
-    <div className="grid gap-8 lg:grid-cols-3">
+    <div className="grid gap-4 lg:grid-cols-3">
       <div className="lg:col-span-2 space-y-8">
         <div className="aspect-[16/10] bg-muted rounded-lg"></div>
         {[1, 2, 3].map((i) => (
@@ -178,7 +178,7 @@ export default function ProjectPage({ params }: Props) {
         </div>
 
         {/* Improved Hero Section */}
-        <div className="grid gap-8 lg:gap-12 lg:grid-cols-3 mb-12 animate-in fade-in-50 slide-in-from-bottom-4 duration-700">
+        <div className="grid gap-4 lg:gap-12 lg:grid-cols-3 mb-12 animate-in fade-in-50 slide-in-from-bottom-4 duration-700">
           {/* Left Column - Project Info */}
           <div className="lg:col-span-2 space-y-6">
             {/* Project Header */}
@@ -415,7 +415,7 @@ export default function ProjectPage({ params }: Props) {
           project.results ||
           project.roiMetrics) && (
           <div className="mb-12 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-500">
-            <div className="grid gap-8 lg:grid-cols-2">
+            <div className="grid gap-4 lg:grid-cols-2">
               {/* Challenge & Solution */}
               <div className="space-y-8">
                 {project.challenge && (
@@ -501,7 +501,7 @@ export default function ProjectPage({ params }: Props) {
         )}
 
         {/* Bottom Section - Technologies & Testimonial */}
-        <div className="grid gap-8 md:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
+        <div className="grid gap-4 md:grid-cols-3 animate-in fade-in-50 slide-in-from-bottom-8 duration-700 delay-300">
           {/* Technologies & Skills */}
           <div className="md:col-span-2 space-y-6">
             {/* All Skills */}

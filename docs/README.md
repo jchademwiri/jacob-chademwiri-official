@@ -47,8 +47,8 @@ This is a modern, responsive portfolio website for Jacob Chademwiri, a Full-Stac
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/jacob-chademwiri-official.git
-   cd jacob-chademwiri-official
+   git clone https://github.com/yourusername/jchademwiri-official.git
+   cd jchademwiri-official
    ```
 
 2. **Install dependencies**
@@ -93,7 +93,7 @@ This is a modern, responsive portfolio website for Jacob Chademwiri, a Full-Stac
 ## 📁 Project Structure
 
 ```
-jacob-chademwiri-official/
+jchademwiri-official/
 ├── docs/                          # Documentation files
 │   ├── README.md                  # Main documentation
 │   ├── 00 Index.md               # Content strategy
@@ -391,7 +391,7 @@ pnpm dev
 For questions or support:
 
 - **Email**: jacob@jacobc.co.za
-- **LinkedIn**: [Jacob Chademwiri](https://linkedin.com/in/jacob-chademwiri)
+- **LinkedIn**: [Jacob Chademwiri](https://linkedin.com/in/jchademwiri)
 - **Website**: [jacobc.co.za](https://jacobc.co.za)
 
 ---

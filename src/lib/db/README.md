@@ -121,7 +121,7 @@ The database implements comprehensive RLS policies:
 
 The seed script creates:
 
-- 1 admin user (jacob@jacobchademwiri.com)
+- 1 admin user (hello@jacobc.co.za)
 - 10 content tags covering all service areas
 - 3 sample case studies showcasing different services
 - 3 sample insights with professional content

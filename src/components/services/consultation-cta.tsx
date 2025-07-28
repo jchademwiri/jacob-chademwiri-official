@@ -18,6 +18,7 @@ import {
   Phone,
   Mail,
   MessageSquare,
+  Linkedin,
 } from 'lucide-react';
 
 interface ConsultationCTAProps {
@@ -102,8 +103,8 @@ export function ConsultationCTA({
   const finalPrimaryButtonText = primaryButtonText || content.primaryButtonText;
 
   return (
-    <section className={`py-16 px-4 sm:px-6 lg:px-8 ${className}`}>
-      <div className="max-w-6xl mx-auto">
+    <section className={`py-16 px-4  sm:px-6 lg:px-8 ${className}`}>
+      <div className="py-16 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Main CTA Content */}
           <div>
@@ -115,12 +116,8 @@ export function ConsultationCTA({
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button
-                asChild
-                size="lg"
-                className="bg-green-600 hover:bg-green-700"
-              >
-                <Link href="/contact" className="flex items-center">
+              <Button asChild size="lg">
+                <Link href="/contact" className="flex items-center text-white">
                   {finalPrimaryButtonText}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -132,7 +129,7 @@ export function ConsultationCTA({
 
             {/* Quick Contact Options */}
             {showContactInfo && (
-              <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex text-green-500 flex-wrap gap-4 text-sm">
                 <div className="flex items-center">
                   <Clock className="h-4 w-4 mr-2" />
                   24-48hr Response
@@ -209,22 +206,22 @@ export function ConsultationCTA({
                 <div className="space-y-3">
                   <h4 className="font-semibold text-sm">Preferred Contact:</h4>
                   <div className="flex flex-col space-y-2">
-                    <a
-                      href="mailto:jacob@jacobchademwiri.com"
+                    <Link
+                      href="mailto:hello@jacobc.co.za"
                       className="flex items-center text-sm text-green-600 dark:text-green-400 hover:underline"
                     >
                       <Mail className="h-4 w-4 mr-2" />
-                      jacob@jacobchademwiri.com
-                    </a>
-                    <a
-                      href="https://linkedin.com/in/jacob-chademwiri"
+                      hello@jacobc.co.za
+                    </Link>
+                    <Link
+                      href="https://linkedin.com/in/jchademwiri"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center text-sm text-green-600 dark:text-green-400 hover:underline"
                     >
-                      <Phone className="h-4 w-4 mr-2" />
+                      <Linkedin className="h-4 w-4 mr-2" />
                       LinkedIn Professional
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </CardContent>

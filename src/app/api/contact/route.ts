@@ -2,19 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import {
   contactFormSchema,
   serviceTypeLabels,
-  budgetLabels,
   timelineLabels,
 } from '@/lib/validations/contact';
 import { z } from 'zod';
 
 // Email service configuration (using a simple email service)
 // In production, you would use services like Resend, SendGrid, or similar
-const CONTACT_EMAIL = 'jacob@jacobchademwiri.com';
+const CONTACT_EMAIL = 'hello@jacobc.co.za';
 
 // Service-specific email templates
 const getEmailTemplate = (data: z.infer<typeof contactFormSchema>) => {
   const serviceType = serviceTypeLabels[data.serviceType];
-  const budget = data.budget ? budgetLabels[data.budget] : 'Not specified';
   const timeline = data.timeline
     ? timelineLabels[data.timeline]
     : 'Not specified';
@@ -78,7 +76,6 @@ const getEmailTemplate = (data: z.infer<typeof contactFormSchema>) => {
                   ? `<strong>Project:</strong> ${data.projectTitle}<br>`
                   : ''
               }
-              <strong>Budget:</strong> ${budget}<br>
               <strong>Timeline:</strong> <span class="priority">${timeline}</span><br>
             </div>
           </div>
@@ -122,7 +119,6 @@ ${data.company ? `- Company: ${data.company}` : ''}
 
 Project Details:
 ${data.projectTitle ? `- Project: ${data.projectTitle}` : ''}
-- Budget: ${budget}
 - Timeline: ${timeline}
 
 Project Description:
@@ -186,8 +182,8 @@ const getAutoReplyTemplate = (data: z.infer<typeof contactFormSchema>) => {
               Tendering & Accounts Receivable Manager | Projects Coordinator<br>
               SITHEMBE TRANSPORTATION & PROJECTS<br><br>
               
-              Email: <a href="mailto:jacob@jacobchademwiri.com">jacob@jacobchademwiri.com</a><br>
-              LinkedIn: <a href="https://linkedin.com/in/jacob-chademwiri">Jacob Chademwiri</a><br>
+              Email: <a href="mailto:hello@jacobc.co.za">hello@jacobc.co.za</a><br>
+              LinkedIn: <a href="https://linkedin.com/in/jchademwiri">Jacob Chademwiri</a><br>
               Website: <a href="https://jacobc.co.za">jacobc.co.za</a>
             </p>
           </div>

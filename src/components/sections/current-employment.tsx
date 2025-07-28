@@ -27,7 +27,7 @@ export function CurrentEmployment() {
         </div>
 
         {/* Position Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {currentPositions.map((position) => (
             <Link
               href={`/employment/${position.id}`}

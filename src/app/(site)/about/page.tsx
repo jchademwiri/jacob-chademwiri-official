@@ -133,7 +133,7 @@ const aboutData = {
     description:
       "Ready to collaborate or have a project in mind? Let's connect!",
     email: 'jacob@example.com',
-    cvLink: '/jacob-chademwiri-cv.pdf',
+    cvLink: '/jchademwiri-cv.pdf',
   },
   experiences: [
     {
@@ -247,16 +247,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Interactive Skills */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
-            Skills & Expertise
-          </h2>
-          <InteractiveSkills />
-        </div>
-      </section>
-
       {/* Animated Experience Timeline */}
       <section className="py-12 md:py-20 bg-muted/50">
         <div className="max-w-5xl mx-auto px-4">
@@ -317,7 +307,7 @@ export default function AboutPage() {
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
             Featured Projects
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {aboutData.featuredProjects.map((proj) => (
               <Card key={proj.title} className="h-full">
                 <CardHeader>
@@ -360,7 +350,7 @@ export default function AboutPage() {
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
             Testimonials
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {aboutData.testimonials.map((testi) => (
               <Card key={testi.author} className="h-full">
                 <CardContent>

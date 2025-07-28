@@ -134,7 +134,7 @@ export function ServiceTestimonials({
       </div>
 
       {/* Testimonials Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredTestimonials.map((testimonial) => (
           <Card
             key={testimonial.id}
@@ -232,7 +232,7 @@ export function ServiceTestimonials({
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Award className="h-8 w-8 text-blue-600 dark:text-blue-400" />

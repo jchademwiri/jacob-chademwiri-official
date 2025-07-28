@@ -23,7 +23,7 @@ const resumeVersions: ResumeVersion[] = [
     name: 'Complete Resume',
     description:
       'Comprehensive resume with all experience, skills, and projects',
-    fileUrl: '/resumes/jacob-chademwiri-complete-resume.pdf',
+    fileUrl: '/resumes/jchademwiri-complete-resume.pdf',
     lastUpdated: '2024-12-15',
     fileSize: '245 KB',
     type: 'pdf',
@@ -33,7 +33,7 @@ const resumeVersions: ResumeVersion[] = [
     name: 'Technical Focus',
     description:
       'Developer-focused resume highlighting technical skills and projects',
-    fileUrl: '/resumes/jacob-chademwiri-technical-resume.pdf',
+    fileUrl: '/resumes/jchademwiri-technical-resume.pdf',
     lastUpdated: '2024-12-15',
     fileSize: '198 KB',
     type: 'pdf',
@@ -42,7 +42,7 @@ const resumeVersions: ResumeVersion[] = [
     id: 'management',
     name: 'Management Focus',
     description: 'Project management and business operations focused resume',
-    fileUrl: '/resumes/jacob-chademwiri-management-resume.pdf',
+    fileUrl: '/resumes/jchademwiri-management-resume.pdf',
     lastUpdated: '2024-12-15',
     fileSize: '210 KB',
     type: 'pdf',
@@ -62,7 +62,7 @@ export function DownloadableResume() {
       // Create download link
       const link = document.createElement('a');
       link.href = resume.fileUrl;
-      link.download = `jacob-chademwiri-${resume.id}-resume.pdf`;
+      link.download = `jchademwiri-${resume.id}-resume.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

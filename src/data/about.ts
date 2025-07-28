@@ -203,6 +203,6 @@ export const aboutData: AboutPageData = {
     description:
       'Ready to start your project or just want to connect? I typically respond within 24 hours.',
     email: 'hello@jacobc.co.za',
-    cvLink: '/jacob-chademwiri-cv.pdf',
+    cvLink: '/jchademwiri-cv.pdf',
   },
 };

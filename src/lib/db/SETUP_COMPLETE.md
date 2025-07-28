@@ -31,7 +31,7 @@ The Supabase database schema has been successfully implemented with all required
 
 #### 4. Seed Data Created
 
-- **1 Admin User**: jacob@jacobchademwiri.com with full admin privileges
+- **1 Admin User**: hello@jacobc.co.za with full admin privileges
 - **10 Content Tags**: Covering all service areas (Tender Management, Project Coordination, Web Development, IT Solutions, etc.)
 - **3 Case Studies**: Showcasing different service types with detailed ROI metrics
 - **3 Professional Insights**: Industry-focused articles with rich content

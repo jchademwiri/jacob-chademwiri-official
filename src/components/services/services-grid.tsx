@@ -102,7 +102,7 @@ export function ServicesGrid({
   className = '',
 }: ServicesGridProps) {
   return (
-    <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 ${className}`}>
+    <div className={`grid grid-cols-1 lg:grid-cols-3 gap-4 ${className}`}>
       {services.map((service, index) => {
         const IconComponent = service.icon;
         return (

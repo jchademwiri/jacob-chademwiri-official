@@ -18,7 +18,7 @@ import {
   Linkedin,
   Building,
 } from 'lucide-react';
-import { ContactForm } from '@/components/contact-form';
+import { ContactForm } from '@/components/forms/contact-form';
 
 export const metadata: Metadata = {
   title: 'Contact - Schedule Your Business Consultation',
@@ -66,14 +66,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'jacob@jacobchademwiri.com',
-    href: 'mailto:jacob@jacobchademwiri.com',
+    value: 'hello@jacobc.co.za',
+    href: 'mailto:hello@jacobc.co.za',
   },
   {
     icon: Linkedin,
     label: 'LinkedIn',
     value: 'Jacob Chademwiri',
-    href: 'https://linkedin.com/in/jacob-chademwiri',
+    href: 'https://linkedin.com/in/jchademwiri',
   },
   {
     icon: Building,
@@ -91,7 +91,7 @@ const contactInfo = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-green-50 via-white to-green-50 dark:from-green-950/20 dark:via-gray-900 dark:to-green-950/20" />
@@ -133,7 +133,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -313,7 +313,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold mb-2">
