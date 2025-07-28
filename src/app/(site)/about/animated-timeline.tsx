@@ -10,7 +10,8 @@ interface TimelineItem {
   role: string;
   period: string;
   location: string;
-  description: string[];
+  description?: string;
+  responsibilities: string[];
   skills?: string[];
   achievements?: string[];
 }
@@ -126,9 +127,14 @@ export function AnimatedTimeline({ items }: AnimatedTimelineProps) {
                   </div>
 
                   {/* Description */}
+                  {item.description && (
+                    <p className="text-foreground mb-4">{item.description}</p>
+                  )}
+
+                  {/* Responsibilities */}
                   <div className="mb-4">
                     <ul className="space-y-2">
-                      {item.description.map((desc, i) => (
+                      {item.responsibilities.map((desc, i) => (
                         <li
                           key={i}
                           className={`flex items-start gap-2 text-sm text-muted-foreground transition-all duration-300 ${

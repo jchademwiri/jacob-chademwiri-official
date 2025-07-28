@@ -3,11 +3,11 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { InteractiveSkills } from '@/components/interactive-skills';
-import { AnimatedTimeline } from '@/components/animated-timeline';
+import { AnimatedTimeline } from '@/app/(site)/about/animated-timeline';
 import { EducationCertifications } from '@/components/education-certifications';
 import { DownloadableResume } from '@/components/downloadable-resume';
 import { PersonalPhilosophy } from '@/components/personal-philosophy';
+import AboutSection from './aboutSection';
 
 const aboutData = {
   hero: {
@@ -25,15 +25,6 @@ const aboutData = {
       'IT Support',
       'Business Growth',
     ],
-  },
-  story: {
-    content: [
-      'I am a result-oriented professional with expertise in Tender Administration/Management, IT Support, Web Development and a growing skillset in Project Management.',
-      'With a record of accomplishment of successful tendering, website developments and excellent IT support service delivery, I am committed to driving business growth through optimal efficiency.',
-      'My dedication to continuous learning and development has led me to focus on acquiring Project Management skills to complement my existing expertise.',
-      "I am committed to providing tailored solutions that meet each client's unique needs and am constantly seeking new and innovative ways to optimize efficiency and improve business performance.",
-    ],
-    quote: 'Success is built on curiosity, resilience, and collaboration.',
   },
   achievements: [
     { label: 'Years Experience', value: '10+' },
@@ -132,7 +123,7 @@ const aboutData = {
   contact: {
     description:
       "Ready to collaborate or have a project in mind? Let's connect!",
-    email: 'jacob@example.com',
+    email: 'hello@jacobc.co.za',
     cvLink: '/jchademwiri-cv.pdf',
   },
   experiences: [
@@ -141,7 +132,9 @@ const aboutData = {
       role: 'Tendering & Accounts Receivable Manager | Projects Coordinator | IT Support Technician',
       period: 'Sep 2024 - Present',
       location: 'Centurion, Gauteng, South Africa',
-      description: [
+      description:
+        'I oversee accounts receivable operations, tender processes, project coordination & administration, & digital solutions, ensuring financial accuracy, operational efficiency, and compliance.',
+      responsibilities: [
         'Oversee accounts receivable operations, tender processes, project coordination & administration, & digital solutions.',
         'Manage the full accounts receivable cycle, including invoicing, collections, and cash flow tracking using Sage.',
         'Lead tendering processes from opportunity identification to submission, ensuring compliance and high win rates.',
@@ -154,7 +147,9 @@ const aboutData = {
       role: 'Website Developer',
       period: 'Jan 2020 - Present',
       location: 'Johannesburg, Gauteng, South Africa',
-      description: [
+      description:
+        'I create custom web solutions using modern technologies, focusing on SEO optimization, user experience, and sustainable digital presence for businesses.',
+      responsibilities: [
         'Create web pages using WordPress and a combination of markup languages.',
         'Identify usability and develop functional, easy-to-operate and eye-catching web applications.',
         'Writing web pages compatible with SEO.',
@@ -163,11 +158,13 @@ const aboutData = {
       ],
     },
     {
-      company: 'Baum Systems Pvt Ltd',
+      company: 'Baum Systems',
       role: 'Web Developer',
       period: 'Aug 2019 - Jan 2022',
       location: 'Cape Town Area, South Africa',
-      description: [
+      description:
+        'I create custom web solutions using modern technologies, focusing on SEO optimization, user experience, and sustainable digital presence for businesses.',
+      responsibilities: [
         'Designing and prototyping websites using Adobe XD or Figma.',
         'Create data-driven websites using React JS or Next JS, APIs and Sanity io headless CMS.',
         'Deploy websites to GCP, Vercel, Netlify and Cloudflare.',
@@ -214,22 +211,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Story & Quote */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
-          {aboutData.story.content.map((para, i) => (
-            <p
-              key={i}
-              className="text-lg text-muted-foreground leading-relaxed"
-            >
-              {para}
-            </p>
-          ))}
-          <blockquote className="italic text-green-600 dark:text-green-400 text-xl font-semibold border-l-4 border-green-600 pl-4 mt-6">
-            “{aboutData.story.quote}”
-          </blockquote>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* Achievements */}
       <section className="py-12 md:py-20 bg-muted/50">
@@ -261,35 +243,68 @@ export default function AboutPage() {
               period: exp.period,
               location: exp.location,
               description: exp.description,
+              responsibilities: exp.responsibilities,
               skills:
                 exp.company === 'SITHEMBE TRANSPORTATION AND PROJECTS'
                   ? [
-                      'Sage',
-                      'Tender Management',
+                      'Sage Accounting',
+                      'Accounts Receivable Management',
+                      'Invoicing and Quoting',
+                      'Cash Flow Tracking and Reporting',
+                      'Tender Management and Administration',
+                      'Tender Preparation',
+                      'Tender Compliance',
                       'Project Coordination',
+                      'Project Management',
                       'IT Support',
+                      'Website Development',
                     ]
                   : exp.company === 'Playhouse Media Group'
-                  ? ['WordPress', 'HTML', 'CSS', 'JavaScript', 'SEO']
-                  : [
+                  ? [
                       'React.js',
                       'Next.js',
-                      'Adobe XD',
+                      'TypeScript',
+                      'Tailwind CSS',
+                      'HTML',
+                      'CSS',
+                      'JavaScript',
+                      'SEO',
+                      'Database Management',
+                      'PostgreSQL',
+                      'supabase',
+                      'neonDB',
                       'Figma',
                       'Google Analytics',
+                    ]
+                  : [
+                      'Next.js',
+                      'TypeScript',
+                      'React',
+                      'WordPress',
+                      'HTML',
+                      'CSS',
+                      'JavaScript',
+                      'Figma',
+                      'Vercel',
+                      'Netlify',
+                      'Cloudflare',
                     ],
               achievements:
                 exp.company === 'SITHEMBE TRANSPORTATION AND PROJECTS'
                   ? [
                       'Improved cash flow tracking efficiency',
                       'Increased tender win rates',
+                      'Streamlined project coordination processes',
+                      'Improved Tender Tracking and Management',
+                      'Enhanced IT support response times',
                       'Enhanced digital presence',
                     ]
                   : exp.company === 'Playhouse Media Group'
                   ? [
-                      'Delivered 15+ responsive websites',
+                      'Delivered 10+ responsive websites',
                       'Improved SEO rankings for clients',
                       'Maintained 99% uptime',
+                      'Enhanced user engagement through design',
                     ]
                   : [
                       'Built scalable web applications',

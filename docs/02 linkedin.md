@@ -31,7 +31,7 @@ Website Developer at Playhouse Media GroupWebsite Developer at Playhouse Media G
 Company logo
 Senior Tendering Administrator and IT Support Technician at SITHEMBE TRANSPORTATION AND PROJECTSSenior Tendering Administrator and IT Support Technician at SITHEMBE TRANSPORTATION AND PROJECTS
 Company logo
-Web Developer at Baum Systems Pvt LtdWeb Developer at Baum Systems Pvt Ltd
+Web Developer at Baum SystemsWeb Developer at Baum Systems
 Mutare Polytechnical CollegeMutare Polytechnical College
 Company logo
 TreehouseTreehouse
@@ -145,10 +145,10 @@ City of Johannesburg, Gauteng, South Africa · HybridCity of Johannesburg, Gaute
 👉 Designing and prototyping websites
 👉 Maintain consistency in design and layout👉 Create web pages using WordPress and a combination of markup languages 👉 Identify usability and develop functional and smooth, easy-to-operate and eye-catching web applications 👉 Writing web pages compatible with Search Engine Optimizations (S.E.O) 👉 Convert Adobe XD layouts to web pages using HTML, CSS and JavaScript 👉 Perform websites maintenance and enhancements 👉 Create browser and platform compatible CSS (cascading style sheets) codes 👉 Monitor technical aspects of the front-end delivery for several projects 👉 Designing and prototyping websites 👉 Maintain consistency in design and layout…see more
 JavaScript, Cascading Style Sheets (CSS) and +18 skills
-Baum Systems Pvt Ltd logo
+Baum Systems logo
 Web Developer
 Web Developer
-Baum Systems Pvt Ltd · FreelanceBaum Systems Pvt Ltd · Freelance
+Baum Systems · FreelanceBaum Systems · Freelance
 Aug 2019 - Jan 2022 · 2 yrs 6 mosAug 2019 to Jan 2022 · 2 yrs 6 mos
 Cape Town Area, South Africa · RemoteCape Town Area, South Africa · Remote
 👉 Designing and prototyping websites using Adobe XD or Figma
