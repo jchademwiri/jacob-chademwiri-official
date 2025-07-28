@@ -14,7 +14,7 @@ const aboutData = {
     profileImage: '/jacobc.jpg',
     name: 'Jacob Chademwiri',
     title:
-      'Tendering & Accounts Receivable Manager | Projects Coordinator | Freelance Website Developer | Aspiring Project Manager',
+      'Tendering & Accounts Receivable Manager | Projects Coordinator | Freelance Website Developer | Aspiring Project Manager | Jacob&apos;s',
     tagline:
       'Driving business growth through optimal efficiency and digital solutions.',
     badges: [
@@ -122,7 +122,7 @@ const aboutData = {
   ],
   contact: {
     description:
-      "Ready to collaborate or have a project in mind? Let's connect!",
+      'Ready to collaborate or have a project in mind? Let&apos;s connect!',
     email: 'hello@jacobc.co.za',
     cvLink: '/jchademwiri-cv.pdf',
   },
@@ -433,7 +433,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
             Schedule a consultation to discuss your tender management, project
-            coordination, or web development needs. Let's explore how my
+            coordination, or web development needs. Let&apos;s explore how my
             expertise can help achieve your business goals.
           </p>
 

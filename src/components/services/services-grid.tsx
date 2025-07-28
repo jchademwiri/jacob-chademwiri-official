@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { CheckCircle, ArrowRight, Target, Zap, LucideIcon } from 'lucide-react';
 
 interface ServiceFeature {

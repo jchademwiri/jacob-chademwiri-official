@@ -25,7 +25,7 @@
 ### CTA Buttons:
 
 - **Primary:** "See My Work" (neutral, works for both audiences)
-- **Secondary:** "Let's Talk" (conversational, approachable)
+- **Secondary:** "Let&apos;s Talk" (conversational, approachable)
 
 ## 2. What I Do (Unified Services)
 
@@ -241,7 +241,7 @@ Whether I'm writing JavaScript or leading a project meeting, everything I do is 
 ### Primary Call-to-Action:
 
 **"Ready to start your project?"**
-_"Let's have a conversation about your goals and how I can help you achieve them."_
+_"Let&apos;s have a conversation about your goals and how I can help you achieve them."_
 
 ### Secondary Options:
 
@@ -268,7 +268,7 @@ _"Let's have a conversation about your goals and how I can help you achieve them
 - Company/Organization
 - Brief project description
 - Timeline ("When do you need this completed?")
-- Budget range (optional, with "Let's discuss" option)
+- Budget range (optional, with "Let&apos;s discuss" option)
 
 #### Conversation Starters by Type:
 
@@ -276,7 +276,7 @@ _"Let's have a conversation about your goals and how I can help you achieve them
 "I'd love to learn more about your project. What challenge are you trying to solve, and what does success look like for you?"
 
 **For Redesigns:**
-"What's not working with your current site? Let's talk about how we can make it work better for your business."
+"What's not working with your current site? Let&apos;s talk about how we can make it work better for your business."
 
 **For Employment:**
 "I'm always interested in new opportunities where I can make a real impact. Tell me about your team and what you're building."
@@ -429,7 +429,7 @@ _Sithembe Transportation & Projects (2021-Present)_
 
 #### **Use This Language:**
 
-- "Let's solve this together"
+- "Let&apos;s solve this together"
 - "Here's what we can achieve"
 - "I understand your challenge"
 - "This is how it works"
@@ -488,13 +488,13 @@ _Sithembe Transportation & Projects (2021-Present)_
 - **Curiosity:** "See how I can help your business"
 - **Value:** "Get your free project assessment"
 - **Urgency:** "Reserve your spot for Q2 2025"
-- **Low-commitment:** "Let's just have a quick conversation"
+- **Low-commitment:** "Let&apos;s just have a quick conversation"
 
 #### **CTA Placement Strategy:**
 
 - **Above the fold** - Primary action
 - **After each project** - "Want results like this?"
-- **In the About section** - "Let's talk about your goals"
+- **In the About section** - "Let&apos;s talk about your goals"
 - **Footer** - "Ready to start?"
 
 ### Content Flow Strategy:

@@ -15,11 +15,11 @@ import {
   Clock,
   CheckCircle,
   ArrowRight,
-  Phone,
   Mail,
   MessageSquare,
   Linkedin,
 } from 'lucide-react';
+// Removed unused Phone import
 
 interface ConsultationCTAProps {
   title?: string;
@@ -40,7 +40,7 @@ const serviceSpecificContent = {
   'tender-management': {
     title: 'Ready to Win More Tenders?',
     description:
-      "Let's discuss your tender requirements and develop a winning strategy. Schedule a consultation to explore how I can help your business secure more contracts.",
+      'Let&apos;s discuss your tender requirements and develop a winning strategy. Schedule a consultation to explore how I can help your business secure more contracts.',
     primaryButtonText: 'Schedule Tender Consultation',
     benefits: [
       'Free initial tender assessment',
@@ -52,7 +52,7 @@ const serviceSpecificContent = {
   'project-management': {
     title: 'Ready to Start Your Project?',
     description:
-      "Let's discuss your project requirements and develop a comprehensive management plan. Schedule a consultation to explore how I can ensure your project's success.",
+      "Let&apos;s discuss your project requirements and develop a comprehensive management plan. Schedule a consultation to explore how I can ensure your project's success.",
     primaryButtonText: 'Schedule Project Consultation',
     benefits: [
       'Free project assessment',
@@ -64,7 +64,7 @@ const serviceSpecificContent = {
   'web-development': {
     title: 'Ready to Build Your Website?',
     description:
-      "Let's discuss your web development needs and create a solution that drives your business forward. Schedule a consultation to explore the possibilities.",
+      'Let&apos;s discuss your web development needs and create a solution that drives your business forward. Schedule a consultation to explore the possibilities.',
     primaryButtonText: 'Start Your Web Project',
     benefits: [
       'Free website audit',
@@ -76,7 +76,7 @@ const serviceSpecificContent = {
   general: {
     title: 'Ready to Get Started?',
     description:
-      "Let's discuss how my services can help your business achieve its goals. Schedule a consultation to explore the best solutions for your needs.",
+      'Let&apos;s discuss how my services can help your business achieve its goals. Schedule a consultation to explore the best solutions for your needs.',
     primaryButtonText: 'Schedule Consultation',
     benefits: [
       'Free initial consultation',

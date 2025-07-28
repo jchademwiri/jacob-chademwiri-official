@@ -121,13 +121,13 @@ export function PersonalPhilosophy() {
         <Card className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
           <CardContent className="p-8">
             <blockquote className="text-2xl md:text-3xl font-semibold text-center leading-relaxed">
-              "Success is built on curiosity, resilience, and collaboration."
+              &quot;Success is built on curiosity, resilience, and
+              collaboration.&quot;
             </blockquote>
             <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">
               I believe that the best solutions emerge when we combine technical
-              expertise with genuine curiosity about problems, the resilience to
-              overcome challenges, and the wisdom to collaborate effectively
-              with others.
+              Jacob&apos;s overcome challenges, and the wisdom to collaborate
+              effectively with others.
             </p>
           </CardContent>
         </Card>
@@ -213,7 +213,7 @@ export function PersonalPhilosophy() {
                   variant="outline"
                   className="px-4 py-2 text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
                 >
-                  {value}
+                  {value.replace(/'/g, '&apos;')}
                 </Badge>
               ))}
             </div>
@@ -272,8 +272,8 @@ export function PersonalPhilosophy() {
             <p className="text-lg leading-relaxed max-w-3xl mx-auto">
               To bridge the gap between technical innovation and business value
               by creating solutions that not only solve immediate problems but
-              also enable long-term growth and success. I'm committed to helping
-              organizations and individuals achieve their goals through
+              also enable long-term growth and success. I&apos;m committed to
+              helping organizations and individuals achieve their goals through
               thoughtful technology implementation and strategic project
               management.
             </p>

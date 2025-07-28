@@ -4,11 +4,9 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import {
   Calendar,
-  Tag,
   Star,
   Briefcase,
   Users,
-  DollarSign,
   ExternalLink,
   TrendingUp,
   Award,
@@ -16,7 +14,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Project } from '@/data/projects';
 

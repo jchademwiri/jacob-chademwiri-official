@@ -20,7 +20,6 @@ import {
   Lightbulb,
   TrendingUp,
   CheckCircle,
-  DollarSign,
   BarChart3,
 } from 'lucide-react';
 import { Project, projects } from '@/data/projects';
@@ -597,7 +596,8 @@ export default function ProjectPage({ params }: Props) {
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Schedule a consultation to discuss how my expertise in{' '}
                 {project.category.toLowerCase()} can help achieve your business
-                goals. Let's explore tailored solutions for your specific needs.
+                goals. Let&apos;s explore tailored solutions for your specific
+                needs.
               </p>
 
               {/* Current Availability */}

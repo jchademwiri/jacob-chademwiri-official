@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
-import { ProjectBadges } from './project-badges';
 import { ProjectMetrics } from './project-metrics';
 import { ProjectActions } from './project-actions';
 import { cn } from '@/lib/utils';
@@ -198,10 +197,10 @@ function ProjectImage({
   );
 }
 
-function ProjectTypeIcon({ projectType }: { projectType: string }) {
-  const Icon = projectType === 'web-development' ? Code : Briefcase;
-  return <Icon className="h-5 w-5 text-muted-foreground" />;
-}
+// function ProjectTypeIcon({ projectType }: { projectType: string }) {
+//   const Icon = projectType === 'web-development' ? Code : Briefcase;
+//   return <Icon className="h-5 w-5 text-muted-foreground" />;
+// }
 
 function ProjectTypeBadge({ projectType }: { projectType: string }) {
   const isWebDev = projectType === 'web-development';

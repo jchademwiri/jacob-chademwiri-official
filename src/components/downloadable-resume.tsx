@@ -70,6 +70,7 @@ export function DownloadableResume() {
       toast.success(`${resume.name} downloaded successfully!`);
     } catch (error) {
       toast.error('Download failed. Please try again.');
+      console.error('Download error:', error);
     } finally {
       setDownloadingId(null);
     }
@@ -95,6 +96,7 @@ export function DownloadableResume() {
         // Fallback to clipboard
         await navigator.clipboard.writeText(shareUrl);
         toast.success('Resume link copied to clipboard!');
+        console.error('Share failed:', error);
       }
     } else {
       // Fallback to clipboard

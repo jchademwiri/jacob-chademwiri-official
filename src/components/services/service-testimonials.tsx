@@ -189,7 +189,7 @@ export function ServiceTestimonials({
             <CardContent className="space-y-4">
               {/* Testimonial Content */}
               <blockquote className="text-gray-700 dark:text-gray-300 italic">
-                "{testimonial.content}"
+               {testimonial.content}
               </blockquote>
 
               {/* Project Outcome */}

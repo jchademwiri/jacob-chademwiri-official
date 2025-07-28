@@ -140,9 +140,9 @@ export function InteractiveSkills() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Technical');
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-  const currentCategory = skillsData.find(
-    (cat) => cat.name === selectedCategory
-  );
+  // const currentCategory = skillsData.find(
+  //   (cat) => cat.name === selectedCategory
+  // );
 
   return (
     <div className="w-full max-w-6xl mx-auto">
