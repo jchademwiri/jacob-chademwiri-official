@@ -9,17 +9,17 @@ const features: FeatureCardProps[] = [
   {
     title: 'Tender Management',
     description:
-      'I manage the entire tendering process - from identifying opportunities to preparing compliant, compelling submissions that win contracts.',
+      'I handle the full tendering lifecycle — from identifying opportunities and ensuring compliance to crafting compelling submissions that win contracts.',
   },
   {
     title: 'Project Management',
     description:
-      'I lead end-to-end project delivery - overseeing timelines, resource coordination, and accurate invoicing to ensure seamless execution.',
+      'I manage end-to-end project delivery, aligning timelines, teams, and budgets to ensure smooth execution and successful outcomes.',
   },
   {
     title: 'Website Development',
     description:
-      'I design and develop fast, accessible websites that align with your brand, serve your users, and support long-term growth.',
+      'I build fast, accessible websites that reflect your brand, engage your users, and support scalable, long-term growth.',
   },
 ];
 

@@ -20,9 +20,10 @@ export function CurrentEmployment() {
             Where I&apos;m Making an Impact
           </h2>
           <p className="text-lg text-muted-foreground max-w-[700px]">
-            Currently contributing expertise across tender management, project
-            coordination, and web development in both corporate and freelance
-            environments.
+            I&apos;m currently applying my expertise in tender management,
+            project coordination, and web development across both corporate
+            roles and freelance projects, driving results, streamlining
+            processes, and delivering value through every engagement.
           </p>
         </div>
 
