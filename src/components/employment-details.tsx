@@ -36,7 +36,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Position Not Found</h1>
           <Link href="/">
-            <Button>Return Home</Button>
+            <Button className="cursor-pointer">Return Home</Button>
           </Link>
         </div>
       </div>
@@ -51,7 +51,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
           {/* Back Button */}
           <div className="mb-8">
             <Link href="/">
-              <Button variant="ghost" className="group">
+              <Button variant="ghost" className="group cursor-pointer">
                 <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
                 Back to Home
               </Button>
