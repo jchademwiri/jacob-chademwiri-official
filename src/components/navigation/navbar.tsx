@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { MobileNav } from './mobile-nav';
-import { ThemeToggle } from './theme-toggle';
+import { MobileNav } from '@/components/navigation/mobile-nav';
+
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/data/constraints';
-// import ThemeToggle from './theme-toggle';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

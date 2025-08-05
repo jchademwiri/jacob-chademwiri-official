@@ -1,7 +1,8 @@
-import { currentPositions } from '@/data';
 import { Briefcase, CheckCircle, Users } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
+
+import { currentPositions } from '@/data';
 
 interface EmploymentDetailsPageProps {
   positionId: string;
@@ -25,28 +26,7 @@ export const RoleBreakdown = ({ positionId }: EmploymentDetailsPageProps) => {
     (pos: Position) => pos.id === positionId
   );
 
-  if (!position) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <h1 className="text-2xl font-bold text-destructive" role="alert">
-            Position Not Found
-          </h1>
-          <p className="text-muted-foreground">
-            The requested position could not be found.
-          </p>
-          <Link href="/">
-            <Button variant="outline">Return Home</Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  // Early return if no roles to display
-  if (!position.roles || position.roles.length === 0) {
-    return null;
-  }
+  if (!position || !position.roles || position.roles.length === 0) return null;
 
   return (
     <section

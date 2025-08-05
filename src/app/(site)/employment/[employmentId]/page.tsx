@@ -1,6 +1,6 @@
 // src/app/[employmentId]/page.tsx
 
-import { EmploymentDetails } from '@/components/employment-details';
+import { EmploymentDetails } from '@/components/current-employment/employment-details';
 import { currentPositions } from '@/data';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';

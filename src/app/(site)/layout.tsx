@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
-import { Navbar } from '@/components/navbar';
-// import { Footer } from '@/components/footer';
+import { Navbar } from '@/components/navigation/navbar';
 
 export const metadata: Metadata = {
   title: {
