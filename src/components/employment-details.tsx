@@ -21,6 +21,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { currentPositions } from '@/data';
+import { RoleBreakdown } from './role-breakdown';
 
 interface EmploymentDetailsPageProps {
   positionId: string;
@@ -159,7 +160,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
                         <span className="text-sm text-muted-foreground">
                           Experience
                         </span>
-                        <span className="text-sm font-medium">9+ Months</span>
+                        <span className="text-sm font-medium">3+ Years</span>
                       </div>
                     </>
                   ) : (
@@ -188,9 +189,11 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
                   )}
                 </div>
 
-                <div className="pt-4 border-t">
+                <div className="pt-4 border-t ">
                   <Link href="/contact">
-                    <Button className="w-full">Discuss Similar Projects</Button>
+                    <Button className="w-full text-foreground cursor-pointer">
+                      Discuss Similar Projects
+                    </Button>
                   </Link>
                 </div>
               </div>
@@ -250,7 +253,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
                 <BarChart3 className="h-6 w-6 mr-3 text-primary" />
-                Notable Projects
+                Notable Current Projects
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Significant projects and initiatives that showcase expertise and
@@ -302,69 +305,7 @@ export function EmploymentDetails({ positionId }: EmploymentDetailsPageProps) {
       )}
 
       {/* Detailed Roles Section */}
-      {position.roles && position.roles.length > 0 && (
-        <section className="py-12 md:py-16 bg-muted/30">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center space-y-4 mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold flex items-center justify-center">
-                <Briefcase className="h-6 w-6 mr-3 text-primary" />
-                Role Breakdown
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Exploring the diverse responsibilities and specialized functions
-                within this position.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {position.roles.map((role, index) => (
-                <div
-                  key={index}
-                  className="bg-card border rounded-xl p-6 space-y-4 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div
-                      className={`p-3 rounded-lg ${position.iconBg} flex-shrink-0`}
-                    >
-                      <Users className={`h-5 w-5 ${position.iconColor}`} />
-                    </div>
-                    <div className="space-y-3 flex-1">
-                      <h3 className="text-lg font-semibold text-foreground">
-                        {role.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {role.description}
-                      </p>
-
-                      {/* Role Responsibilities */}
-                      <div className="space-y-2">
-                        <h4 className="text-sm font-medium text-foreground">
-                          Key Responsibilities:
-                        </h4>
-                        <div className="space-y-2">
-                          {role.responsibilities.map(
-                            (responsibility, respIndex) => (
-                              <div
-                                key={respIndex}
-                                className="flex items-start space-x-2"
-                              >
-                                <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                                <p className="text-xs text-muted-foreground leading-relaxed">
-                                  {responsibility}
-                                </p>
-                              </div>
-                            )
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <RoleBreakdown positionId={positionId} />
 
       {/* Tools & Technologies Section */}
       {position.tools && position.tools.length > 0 && (
