@@ -6,3 +6,4 @@ export { developmentProcess } from './development-process';
 export { services } from './services';
 export { achievements } from './achievements';
 export { technologies } from './technologies';
+export { projectPhases } from './project-phases';

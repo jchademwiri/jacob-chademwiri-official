@@ -23,6 +23,8 @@ import {
   Award,
   BarChart3,
 } from 'lucide-react';
+import { projectPhases } from '@/data';
+import ProjectManagementLifecycle from './project-management-lifecycle';
 
 export const metadata: Metadata = {
   title: 'Project Management Services - Expert Project Coordination & Delivery',
@@ -133,62 +135,14 @@ const achievements = [
   },
 ];
 
-const projectPhases = [
-  {
-    phase: 'Initiation',
-    description:
-      'Project charter, stakeholder identification, and initial planning',
-    activities: [
-      'Project charter development',
-      'Stakeholder analysis',
-      'Initial risk assessment',
-    ],
-  },
-  {
-    phase: 'Planning',
-    description:
-      'Detailed project planning, resource allocation, and timeline development',
-    activities: [
-      'Work breakdown structure',
-      'Resource planning',
-      'Risk management plan',
-    ],
-  },
-  {
-    phase: 'Execution',
-    description:
-      'Project implementation, team coordination, and progress monitoring',
-    activities: ['Team coordination', 'Progress tracking', 'Quality assurance'],
-  },
-  {
-    phase: 'Monitoring',
-    description:
-      'Performance tracking, issue resolution, and stakeholder communication',
-    activities: [
-      'Performance monitoring',
-      'Issue management',
-      'Status reporting',
-    ],
-  },
-  {
-    phase: 'Closure',
-    description: 'Project completion, documentation, and lessons learned',
-    activities: [
-      'Final deliverables',
-      'Project documentation',
-      'Post-project review',
-    ],
-  },
-];
-
 export default function ProjectManagementPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-green-50 via-white to-green-50 dark:from-green-950/20 dark:via-gray-900 dark:to-green-950/20" />
 
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-2 mb-6">
@@ -280,7 +234,7 @@ export default function ProjectManagementPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -325,54 +279,11 @@ export default function ProjectManagementPage() {
       </section>
 
       {/* Project Phases */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Project Management Lifecycle
-            </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              A structured approach to project management ensuring comprehensive
-              coverage of all project phases.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {projectPhases.map((phase, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-shadow"
-              >
-                <CardHeader className="pb-4">
-                  <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">
-                    {index + 1}
-                  </div>
-                  <CardTitle className="text-lg">{phase.phase}</CardTitle>
-                  <CardDescription className="text-sm">
-                    {phase.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-1 text-sm">
-                    {phase.activities.map((activity, idx) => (
-                      <li
-                        key={idx}
-                        className="text-gray-600 dark:text-gray-400"
-                      >
-                        • {activity}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProjectManagementLifecycle />
 
       {/* Methodologies */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16">
+        <div className=" max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Project Management Methodologies
@@ -408,8 +319,8 @@ export default function ProjectManagementPage() {
       </section>
 
       {/* Achievements */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16  bg-gray-50 dark:bg-gray-900/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Project Success Metrics
@@ -439,8 +350,8 @@ export default function ProjectManagementPage() {
       </section>
 
       {/* Client Success Stories */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ServiceTestimonials
             serviceType="project-management"
             showMetrics={true}
@@ -449,8 +360,8 @@ export default function ProjectManagementPage() {
       </section>
 
       {/* Project Types */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-16  bg-gray-50 dark:bg-gray-900/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Project Types & Industries
           </h2>
@@ -459,7 +370,7 @@ export default function ProjectManagementPage() {
             and sectors.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="flex flex-wrap place-content-center gap-4 mb-8">
             {[
               'Infrastructure',
               'Transportation',

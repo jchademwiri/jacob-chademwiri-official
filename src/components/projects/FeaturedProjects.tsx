@@ -41,7 +41,7 @@ export default function FeaturedProjects() {
   return (
     <section className="py-12 md:py-20">
       {/* Featured Projects */}
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
           Featured Projects
         </h2>
