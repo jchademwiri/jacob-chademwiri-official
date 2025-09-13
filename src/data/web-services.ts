@@ -1,6 +1,6 @@
 import { Code, Search, ShoppingCart, Globe } from 'lucide-react';
 
-export const services = [
+export const webServices = [
   {
     title: 'Next.js & React Development',
     description:

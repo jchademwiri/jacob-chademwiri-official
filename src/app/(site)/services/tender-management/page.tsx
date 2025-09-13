@@ -11,15 +11,9 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
-import {
-  Target,
-  CheckCircle,
-  FileText,
-  Shield,
-  Users,
-  Clock,
-  Award,
-} from 'lucide-react';
+import { Target, CheckCircle, Users, Clock } from 'lucide-react';
+import { tenderAchievements, tenderProcessSteps, tenderServices } from '@/data';
+import TenderProcessSteps from './tender-process-steps';
 
 export const metadata: Metadata = {
   title: 'Tender Management Services - Expert Bid Preparation & CIDB Support',
@@ -36,113 +30,6 @@ export const metadata: Metadata = {
     'government contracts',
   ],
 };
-
-const services = [
-  {
-    title: 'CIDB Registration & Grading',
-    description:
-      'Complete support for CIDB registration, grading applications, and maintaining compliance.',
-    icon: Award,
-    features: [
-      'New CIDB registrations',
-      'Grading upgrades and renewals',
-      'Compliance documentation',
-      'Annual returns submission',
-    ],
-  },
-  {
-    title: 'Bid Preparation & Strategy',
-    description:
-      'Comprehensive bid preparation from analysis to submission with strategic positioning.',
-    icon: Target,
-    features: [
-      'Tender analysis and evaluation',
-      'Competitive positioning strategy',
-      'Technical proposal development',
-      'Pricing strategy optimization',
-    ],
-  },
-  {
-    title: 'Proposal Writing & Documentation',
-    description:
-      'Professional proposal writing and technical documentation that wins contracts.',
-    icon: FileText,
-    features: [
-      'Technical proposal writing',
-      'Method statements',
-      'Project implementation plans',
-      'Quality assurance documentation',
-    ],
-  },
-  {
-    title: 'Compliance & Risk Management',
-    description:
-      'Ensuring full compliance with tender requirements and managing submission risks.',
-    icon: Shield,
-    features: [
-      'Compliance checklist management',
-      'Risk assessment and mitigation',
-      'Document verification',
-      'Submission quality control',
-    ],
-  },
-];
-
-const processSteps = [
-  {
-    step: '01',
-    title: 'Tender Analysis',
-    description:
-      'Comprehensive review of tender documents, requirements, and evaluation criteria.',
-  },
-  {
-    step: '02',
-    title: 'Strategy Development',
-    description:
-      'Develop winning strategy based on client strengths and tender requirements.',
-  },
-  {
-    step: '03',
-    title: 'Proposal Preparation',
-    description:
-      'Create compelling technical and commercial proposals with supporting documentation.',
-  },
-  {
-    step: '04',
-    title: 'Quality Review',
-    description:
-      'Thorough review and quality assurance before submission to ensure compliance.',
-  },
-  {
-    step: '05',
-    title: 'Submission & Follow-up',
-    description:
-      'Manage submission process and provide post-submission support and clarifications.',
-  },
-];
-
-const achievements = [
-  {
-    metric: '85%',
-    label: 'Success Rate',
-    description: 'Winning tender submissions',
-  },
-  {
-    metric: '50+',
-    label: 'Tenders Managed',
-    description: 'Across various industries',
-  },
-  {
-    metric: '3+',
-    label: 'Years Experience',
-    description: 'In tender management',
-  },
-  {
-    metric: '100%',
-    label: 'Compliance Rate',
-    description: 'Meeting all requirements',
-  },
-];
 
 export default function TenderManagementPage() {
   return (
@@ -176,7 +63,7 @@ export default function TenderManagementPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700"
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   <Link href="/contact">Get Tender Support</Link>
                 </Button>
@@ -192,7 +79,7 @@ export default function TenderManagementPage() {
                 </div>
                 <div className="flex items-center">
                   <Users className="h-4 w-4 mr-2" />
-                  SITHEMBE Transportation
+                  Sithembe Transportation Transportation and Projects
                 </div>
               </div>
             </div>
@@ -256,7 +143,7 @@ export default function TenderManagementPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {services.map((service, index) => {
+            {tenderServices.map((service, index) => {
               const IconComponent = service.icon;
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -287,37 +174,7 @@ export default function TenderManagementPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              My Tender Management Process
-            </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
-              A proven 5-step process that ensures comprehensive tender
-              preparation and maximum success rates.
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="flex items-start space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
-                    {step.step}
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TenderProcessSteps />
 
       {/* Achievements */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -333,7 +190,7 @@ export default function TenderManagementPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {achievements.map((achievement, index) => (
+            {tenderAchievements.map((achievement, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
                   {achievement.metric}
@@ -351,14 +208,14 @@ export default function TenderManagementPage() {
       </section>
 
       {/* Client Success Stories */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ServiceTestimonials
             serviceType="tender-management"
             showMetrics={true}
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Industries Served */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">

@@ -13,7 +13,7 @@ import { Separator } from '@/components/ui/separator';
 import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
 import { Zap, CheckCircle, Clock, Award } from 'lucide-react';
 import FeaturedProjects from '@/components/projects/FeaturedProjects';
-import { achievements, services, technologies } from '@/data';
+import { achievements, technologies, webServices } from '@/data';
 import DevelopmentProcess from './development-process';
 
 export const metadata: Metadata = {
@@ -166,7 +166,7 @@ export default function WebDevelopmentPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {services.map((service, index) => {
+            {webServices.map((service, index) => {
               const IconComponent = service.icon;
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow">

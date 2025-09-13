@@ -11,20 +11,14 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
+import { CheckCircle, Clock, Award } from 'lucide-react';
 import {
-  CheckCircle,
-  Users,
-  TrendingUp,
-  Calendar,
-  DollarSign,
-  Shield,
-  Target,
-  Clock,
-  Award,
-  BarChart3,
-} from 'lucide-react';
-import { projectPhases } from '@/data';
+  achievements,
+  projectAchievements,
+  projectMethodologies,
+} from '@/data';
 import ProjectManagementLifecycle from './project-management-lifecycle';
+import { projectServices } from '@/data/project-services';
 
 export const metadata: Metadata = {
   title: 'Project Management Services - Expert Project Coordination & Delivery',
@@ -41,99 +35,6 @@ export const metadata: Metadata = {
     'project delivery',
   ],
 };
-
-const services = [
-  {
-    title: 'Project Planning & Coordination',
-    description:
-      'Comprehensive project planning from initiation to closure with detailed coordination.',
-    icon: Calendar,
-    features: [
-      'Project scope definition',
-      'Work breakdown structure',
-      'Timeline and milestone planning',
-      'Resource allocation and scheduling',
-    ],
-  },
-  {
-    title: 'Stakeholder Management',
-    description:
-      'Effective communication and relationship management with all project stakeholders.',
-    icon: Users,
-    features: [
-      'Stakeholder identification and analysis',
-      'Communication planning',
-      'Regular progress reporting',
-      'Conflict resolution and mediation',
-    ],
-  },
-  {
-    title: 'Budget Tracking & Control',
-    description:
-      'Comprehensive financial management and cost control throughout project lifecycle.',
-    icon: DollarSign,
-    features: [
-      'Budget planning and forecasting',
-      'Cost tracking and monitoring',
-      'Financial reporting and analysis',
-      'Change order management',
-    ],
-  },
-  {
-    title: 'Risk & Quality Management',
-    description:
-      'Proactive risk identification and quality assurance to ensure successful delivery.',
-    icon: Shield,
-    features: [
-      'Risk assessment and mitigation',
-      'Quality control processes',
-      'Issue tracking and resolution',
-      'Compliance monitoring',
-    ],
-  },
-];
-
-const methodologies = [
-  {
-    name: 'Agile/Scrum',
-    description:
-      'Iterative approach for flexible and adaptive project delivery',
-    icon: Target,
-  },
-  {
-    name: 'Waterfall',
-    description: 'Traditional sequential approach for well-defined projects',
-    icon: BarChart3,
-  },
-  {
-    name: 'Hybrid',
-    description: 'Combined approach tailored to specific project requirements',
-    icon: TrendingUp,
-  },
-];
-
-const achievements = [
-  {
-    metric: '95%',
-    label: 'On-Time Delivery',
-    description: 'Projects completed on schedule',
-  },
-  {
-    metric: '100+',
-    label: 'Projects Managed',
-    description: 'Across various industries',
-  },
-  {
-    metric: '5+',
-    label: 'Years Experience',
-    description: 'In project management',
-  },
-  {
-    metric: '98%',
-    label: 'Client Satisfaction',
-    description: 'Positive feedback rate',
-  },
-];
 
 export default function ProjectManagementPage() {
   return (
@@ -167,7 +68,7 @@ export default function ProjectManagementPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-green-600 hover:bg-green-700"
+                  className="bg-green-600 text-white hover:bg-green-700"
                 >
                   <Link href="/contact">Start Your Project</Link>
                 </Button>
@@ -248,7 +149,7 @@ export default function ProjectManagementPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {services.map((service, index) => {
+            {projectServices.map((service, index) => {
               const IconComponent = service.icon;
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -295,7 +196,7 @@ export default function ProjectManagementPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {methodologies.map((methodology, index) => {
+            {projectMethodologies.map((methodology, index) => {
               const IconComponent = methodology.icon;
               return (
                 <Card
@@ -332,7 +233,7 @@ export default function ProjectManagementPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {achievements.map((achievement, index) => (
+            {projectAchievements.map((achievement, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">
                   {achievement.metric}
@@ -350,14 +251,14 @@ export default function ProjectManagementPage() {
       </section>
 
       {/* Client Success Stories */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ServiceTestimonials
             serviceType="project-management"
             showMetrics={true}
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Project Types */}
       <section className="py-16  bg-gray-50 dark:bg-gray-900/50">
