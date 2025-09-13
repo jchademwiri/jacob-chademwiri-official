@@ -14,7 +14,7 @@ import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
 import { Zap, CheckCircle, Clock, Award } from 'lucide-react';
 import FeaturedProjects from '@/components/projects/FeaturedProjects';
 import { achievements, technologies, webServices } from '@/data';
-import DevelopmentProcess from './development-process';
+import DevelopmentProcess from '@/sites/services/web-development/development-process';
 
 export const metadata: Metadata = {
   title: 'Web Development Services - Modern, Fast & SEO-Optimized Websites',

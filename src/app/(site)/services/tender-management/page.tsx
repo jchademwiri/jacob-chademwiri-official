@@ -10,10 +10,10 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
+import { ConsultationCTA } from '@/components/services';
 import { Target, CheckCircle, Users, Clock } from 'lucide-react';
-import { tenderAchievements, tenderProcessSteps, tenderServices } from '@/data';
-import TenderProcessSteps from './tender-process-steps';
+import { tenderAchievements, tenderServices } from '@/data';
+import TenderProcessSteps from '@/sites/services/tender-management/tender-process-steps';
 
 export const metadata: Metadata = {
   title: 'Tender Management Services - Expert Bid Preparation & CIDB Support',

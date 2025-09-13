@@ -10,14 +10,10 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
+import { ConsultationCTA } from '@/components/services';
 import { CheckCircle, Clock, Award } from 'lucide-react';
-import {
-  achievements,
-  projectAchievements,
-  projectMethodologies,
-} from '@/data';
-import ProjectManagementLifecycle from './project-management-lifecycle';
+import { projectAchievements, projectMethodologies } from '@/data';
+import ProjectManagementLifecycle from '@/sites/services/project-management/project-management-lifecycle';
 import { projectServices } from '@/data/project-services';
 
 export const metadata: Metadata = {
