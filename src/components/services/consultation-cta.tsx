@@ -18,6 +18,7 @@ import {
   Mail,
   MessageSquare,
   Linkedin,
+  Phone,
 } from 'lucide-react';
 // Removed unused Phone import
 
@@ -191,7 +192,7 @@ export function ConsultationCTA({
                     </div>
                     <div className="flex justify-between">
                       <span>Project Start:</span>
-                      <span className="font-medium">2-4 weeks</span>
+                      <span className="font-medium">1-2 weeks</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Consultation:</span>
@@ -205,7 +206,16 @@ export function ConsultationCTA({
                 {/* Contact Methods */}
                 <div className="space-y-3">
                   <h4 className="font-semibold text-sm">Preferred Contact:</h4>
-                  <div className="flex flex-col space-y-2">
+                  <div className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 ">
+                    <Link
+                      href="tel:+27740491433"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-sm text-green-600 dark:text-green-400 hover:underline"
+                    >
+                      <Phone className="h-4 w-4 mr-2" />
+                      074 049 1433
+                    </Link>
                     <Link
                       href="mailto:hello@jacobc.co.za"
                       className="flex items-center text-sm text-green-600 dark:text-green-400 hover:underline"
@@ -220,7 +230,7 @@ export function ConsultationCTA({
                       className="flex items-center text-sm text-green-600 dark:text-green-400 hover:underline"
                     >
                       <Linkedin className="h-4 w-4 mr-2" />
-                      LinkedIn Professional
+                      LinkedIn
                     </Link>
                   </div>
                 </div>

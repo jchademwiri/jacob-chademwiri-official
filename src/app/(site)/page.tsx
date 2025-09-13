@@ -15,7 +15,7 @@ export default function Home() {
       <CurrentEmployment />
       <FeaturesSection />
       <CallToAction />
-      <ProjectsSection />
+      {/* <ProjectsSection /> */}
     </>
   );
 }

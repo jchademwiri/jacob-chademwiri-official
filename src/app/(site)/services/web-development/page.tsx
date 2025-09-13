@@ -11,20 +11,14 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
+import { Zap, CheckCircle, Clock, Award } from 'lucide-react';
+import FeaturedProjects from '@/components/projects/FeaturedProjects';
 import {
-  Code,
-  Zap,
-  Search,
-  ShoppingCart,
-  Globe,
-  Palette,
-  Shield,
-  CheckCircle,
-  Clock,
-  Award,
-  Database,
-  Rocket,
-} from 'lucide-react';
+  achievements,
+  developmentProcess,
+  services,
+  technologies,
+} from '@/data';
 
 export const metadata: Metadata = {
   title: 'Web Development Services - Modern, Fast & SEO-Optimized Websites',
@@ -42,161 +36,11 @@ export const metadata: Metadata = {
   ],
 };
 
-const services = [
-  {
-    title: 'Next.js & React Development',
-    description:
-      'Modern, fast, and scalable web applications built with cutting-edge technologies.',
-    icon: Code,
-    features: [
-      'Server-side rendering (SSR)',
-      'Static site generation (SSG)',
-      'API development and integration',
-      'Performance optimization',
-    ],
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-  },
-  {
-    title: 'WordPress Solutions',
-    description:
-      'Custom WordPress websites and applications with modern design and functionality.',
-    icon: Globe,
-    features: [
-      'Custom theme development',
-      'Plugin development and customization',
-      'WooCommerce integration',
-      'Performance optimization',
-    ],
-    technologies: ['WordPress', 'PHP', 'MySQL', 'WooCommerce'],
-  },
-  {
-    title: 'E-commerce Development',
-    description:
-      'Complete e-commerce solutions that drive sales and provide excellent user experience.',
-    icon: ShoppingCart,
-    features: [
-      'Online store development',
-      'Payment gateway integration',
-      'Inventory management systems',
-      'Order processing automation',
-    ],
-    technologies: ['WooCommerce', 'Shopify', 'Stripe', 'PayPal'],
-  },
-  {
-    title: 'SEO & Performance',
-    description:
-      'Comprehensive optimization for search engines and superior website performance.',
-    icon: Search,
-    features: [
-      'Technical SEO optimization',
-      'Core Web Vitals improvement',
-      'Site speed optimization',
-      'Mobile responsiveness',
-    ],
-    technologies: [
-      'Google Analytics',
-      'Search Console',
-      'PageSpeed',
-      'Lighthouse',
-    ],
-  },
-];
-
-const technologies = [
-  { name: 'Next.js', category: 'Frontend Framework', icon: Rocket },
-  { name: 'React', category: 'JavaScript Library', icon: Code },
-  { name: 'TypeScript', category: 'Programming Language', icon: Shield },
-  { name: 'Tailwind CSS', category: 'CSS Framework', icon: Palette },
-  { name: 'WordPress', category: 'CMS Platform', icon: Globe },
-  { name: 'Node.js', category: 'Backend Runtime', icon: Database },
-];
-
-const achievements = [
-  {
-    metric: '200+',
-    label: 'Websites Built',
-    description: 'Across various industries',
-  },
-  {
-    metric: '98%',
-    label: 'Uptime Rate',
-    description: 'Reliable hosting and maintenance',
-  },
-  {
-    metric: '7+',
-    label: 'Years Experience',
-    description: 'In web development',
-  },
-  {
-    metric: '90+',
-    label: 'Performance Score',
-    description: 'Average Lighthouse score',
-  },
-];
-
-const developmentProcess = [
-  {
-    step: '01',
-    title: 'Discovery & Planning',
-    description:
-      'Understanding your requirements, goals, and target audience to create a comprehensive project plan.',
-    deliverables: [
-      'Project scope document',
-      'Technical specifications',
-      'Timeline and milestones',
-    ],
-  },
-  {
-    step: '02',
-    title: 'Design & Prototyping',
-    description:
-      'Creating wireframes, mockups, and interactive prototypes to visualize the final product.',
-    deliverables: [
-      'Wireframes and mockups',
-      'Interactive prototypes',
-      'Design system',
-    ],
-  },
-  {
-    step: '03',
-    title: 'Development & Testing',
-    description:
-      'Building the website with clean, maintainable code and thorough testing across devices.',
-    deliverables: [
-      'Responsive website',
-      'Cross-browser testing',
-      'Performance optimization',
-    ],
-  },
-  {
-    step: '04',
-    title: 'Launch & Optimization',
-    description:
-      'Deploying the website and optimizing for search engines and performance.',
-    deliverables: [
-      'Live website deployment',
-      'SEO optimization',
-      'Performance monitoring',
-    ],
-  },
-  {
-    step: '05',
-    title: 'Maintenance & Support',
-    description:
-      'Ongoing maintenance, updates, and support to ensure optimal performance.',
-    deliverables: [
-      'Regular updates',
-      'Security monitoring',
-      'Performance reports',
-    ],
-  },
-];
-
 export default function WebDevelopmentPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 px-4  sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-50 via-white to-purple-50 dark:from-purple-950/20 dark:via-gray-900 dark:to-purple-950/20" />
 
         <div className="relative max-w-6xl mx-auto">
@@ -224,7 +68,7 @@ export default function WebDevelopmentPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-purple-600 hover:bg-purple-700"
+                  className="bg-purple-600 hover:bg-purple-700 text-white"
                 >
                   <Link href="/contact">Start Your Project</Link>
                 </Button>
@@ -240,7 +84,7 @@ export default function WebDevelopmentPage() {
                 </div>
                 <div className="flex items-center">
                   <Award className="h-4 w-4 mr-2" />
-                  7+ Years Experience
+                  6+ Years Experience
                 </div>
               </div>
             </div>
@@ -251,7 +95,7 @@ export default function WebDevelopmentPage() {
                   Development Expertise
                 </h3>
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="flex flex-wrap gap-3">
                     <Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 justify-center">
                       Next.js
                     </Badge>
@@ -264,15 +108,35 @@ export default function WebDevelopmentPage() {
                     <Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 justify-center">
                       TypeScript
                     </Badge>
+                    <Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 justify-center">
+                      JavaScript
+                    </Badge>
+                    <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 justify-center">
+                      Tailwind CSS
+                    </Badge>
+                    <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 justify-center">
+                      Vercel
+                    </Badge>
+                    <Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 justify-center">
+                      Microsoft 365
+                    </Badge>
                   </div>
                   <Separator />
-                  <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <div className="text-2xl font-bold text-purple-600">
-                        200+
+                        10+
                       </div>
                       <div className="text-sm text-gray-600 dark:text-gray-400">
-                        Websites
+                        Websites Developed
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-purple-600">
+                        10+
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        Websites Hosted
                       </div>
                     </div>
                     <div>
@@ -351,7 +215,8 @@ export default function WebDevelopmentPage() {
           </div>
         </div>
       </section>
-
+      {/* Featured Projects */}
+      <FeaturedProjects />
       {/* Technologies */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
         <div className="max-w-6xl mx-auto">

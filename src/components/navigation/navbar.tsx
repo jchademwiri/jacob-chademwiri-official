@@ -121,8 +121,13 @@ export function Navbar() {
             {/* Right side actions */}
             <div className="flex items-center space-x-4">
               <ThemeToggle />
-              <Button size="lg" className="hidden sm:flex text-white">
-                <Link href="/contact">Get Consultation</Link>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="hidden sm:flex border border-primary text-primary"
+              >
+                <Link href="tel:+27740491433">Call Me Now</Link>
               </Button>
               <button
                 type="button"

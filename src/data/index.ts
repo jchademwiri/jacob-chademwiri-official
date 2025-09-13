@@ -2,3 +2,7 @@ export { navLinks } from './constraints';
 export { currentPositions } from './currentPositions';
 export { projects } from './projects';
 export { aboutData } from './about';
+export { developmentProcess } from './development-process';
+export { services } from './services';
+export { achievements } from './achievements';
+export { technologies } from './technologies';

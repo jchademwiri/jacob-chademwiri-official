@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
-import {
-  ServicesGrid,
-  ServiceTestimonials,
-  ConsultationCTA,
-} from '@/components/services';
+import { ServicesGrid, ConsultationCTA } from '@/components/services';
 import { Target, CheckCircle, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -74,14 +70,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Why Choose My Services */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900/50">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-6xl mx-auto text-center  px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Why Choose My Services?
+            Why Work With Me?
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-12">
             With extensive experience across tender management, project
-            coordination, and web development, I bring a unique combination of
+            management, and web development, I bring a unique combination of
             business acumen and technical expertise to every project.
           </p>
 
@@ -125,18 +121,18 @@ export default function ServicesPage() {
       </section>
 
       {/* Client Testimonials */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center  px-4 sm:px-6 lg:px-8">
           <ServiceTestimonials serviceType="all" showMetrics={true} />
         </div>
-      </section>
+      </section> */}
 
       {/* Consultation CTA */}
       <ConsultationCTA
         serviceType="general"
         showBenefits={true}
         showContactInfo={true}
-        className="bg-gray-50 dark:bg-gray-900/50"
+        className="bg-primary/5"
       />
     </div>
   );

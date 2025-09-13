@@ -8,29 +8,22 @@ import { EducationCertifications } from '@/components/education-certifications';
 import { DownloadableResume } from '@/components/downloadable-resume';
 import { PersonalPhilosophy } from '@/components/personal-philosophy';
 import AboutSection from './aboutSection';
+import FeaturedProjects from '../../../components/projects/FeaturedProjects';
 
 const aboutData = {
   hero: {
     profileImage: '/jacobc.jpg',
     name: 'Jacob Chademwiri',
-    title:
-      'Tendering & Accounts Receivable Manager | Projects Coordinator | Freelance Website Developer | Aspiring Project Manager | Jacob&apos;s',
+    title: 'Tender & Project Manager | Freelance Website Developer',
     tagline:
       'Driving business growth through optimal efficiency and digital solutions.',
-    badges: [
-      'Web Development',
-      'SEO Specialist',
-      'Tender Management',
-      'Project Coordination',
-      'IT Support',
-      'Business Growth',
-    ],
+    badges: ['Tender Management', 'Project Management', 'Web Development'],
   },
   achievements: [
-    { label: 'Years Experience', value: '10+' },
-    { label: 'Projects Delivered', value: '30+' },
-    { label: 'Happy Clients', value: '20+' },
-    { label: 'Certifications', value: '10+' },
+    { label: 'Years Experience', value: '5+' },
+    { label: 'Projects Delivered', value: '10+' },
+    { label: 'Websites Delivered', value: '10+' },
+    { label: 'Happy Clients', value: '5+' },
   ],
   skills: [
     {
@@ -80,27 +73,7 @@ const aboutData = {
       ],
     },
   ],
-  featuredProjects: [
-    {
-      title:
-        'Sithembe Transportation and Projects Website Redesign and Development',
-      period: 'Oct 2022 - Mar 2023',
-      challenge:
-        'Revamp the existing website to attract more clients and partners, ensuring easy navigation and accessibility.',
-      results:
-        'Professional online presence, improved user experience, and modern design practices implemented.',
-      skills: ['Next.js', 'Tailwind CSS', 'Figma', 'SEO'],
-    },
-    {
-      title: 'Edurite Tutors',
-      period: 'Jul 2023 - Present',
-      challenge:
-        'Develop a site from the ground up using WordPress and Elementor, and connect business to Google My Business.',
-      results:
-        'Unique, professional virtual assistance platform for academic assignments and research projects.',
-      skills: ['WordPress', 'SEO', 'Social Media', 'Google My Business'],
-    },
-  ],
+
   testimonials: [
     {
       quote:
@@ -229,6 +202,9 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Featured Projects */}
+      <FeaturedProjects />
+
       {/* Animated Experience Timeline */}
       <section className="py-12 md:py-20 bg-muted/50">
         <div className="max-w-5xl mx-auto px-4">
@@ -316,50 +292,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Featured Projects */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">
-            Featured Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {aboutData.featuredProjects.map((proj) => (
-              <Card key={proj.title} className="h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg font-semibold mb-2">
-                    {proj.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-sm text-muted-foreground mb-2">
-                    {proj.period}
-                  </div>
-                  <div className="mb-2">
-                    <span className="font-semibold">Challenge:</span>{' '}
-                    {proj.challenge}
-                  </div>
-                  <div className="mb-2">
-                    <span className="font-semibold">Results:</span>{' '}
-                    {proj.results}
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {proj.skills.map((skill) => (
-                      <Badge
-                        key={skill}
-                        className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 px-3 py-1 text-xs font-medium rounded-full"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
       <section className="py-12 md:py-20 bg-muted/50">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">

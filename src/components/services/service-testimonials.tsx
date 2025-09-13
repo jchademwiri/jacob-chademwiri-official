@@ -33,7 +33,8 @@ interface ServiceTestimonialsProps {
     | 'tender-management'
     | 'project-management'
     | 'web-development'
-    | 'all';
+    | 'all'
+    ;
   showMetrics?: boolean;
   className?: string;
 }
