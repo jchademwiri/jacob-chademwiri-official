@@ -4,7 +4,6 @@ import {
   CurrentEmployment,
   FeaturesSection,
   HeroSection,
-  ProjectsSection,
 } from '@/components/sections';
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
       <CurrentEmployment />
       <FeaturesSection />
       <CallToAction />
-      {/* <ProjectsSection /> */}
     </>
   );
 }

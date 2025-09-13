@@ -1,15 +1,4 @@
-import {
-  Code,
-  Zap,
-  Globe,
-  Palette,
-  Shield,
-  CheckCircle,
-  Clock,
-  Award,
-  Database,
-  Rocket,
-} from 'lucide-react';
+import { Code, Globe, Palette, Shield, Database, Rocket } from 'lucide-react';
 
 export const technologies = [
   { name: 'Next.js', category: 'Frontend Framework', icon: Rocket },

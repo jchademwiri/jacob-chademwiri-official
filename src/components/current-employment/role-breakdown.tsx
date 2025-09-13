@@ -1,6 +1,4 @@
 import { Briefcase, CheckCircle, Users } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '../ui/button';
 
 import { currentPositions } from '@/data';
 

@@ -4,8 +4,6 @@ import {
   Target,
   CheckCircle,
   Code,
-  FolderOpen,
-  PenTool,
   User,
   Mail,
   type LucideIcon,

@@ -9,20 +9,18 @@ import {
   Target,
   TrendingUp,
   Users,
-  Briefcase,
   Award,
   DollarSign,
   BarChart3,
   Shield,
   Star,
-  // ExternalLink,
   Wrench,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { currentPositions } from '@/data';
-import { RoleBreakdown } from './role-breakdown';
-import { ProfessionalDevelopment } from './professional-development';
+import { RoleBreakdown } from '@/components/current-employment/role-breakdown';
+import { ProfessionalDevelopment } from '@/components/current-employment/professional-development';
 
 interface EmploymentDetailsPageProps {
   positionId: string;
