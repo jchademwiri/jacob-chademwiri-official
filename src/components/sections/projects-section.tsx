@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 
 export function ProjectsSection() {
-  // Get latest 4 projects sorted by completion date
+  // Get latest 3 projects sorted by completion date
   const latestProjects = [...projects]
     .sort(
       (a, b) =>

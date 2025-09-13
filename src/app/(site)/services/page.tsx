@@ -25,9 +25,6 @@ export const metadata: Metadata = {
   ],
 };
 
-// Use the default services from ServicesGrid component
-// No need to redefine them here since they're already properly structured
-
 export default function ServicesPage() {
   return (
     <div className="min-h-screen">
@@ -52,20 +49,20 @@ export default function ServicesPage() {
           </h1>
 
           <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300 mb-8">
-            From winning tenders and managing complex projects to building
-            powerful digital solutions, I provide end-to-end business services
-            that drive growth and success.
+            From winning tenders and managing projects to building powerful
+            digital solutions, I provide end-to-end business services that drive
+            growth and success.
           </p>
 
           <div className="flex flex-wrap gap-3 justify-center mb-8">
             <Badge variant="secondary" className="px-4 py-2">
-              SITHEMBE Transportation & Projects
+              Tender Managment
             </Badge>
             <Badge variant="secondary" className="px-4 py-2">
-              Tendering & Accounts Receivable Manager
+              Project Management
             </Badge>
             <Badge variant="secondary" className="px-4 py-2">
-              Projects Coordinator
+              Website Development
             </Badge>
           </div>
         </div>

@@ -80,8 +80,7 @@ export default function ProjectsPage() {
             />
           )}
         </div>
-
-        <CallToAction isVisible={isVisible} />
+        <CallToAction />
       </div>
     </div>
   );

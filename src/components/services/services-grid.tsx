@@ -36,17 +36,14 @@ const defaultServices: ServiceFeature[] = [
       'Expert tender preparation, bid management, and compliance support to help your business win more contracts.',
     icon: Target,
     features: [
-      'CIDB Registration & Grading',
       'Bid Preparation & Submission',
-      'Compliance Management',
-      'Proposal Writing',
-      'Tender Documentation',
+      'Compliance & Documentation',
       'Risk Assessment',
     ],
     stats: {
-      experience: '3+ Years',
+      experience: '4+ Years',
       successRate: '85%',
-      contracts: '50+ Tenders',
+      wonTenders: '15+',
     },
     color: 'bg-blue-500',
   },
@@ -58,15 +55,12 @@ const defaultServices: ServiceFeature[] = [
     icon: CheckCircle,
     features: [
       'Project Planning & Coordination',
-      'Stakeholder Management',
-      'Budget Tracking & Control',
-      'Risk Management',
-      'Quality Assurance',
-      'Progress Reporting',
+      'Stakeholder & Risk Management',
+      'Budget & Quality Control',
     ],
     stats: {
-      experience: '5+ Years',
-      projects: '100+ Projects',
+      experience: '2+ Years',
+      projects: '5+',
       onTime: '95%',
     },
     color: 'bg-green-500',
@@ -78,17 +72,14 @@ const defaultServices: ServiceFeature[] = [
       'Modern, scalable web solutions built with cutting-edge technologies for optimal performance and user experience.',
     icon: Zap,
     features: [
-      'Next.js & React Development',
-      'WordPress Solutions',
-      'E-commerce Platforms',
-      'SEO Optimization',
-      'Performance Optimization',
-      'Maintenance & Support',
+      'Web Development & Support',
+      'E-commerce Solutions',
+      'SEO & Performance Optimization',
     ],
     stats: {
-      experience: '7+ Years',
-      websites: '200+ Sites',
-      performance: '98% Uptime',
+      experience: '6+ Years',
+      websites: '10+ Sites',
+      uptime: '98%',
     },
     color: 'bg-purple-500',
   },
@@ -161,8 +152,10 @@ export function ServicesGrid({
 
               {/* CTA Button */}
               <Button
+                size={'lg'}
+                // variant={'outline'}
                 asChild
-                className="w-full group-hover:bg-green-600 transition-colors"
+                className={`${service.color} ${service.color} w-full hover:bg-opacity-10 text-white`}
               >
                 <Link
                   href={service.href}

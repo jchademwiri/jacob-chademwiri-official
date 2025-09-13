@@ -21,9 +21,10 @@ export function CurrentEmployment() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-[700px]">
             I&apos;m currently applying my expertise in tender management,
-            project coordination, and web development across both corporate
-            roles and freelance projects, driving results, streamlining
-            processes, and delivering value through every engagement.
+            project coordination and Management, and web development across both
+            corporate roles and freelance projects, driving results,
+            streamlining processes, and delivering value through every
+            engagement.
           </p>
         </div>
 

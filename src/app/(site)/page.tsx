@@ -1,4 +1,5 @@
 // import ComingSoon from '@/components/coming-soon';
+import { CallToAction } from '@/components/projects/call-to-action';
 import {
   CurrentEmployment,
   FeaturesSection,
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <CurrentEmployment />
       <FeaturesSection />
+      <CallToAction />
       <ProjectsSection />
     </>
   );
