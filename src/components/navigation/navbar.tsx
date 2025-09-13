@@ -119,7 +119,7 @@ export function Navbar() {
             </nav>
 
             {/* Right side actions */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center gap-2">
               <ThemeToggle />
               <Button
                 asChild
@@ -131,7 +131,7 @@ export function Navbar() {
               </Button>
               <button
                 type="button"
-                className="flex items-center justify-center md:hidden"
+                className="flex items-center justify-center sm:hidden"
                 onClick={() => setIsOpen(true)}
                 aria-label="Toggle Menu"
               >
