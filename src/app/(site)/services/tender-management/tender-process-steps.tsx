@@ -1,10 +1,19 @@
-import { tenderProcessSteps } from '@/data';
+import { Button } from '@/components/ui/button';
+import {
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  MessagesSquare,
+  Shield,
+} from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
+import { tenderProcessSteps } from '@/data';
 
 export default function TenderProcessSteps() {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-indigo-50/30 dark:from-gray-900 dark:via-gray-900/80 dark:to-blue-900/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-6">
@@ -143,17 +152,68 @@ export default function TenderProcessSteps() {
 
         {/* Bottom CTA Section */}
         <div className="mt-20 text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white shadow-xl">
-            <h3 className="text-2xl font-bold mb-4">
-              Ready to Transform Your Tender Success Rate?
-            </h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Let's discuss how my proven process can help you win more tenders
-              and grow your business.
-            </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-              Get Started Today
-            </button>
+          <div className="relative bg-gray-50/80 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-300/30 dark:border-gray-700/30 shadow-2xl overflow-hidden">
+            {/* Subtle background pattern */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-transparent to-indigo-100/30 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10"></div>
+            <div className="absolute inset-0 opacity-20 dark:opacity-5">
+              <div className="absolute top-4 left-4 w-32 h-32 bg-blue-200 dark:bg-blue-400 rounded-full filter blur-3xl"></div>
+              <div className="absolute bottom-4 right-4 w-24 h-24 bg-indigo-200 dark:bg-indigo-400 rounded-full filter blur-3xl"></div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                Ready to Transform Your Tender Success Rate?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+                Let's discuss how my proven process can help you win more
+                tenders and grow your business.
+              </p>
+
+              {/* Button group with multiple options */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button
+                  size="lg"
+                  asChild
+                  className="group bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <Link href="/contact" className="flex items-center space-x-2">
+                    <span>Get Tender Support</span>
+                    <ArrowRight className="w-4 h-4 " />
+                  </Link>
+                </Button>
+
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="group border-gray-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <Link href="/contact" className="flex items-center space-x-2">
+                    <MessagesSquare className="w-4 h-4 " />
+                    <span>Let's Talk</span>
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Trust indicators */}
+              <div className="mt-8 pt-6 border-t border-gray-300/50 dark:border-gray-700/50">
+                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-sm text-gray-500 dark:text-gray-400">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 dark:text-green-400" />
+                    <span>Free Consultation</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Shield className="w-4 h-4 text-blue-500 dark:text-blue-400" />
+                    <span>Proven Track Record</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Clock className="w-4 h-4 text-purple-500 dark:text-purple-400" />
+                    <span>24hr Response</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
