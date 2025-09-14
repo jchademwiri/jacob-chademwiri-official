@@ -1,9 +1,10 @@
 import { ProjectCard } from '@/components/projects/project-card';
 import { projects } from '@/data/projects';
 import Link from 'next/link';
+import { Button } from '../ui/button';
 
 export function ProjectsSection() {
-  // Get latest 4 projects sorted by completion date
+  // Get latest 3 projects sorted by completion date
   const latestProjects = [...projects]
     .sort(
       (a, b) =>
@@ -23,7 +24,7 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {latestProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -36,12 +37,14 @@ export function ProjectsSection() {
 
         {/* View All Projects Button */}
         <div className="text-center mt-12">
-          <Link
-            href="/projects"
-            className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-          >
-            View All Projects ({projects.length})
-          </Link>
+          <Button asChild>
+            <Link
+              href="/#"
+              className="text-white inline-block bg-primary px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              View All Projects ({projects.length})
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

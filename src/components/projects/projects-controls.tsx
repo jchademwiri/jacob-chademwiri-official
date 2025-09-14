@@ -22,6 +22,7 @@ interface ProjectsControlsProps {
   onViewModeChange: (mode: 'grid' | 'list') => void;
   categories: Array<{ value: string; label: string }>;
   skills: Array<{ value: string; label: string }>;
+  serviceTypes?: Array<{ value: string; label: string }>;
   projectTypes: Array<{ value: string; label: string }>;
   statusOptions: Array<{ value: string; label: string }>;
   sortOptions: Array<{ value: string; label: string }>;
@@ -38,8 +39,8 @@ export function ProjectsControls({
   viewMode,
   onViewModeChange,
   categories,
-
   skills,
+  serviceTypes,
   projectTypes,
   statusOptions,
   sortOptions,
@@ -146,7 +147,7 @@ export function ProjectsControls({
           </div>
 
           {/* Filter Selects - First Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <Select
               value={filters.category}
               onValueChange={(value) =>
@@ -166,6 +167,30 @@ export function ProjectsControls({
                 ))}
               </SelectContent>
             </Select>
+
+            {serviceTypes && (
+              <Select
+                value={filters.serviceType}
+                onValueChange={(value) =>
+                  onFiltersChange({
+                    ...filters,
+                    serviceType: value as FilterState['serviceType'],
+                  })
+                }
+                disabled={isLoading}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="All Services" />
+                </SelectTrigger>
+                <SelectContent>
+                  {serviceTypes.map((service) => (
+                    <SelectItem key={service.value} value={service.value}>
+                      {service.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
 
             <Select
               value={filters.projectType}

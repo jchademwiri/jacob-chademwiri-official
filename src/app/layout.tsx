@@ -6,6 +6,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { Toaster } from 'sonner';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -85,6 +86,7 @@ export default function RootLayout({
           {children}
 
           <ScrollToTop />
+          <Toaster richColors position="top-right" />
         </ThemeProvider>
         <SpeedInsights />
         <Analytics />

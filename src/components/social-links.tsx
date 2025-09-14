@@ -7,7 +7,7 @@ export const SocialLinks = () => {
       <h3 className="text-lg font-semibold">Connect</h3>
       <div className="flex flex-col space-y-2">
         <Link
-          href="https://github.com/Jacob C"
+          href="https://github.com/jchademwiri"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
@@ -16,7 +16,7 @@ export const SocialLinks = () => {
           <span>GitHub</span>
         </Link>
         <a
-          href="https://twitter.com/Jacob C"
+          href="https://twitter.com/jchademwiri"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
@@ -25,7 +25,7 @@ export const SocialLinks = () => {
           <span>Twitter</span>
         </a>
         <a
-          href="https://linkedin.com/company/Jacob C"
+          href="https://linkedin.com/in/jchademwiri"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
@@ -34,7 +34,7 @@ export const SocialLinks = () => {
           <span>LinkedIn</span>
         </a>
         <Link
-          href="mailto:hello@Jacob C.com"
+          href="mailto:hello@jacobc.co.za"
           className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200"
         >
           <Mail className="h-5 w-5" />

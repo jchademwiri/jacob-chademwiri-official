@@ -1,4 +1,14 @@
-import { navLinks } from './constraints';
-import { currentPositions } from './currentPositions';
-
-export { navLinks, currentPositions };
+export { navLinks } from './constraints';
+export { currentPositions } from './currentPositions';
+export { projects } from './projects';
+export { aboutData } from './about';
+export { developmentProcess } from './development-process';
+export { webServices } from './web-services';
+export { achievements } from './achievements';
+export { technologies } from './technologies';
+export { projectPhases } from './project-phases';
+export { tenderProcessSteps } from './tender-process-steps';
+export { tenderServices } from './tender-services';
+export { tenderAchievements } from './tender-achievements';
+export { projectMethodologies } from './project-methodologies';
+export { projectAchievements } from './project-achievements';

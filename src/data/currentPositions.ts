@@ -7,7 +7,7 @@ export const currentPositions = [
     location: 'Centurion, Gauteng, South Africa',
     duration: 'Sep 2024 - Present · 9 mos',
     description:
-      'I oversee accounts receivable operations, tender processes, project coordination & administration, & digital solutions, ensuring financial accuracy, operational efficiency, and compliance.',
+      'I oversee tender management, project coordination and administration, accounts receivable (invoicing), and website development and maintenance, ensuring financial accuracy, operational efficiency, and full compliance across all projects.',
     keyResponsibilities: [
       'Manage full accounts receivable cycle using Sage',
       'Lead tendering processes with high win rates',
@@ -49,6 +49,18 @@ export const currentPositions = [
           'Ensure compliance with financial regulations and standards',
           'Manage client payment terms and credit control procedures',
           'Generate financial reports and aged debtors analysis',
+        ],
+      },
+      {
+        title: 'Website Developer',
+        description:
+          'Responsible for developing and maintaining the company website, ensuring functionality and optimal user experience across all devices.',
+        responsibilities: [
+          'Develop responsive websites using WordPress, React, and Next.js',
+          'Convert designs to pixel-perfect, functional web applications',
+          'Implement advanced SEO strategies and analytics integration',
+          'Optimize website performance and loading speeds',
+          'Integrate third-party APIs and services',
         ],
       },
     ],
