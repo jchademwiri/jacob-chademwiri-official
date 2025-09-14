@@ -114,7 +114,7 @@ export function HeroSection({ height = 'min-h-[600px]' }) {
               size="lg"
               className="border-green-600 text-green-600 hover:bg-green-600/10 dark:border-green-500 dark:text-green-400 dark:hover:bg-green-500/10"
             >
-              <Link href="/case-studies">View Case Studies</Link>
+              <Link href="/services">View Our Services</Link>
             </Button>
           </div>
 

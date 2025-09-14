@@ -68,7 +68,7 @@ export default function TenderManagementPage() {
                   <Link href="/contact">Get Tender Support</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link href="/case-studies">View Success Stories</Link>
+                  <Link href="/#">View Success Stories</Link>
                 </Button>
               </div>
 

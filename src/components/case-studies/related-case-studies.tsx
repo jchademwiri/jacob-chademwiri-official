@@ -122,7 +122,7 @@ export function RelatedCaseStudies({
 
           {relatedProjects.length >= maxResults && (
             <div className="mt-8 text-center">
-              <Link href="/case-studies">
+              <Link href="/#">
                 <Button variant="outline" className="group">
                   View All Case Studies
                   <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />

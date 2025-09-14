@@ -124,7 +124,7 @@ export function ConsultationCTA({
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/case-studies">{secondaryButtonText}</Link>
+                <Link href="/#">{secondaryButtonText}</Link>
               </Button>
             </div>
 

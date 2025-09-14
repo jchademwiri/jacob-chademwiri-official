@@ -69,7 +69,7 @@ export default function WebDevelopmentPage() {
                   <Link href="/contact">Start Your Project</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link href="/case-studies">View Case Studies</Link>
+                  <Link href="/#">View Case Studies</Link>
                 </Button>
               </div>
 

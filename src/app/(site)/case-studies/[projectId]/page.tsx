@@ -165,7 +165,7 @@ export default function ProjectPage({ params }: Props) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Enhanced Back Button */}
         <div className="mb-6 animate-in slide-in-from-left duration-500">
-          <Link href="/case-studies">
+          <Link href="/#">
             <Button
               variant="ghost"
               className="group cursor-pointer hover:bg-muted transition-all duration-300"

@@ -69,7 +69,7 @@ export default function ProjectManagementPage() {
                   <Link href="/contact">Start Your Project</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link href="/case-studies">View Project Success</Link>
+                  <Link href="/#">View Project Success</Link>
                 </Button>
               </div>
 

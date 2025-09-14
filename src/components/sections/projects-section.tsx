@@ -39,7 +39,7 @@ export function ProjectsSection() {
         <div className="text-center mt-12">
           <Button asChild>
             <Link
-              href="/case-studies"
+              href="/#"
               className="text-white inline-block bg-primary px-6 py-3 rounded-lg font-medium transition-colors"
             >
               View All Projects ({projects.length})
