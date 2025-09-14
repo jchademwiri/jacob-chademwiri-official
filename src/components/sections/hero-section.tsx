@@ -63,7 +63,7 @@ export function HeroSection({ height = 'min-h-[600px]' }) {
           <div className="flex items-center justify-center space-x-2 mb-2">
             <span className="h-1 w-12 bg-green-600 dark:bg-green-400 rounded-full"></span>
             <span className="text-sm uppercase tracking-wider font-medium text-green-600 dark:text-green-400">
-              Jacob C
+              Jacob C.
             </span>
             <span className="h-1 w-12 bg-green-600 dark:bg-green-400 rounded-full"></span>
           </div>
