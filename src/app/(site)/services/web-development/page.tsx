@@ -283,14 +283,14 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* Client Success Stories */}
-      <section className="py-16 ">
+      {/* <section className="py-16 ">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ServiceTestimonials
             serviceType="web-development"
             showMetrics={true}
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Website Types */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
@@ -311,8 +311,6 @@ export default function WebDevelopmentPage() {
               'Blog Platforms',
               'Landing Pages',
               'Web Applications',
-              // 'API Development',
-              // 'CMS Solutions',
             ].map((type, index) => (
               <Badge
                 key={index}
