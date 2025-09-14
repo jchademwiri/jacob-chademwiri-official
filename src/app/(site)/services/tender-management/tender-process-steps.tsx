@@ -166,7 +166,7 @@ export default function TenderProcessSteps() {
                 Ready to Transform Your Tender Success Rate?
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
-                Let's discuss how my proven process can help you win more
+                Let&apos;s discuss how my proven process can help you win more
                 tenders and grow your business.
               </p>
 
@@ -191,7 +191,7 @@ export default function TenderProcessSteps() {
                 >
                   <Link href="/contact" className="flex items-center space-x-2">
                     <MessagesSquare className="w-4 h-4 " />
-                    <span>Let's Talk</span>
+                    <span>Let`&apos;s Talk</span>
                   </Link>
                 </Button>
               </div>
