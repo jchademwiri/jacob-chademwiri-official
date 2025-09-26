@@ -6,13 +6,14 @@ import { z } from 'zod';
 import ContactFormEmail from '@/email/contact-form';
 import AutoReplyEmail from '@/email/auto-reply-email';
 
+
 // Initialize Resend with your API key
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Email configuration
-const CONTACT_EMAIL = 'contact@playhousemedia.net'; // Must be a verified domain in Resend
+const CONTACT_EMAIL = 'info@playhousemedia.net'; // Must be a verified domain in Resend
 const CONTACT_NAME = 'Jacob Chademwiri';
-const FROM_EMAIL = 'contact@playhousemedia.net'; // Must be a verified domain in Resend
+const FROM_EMAIL = 'info@playhousemedia.net'; // Must be a verified domain in Resend
 
 // Service type labels for email content
 const serviceTypeLabels = {
@@ -100,7 +101,6 @@ async function logFailedSubmission(data: any, error: string) {
   // - Log to external service
 }
 
-// Alternative server action that accepts a parsed object instead of FormData
 export async function sendContactEmail(
   data: z.infer<typeof contactFormSchema>,
 ) {
@@ -126,11 +126,11 @@ export async function sendContactEmail(
     // Try to send notification email
     try {
       const notificationResult = await resend.emails.send({
-        from: `${CONTACT_NAME} <${FROM_EMAIL}>`,
-        to: [CONTACT_EMAIL],
+        from: `${CONTACT_NAME} <${FROM_EMAIL}>`, // From my contact name and email with resend domain
+        to: [CONTACT_EMAIL], // Send to my existing contact email
+        replyTo: validatedData.email,
         subject: `New ${serviceTypeLabels[validatedData.serviceType]} Consultation Request from ${validatedData.firstName} ${validatedData.lastName}`,
         react: ContactFormEmail(validatedData),
-        replyTo: validatedData.email,
       });
 
       if (notificationResult.error) {
@@ -153,8 +153,9 @@ export async function sendContactEmail(
     // Try to send auto-reply email
     try {
       const autoReplyResult = await resend.emails.send({
-        from: FROM_EMAIL,
-        to: [validatedData.email],
+        from: `${CONTACT_NAME} <${FROM_EMAIL}>`, // From my contact name and email with resend domain
+        to: [validatedData.email], // Send to user's email
+        replyTo: `${CONTACT_NAME} <${FROM_EMAIL}>`,
         subject: `Thank you for your ${serviceTypeLabels[validatedData.serviceType]} consultation request`,
         react: AutoReplyEmail({
           firstName: validatedData.firstName,

@@ -36,10 +36,8 @@ import {
   contactFormSchema,
   type ContactFormData,
 } from '@/lib/validations/contact';
-import {
-
-  sendContactEmail,
-} from '@/server/contact-form-action';
+import { sendContactEmail } from '@/server/contact-form-action';
+import Link from 'next/link';
 
 const serviceTypes = [
   {
@@ -197,7 +195,7 @@ export function ContactForm() {
             Your consultation request has been submitted successfully.
           </p>
           <p className="text-sm text-gray-500 mb-4">
-            I'll respond within {expectedResponse} with next steps for your
+            I&apos;ll respond within {expectedResponse} with next steps for your
             project.
           </p>
 
@@ -445,18 +443,18 @@ export function ContactForm() {
 
         <div className="text-center space-y-2">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            <span className="text-destructive">*</span> Required fields. I'll
-            respond within 24-48 hours with next steps.
+            <span className="text-destructive">*</span> Required fields.
+            I&apos;ll respond within 24-48 hours with next steps.
           </p>
 
           <p className="text-xs text-gray-500">
             Having trouble? Email me directly at{' '}
-            <a
+            <Link
               href="mailto:hello@jacobc.co.za"
               className="text-blue-600 hover:text-blue-800 dark:text-blue-400"
             >
               hello@jacobc.co.za
-            </a>
+            </Link>
           </p>
         </div>
       </form>
