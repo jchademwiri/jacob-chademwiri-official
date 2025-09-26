@@ -161,7 +161,9 @@ export function ContactForm() {
             name="firstName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First Name *</FormLabel>
+                <FormLabel>
+                  First Name <span className="text-destructive">*</span>
+                </FormLabel>
                 <FormControl>
                   <Input placeholder="Your first name" {...field} />
                 </FormControl>
@@ -174,7 +176,9 @@ export function ContactForm() {
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last Name *</FormLabel>
+                <FormLabel>
+                  Last Name <span className="text-destructive">*</span>
+                </FormLabel>
                 <FormControl>
                   <Input placeholder="Your last name" {...field} />
                 </FormControl>
@@ -190,7 +194,9 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address *</FormLabel>
+                <FormLabel>
+                  Email Address <span className="text-destructive">*</span>
+                </FormLabel>
                 <FormControl>
                   <Input
                     type="email"
@@ -237,7 +243,9 @@ export function ContactForm() {
             name="serviceType"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Service Type * </FormLabel>
+                <FormLabel>
+                  Service Type <span className="text-destructive">*</span>{' '}
+                </FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -315,7 +323,9 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Description *</FormLabel>
+              <FormLabel>
+                Project Description <span className="text-destructive">*</span>
+              </FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Please describe your project requirements, goals, and any specific challenges you're facing..."
@@ -345,8 +355,8 @@ export function ContactForm() {
         </Button>
 
         <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-          * Required fields. I&apos;ll respond within 24-48 hours with next
-          steps.
+          <span className="text-destructive">*</span> Required fields. I&apos;ll
+          respond within 24-48 hours with next steps.
         </p>
       </form>
     </Form>
