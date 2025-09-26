@@ -37,9 +37,9 @@ import {
   type ContactFormData,
 } from '@/lib/validations/contact';
 import {
-  sendContactEmailFromObject,
+
   sendContactEmail,
-} from '@/server/contact-form';
+} from '@/server/contact-form-action';
 
 const serviceTypes = [
   {
@@ -102,7 +102,7 @@ export function ContactForm() {
 
     try {
       // Call the server action
-      const result = await sendContactEmailFromObject(data);
+      const result = await sendContactEmail(data);
 
       if (!result.success) {
         if (result.errors) {
