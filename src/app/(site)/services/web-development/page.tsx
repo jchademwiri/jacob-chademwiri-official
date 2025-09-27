@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ServiceTestimonials, ConsultationCTA } from '@/components/services';
+import { ConsultationCTA } from '@/components/services';
 import { Zap, CheckCircle, Clock, Award } from 'lucide-react';
 import FeaturedProjects from '@/components/projects/FeaturedProjects';
 import { achievements, technologies, webServices } from '@/data';

@@ -6,14 +6,13 @@ import { z } from 'zod';
 import ContactFormEmail from '@/email/contact-form';
 import AutoReplyEmail from '@/email/auto-reply-email';
 
-
 // Initialize Resend with your API key
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Email configuration
-const CONTACT_EMAIL = 'info@playhousemedia.net'; // Must be a verified domain in Resend
+const CONTACT_EMAIL = 'hello@jacobc.co.za'; // Must be my contact email
 const CONTACT_NAME = 'Jacob Chademwiri';
-const FROM_EMAIL = 'info@playhousemedia.net'; // Must be a verified domain in Resend
+const FROM_EMAIL = 'info@updates.jacobc.co.za'; // Must be a verified domain in Resend
 
 // Service type labels for email content
 const serviceTypeLabels = {
@@ -23,8 +22,24 @@ const serviceTypeLabels = {
   consultation: 'General Consultation',
 } as const;
 
+// Type definitions for error handling
+interface ResendError extends Error {
+  name: string;
+  message: string;
+  stack?: string;
+}
+
+interface ErrorDetails {
+  type: 'configuration' | 'rate_limit' | 'validation' | 'service';
+  message: string;
+  technical: string;
+}
+
 // Enhanced error handling for Resend API
-function handleResendError(error: any, context: 'notification' | 'autoReply') {
+function handleResendError(
+  error: ResendError,
+  context: 'notification' | 'autoReply',
+): ErrorDetails {
   const errorMessage = error?.message || 'Unknown error';
   const errorName = error?.name || 'ResendError';
 
@@ -82,7 +97,10 @@ function handleResendError(error: any, context: 'notification' | 'autoReply') {
 }
 
 // Fallback notification method (could be webhook, database log, etc.)
-async function logFailedSubmission(data: any, error: string) {
+async function logFailedSubmission(
+  data: z.infer<typeof contactFormSchema>,
+  error: string,
+): Promise<void> {
   console.error('CRITICAL: Failed to send consultation request email:', {
     contactInfo: {
       name: `${data.firstName} ${data.lastName}`,
@@ -120,8 +138,8 @@ export async function sendContactEmail(
 
     let notificationSent = false;
     let autoReplySent = false;
-    let notificationError = null;
-    let autoReplyError = null;
+    let notificationError: ErrorDetails | null = null;
+    let autoReplyError: ErrorDetails | null = null;
 
     // Try to send notification email
     try {
@@ -135,7 +153,7 @@ export async function sendContactEmail(
 
       if (notificationResult.error) {
         notificationError = handleResendError(
-          notificationResult.error,
+          notificationResult.error as ResendError,
           'notification',
         );
         console.error('Notification email failed:', notificationResult.error);
@@ -147,7 +165,10 @@ export async function sendContactEmail(
         );
       }
     } catch (error) {
-      notificationError = handleResendError(error, 'notification');
+      notificationError = handleResendError(
+        error as ResendError,
+        'notification',
+      );
     }
 
     // Try to send auto-reply email
@@ -155,7 +176,7 @@ export async function sendContactEmail(
       const autoReplyResult = await resend.emails.send({
         from: `${CONTACT_NAME} <${FROM_EMAIL}>`, // From my contact name and email with resend domain
         to: [validatedData.email], // Send to user's email
-        replyTo: `${CONTACT_NAME} <${FROM_EMAIL}>`,
+        replyTo: `${CONTACT_NAME} <${CONTACT_EMAIL}>`,
         subject: `Thank you for your ${serviceTypeLabels[validatedData.serviceType]} consultation request`,
         react: AutoReplyEmail({
           firstName: validatedData.firstName,
@@ -164,7 +185,10 @@ export async function sendContactEmail(
       });
 
       if (autoReplyResult.error) {
-        autoReplyError = handleResendError(autoReplyResult.error, 'autoReply');
+        autoReplyError = handleResendError(
+          autoReplyResult.error as ResendError,
+          'autoReply',
+        );
         console.error('Auto-reply email failed:', autoReplyResult.error);
       } else {
         autoReplySent = true;
@@ -174,7 +198,7 @@ export async function sendContactEmail(
         );
       }
     } catch (error) {
-      autoReplyError = handleResendError(error, 'autoReply');
+      autoReplyError = handleResendError(error as ResendError, 'autoReply');
     }
 
     // Determine response based on what succeeded
