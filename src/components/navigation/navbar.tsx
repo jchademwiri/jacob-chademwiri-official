@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/data/constraints';
 import { ThemeToggle } from '@/components/theme-toggle';
+import Image from 'next/image';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +43,9 @@ export function Navbar() {
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-white font-bold">JC</span>
+                <div className="h-10 w-10 border border-primary p-1 rounded-full  flex items-center justify-center">
+                  {/* <span className="text-white font-bold">JC</span> */}
+                  <Image src="/logo.svg" alt="Logo" width={32} height={32} />
                 </div>
                 <span className="font-bold text-lg hidden sm:inline-block">
                   Jacob <span className="text-primary">C.</span>
