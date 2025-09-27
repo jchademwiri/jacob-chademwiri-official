@@ -175,7 +175,7 @@ export async function sendContactEmail(
     try {
       const autoReplyResult = await resend.emails.send({
         from: `${CONTACT_NAME} <${FROM_EMAIL}>`, // From my contact name and email with resend domain
-        to: [validatedData.email], // Send to user's email
+        to: `${validatedData.firstName} <${validatedData.email}>`, // Send to user's email
         replyTo: `${CONTACT_NAME} <${CONTACT_EMAIL}>`,
         subject: `Thank you for your ${serviceTypeLabels[validatedData.serviceType]} consultation request`,
         react: AutoReplyEmail({
