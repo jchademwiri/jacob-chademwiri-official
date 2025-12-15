@@ -9,6 +9,9 @@ A modern, responsive portfolio website showcasing the work and expertise of Jaco
 - **Performance Optimized**: Built with Next.js 15 and Turbopack for optimal loading speeds
 - **SEO Friendly**: Comprehensive meta tags, structured data, and search optimization
 - **Interactive Components**: Smooth animations and user-friendly interactions
+- **Admin Panel**: Comprehensive admin interface for content management
+- **Email System**: Automated email templates and contact form handling
+- **Database Integration**: Drizzle ORM with robust data management
 - **Content Management**: Easy-to-update data structure for projects and information
 - **Analytics Integration**: Vercel Analytics and Speed Insights for performance monitoring
 
@@ -52,11 +55,14 @@ A modern, responsive portfolio website showcasing the work and expertise of Jaco
 
 ## 🛠️ Technology Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 16](https://nextjs.org/) with App Router
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
 - **Icons**: [Lucide React](https://lucide.dev/)
+- **Database**: [Drizzle ORM](https://orm.drizzle.team/) with database integration
+- **Email**: React-based email templates with automated responses
+- **Forms**: Advanced form handling with validation
 - **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
 - **Deployment**: [Vercel](https://vercel.com/)
 
@@ -64,16 +70,41 @@ A modern, responsive portfolio website showcasing the work and expertise of Jaco
 
 ```
 jchademwiri-official/
-├── docs/                    # Comprehensive documentation
-├── public/                  # Static assets and images
+├── docs/                          # Comprehensive documentation
+│   ├── docs-gpt/                  # GPT-generated documentation
+│   ├── docs-me/                   # Personal documentation
+│   ├── learn/                     # Learning resources
+│   └── tools/                     # Development tools
+├── emails/                        # Email templates
+├── public/                        # Static assets and images
+│   ├── images/                    # Project images
+│   └── resumes/                   # Resume files
 ├── src/
-│   ├── app/                # Next.js App Router pages
-│   ├── components/         # React components
-│   ├── data/              # Static data and content
-│   ├── hooks/             # Custom React hooks
-│   └── lib/               # Utility functions
-├── .env.local             # Environment variables
-└── package.json           # Dependencies and scripts
+│   ├── app/                       # Next.js App Router pages
+│   │   ├── (admin)/              # Admin interface
+│   │   │   └── admin/           # Admin panel pages
+│   │   ├── (site)/              # Main site pages
+│   │   │   ├── about/           # About section
+│   │   │   ├── case-studies/    # Case studies
+│   │   │   ├── contact/         # Contact page
+│   │   │   ├── employment/      # Employment history
+│   │   │   ├── insights/        # Blog/insights
+│   │   │   └── services/        # Services offered
+│   │   ├── globals.css          # Global styles
+│   │   ├── layout.tsx           # Root layout
+│   │   └── page.tsx             # Home page
+│   ├── components/               # React components
+│   │   ├── case-studies/        # Case study components
+│   │   ├── current-employment/  # Employment components
+│   │   ├── forms/               # Form components
+│   │   ├── navigation/          # Navigation components
+│   │   └── projects/            # Project components
+│   ├── data/                    # Static data and content
+│   ├── hooks/                   # Custom React hooks
+│   └── lib/                     # Utility functions
+├── .env.local                   # Environment variables
+├── drizzle.config.ts            # Database configuration
+└── package.json                 # Dependencies and scripts
 ```
 
 ## 📚 Documentation
@@ -84,8 +115,8 @@ Comprehensive documentation is available in the `docs/` directory:
 - **[Development Guide](docs/DEVELOPMENT.md)** - Architecture, components, and development workflow
 - **[API Documentation](docs/API.md)** - Data models and interfaces
 - **[Deployment Guide](docs/DEPLOYMENT.md)** - Deployment strategies and configuration
-- **[Content Strategy](docs/00%20Index.md)** - Content planning and messaging
-- **[Development Plan](docs/01%20plan.md)** - Comprehensive development roadmap
+- **[Content Strategy](docs/00-Index.md)** - Content planning and messaging
+- **[Development Plan](docs/01-plan.md)** - Comprehensive development roadmap
 
 ## 🎯 Key Sections
 
