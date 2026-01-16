@@ -10,7 +10,7 @@ export default async function AdminPage() {
       <Button asChild className="text-white">
         <Link href="/">Go to Home</Link>
       </Button>
-      <p>This is a Admin page</p>
+      <p>This is my Admin page</p>
       <Button asChild className="">
         Logout
       </Button>
